@@ -1,0 +1,177 @@
+%\documentclass[12pt,letterpaper,english]{article}
+\documentclass[9pt,landscape]{article}
+\usepackage[T1]{fontenc} % Standard package for selecting font encodingsamely titles, headers and contents
+\usepackage{txfonts} % makes spacing between characters space correctly
+\usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX.
+%\usepackage[pagestyles,raggedright]{titlesec} % related with sections—n
+%\usepackage{blindtext} % To create text
+\usepackage{fancyhdr} % header footer placement
+
+\usepackage[top=.7in, bottom=.7in, left=1in, right=1in] {geometry} % Margins
+\usepackage{graphicx}  % Essential for adding images to you document.
+
+\usepackage{sectsty}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize \it}
+
+\usepackage{caption}
+\captionsetup{labelsep=period}
+
+\renewcommand{\arraystretch}{1}
+
+\pagestyle{fancy} % allows you to use the header and footer commands
+
+\raggedright
+\begin{document}
+
+\setlength{\parindent}{0in} % Amount of indentation at the first line of a paragraph.
+
+\pagestyle{fancy} \lhead{Large Eddy Simulation of rod bundle cores} \rhead{E. Merzari et al.} \renewcommand{%
+\headrulewidth}{0.0pt}
+
+\textbf{Proposal Title (exactly as it appears on submission):} Large Eddy Simulation of rod bundle cores
+%
+%
+%Year 1 table. Please enter your data for year 1 milestones in the table below.
+%
+%
+\vspace{-.5cm}
+\begin{table}[h]
+%\centering
+%\caption{Table title}
+%\vspace{-.15in}
+\label{Tab1}
+\begin{tabular}{p{4cm} p{8cm} p{4cm} p{5cm}} \\ \hline
+\noalign{\smallskip}
+\multicolumn{4}{l}{\textbf {Year 1}}\\ \hline
+\textbf{Milestone} & \textbf{Details} & \textbf{Dates} & \textbf{Status (renewals only)} \\ \hline
+A - Preliminary canonical flow simulations & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 71,500\\
+\textbf{Filesystem storage (TB and dates):} 25.5\\
+\textbf{Archival storage (TB and dates):} 102\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 1\\
+\textbf{Dependencies:} None  \end{tabular}} & 6/30/2021 &  \\ \hline
+B - Preliminary thermal-striping calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 77,000\\
+\textbf{Filesystem storage (TB and dates):} 13.6\\
+\textbf{Archival storage (TB and dates):} 54.4\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 2\\
+\textbf{Dependencies:} None  \end{tabular}} & 12/31/2021 &  \\ \hline
+G - Preliminary mixing calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 308,000\\
+\textbf{Filesystem storage (TB and dates):} 54.4\\
+\textbf{Archival storage (TB and dates):} 217.6\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 3\\
+\textbf{Dependencies:} None  \end{tabular}} & 12/31/2021 &  \\ \hline
+K - Preliminary fuel element calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 429,000\\
+\textbf{Filesystem storage (TB and dates):} 153\\
+\textbf{Archival storage (TB and dates):} 612\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 4\\
+\textbf{Dependencies:} None  \end{tabular}} & 12/31/2021 &  \\ \hline
+\end{tabular}
+\end{table}
+%
+%
+%Year 2 table. If appropriate, enter year 2 milestones in the table below.
+%
+%
+\vspace{-1cm}
+\begin{table}[h]
+\label{Tab2}
+\begin{tabular}{p{4cm} p{8cm} p{4cm} p{5cm}} \\ \hline
+\noalign{\smallskip}
+\multicolumn{4}{l}{\textbf {Year 2 (if appropriate)}}\\ \hline
+\textbf{Milestone} & \textbf{Details} & \textbf{Dates} & \textbf{Status (renewals only)} \\ \hline
+B - Final canonical flow simulations & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 71,500\\
+\textbf{Filesystem storage (TB and dates):} 25.5\\
+\textbf{Archival storage (TB and dates):} 102\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 1\\
+\textbf{Dependencies:} A  \end{tabular}} & 9/30/2022 &  \\ \hline
+D - Pre-test thermal-striping calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 19,250\\
+\textbf{Filesystem storage (TB and dates):} 13.6\\
+\textbf{Archival storage (TB and dates):} 54.4\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 2\\
+\textbf{Dependencies:} C  \end{tabular}} & 03/30/2022 &  \\ \hline
+H - Pre-test mixing calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 77,000\\
+\textbf{Filesystem storage (TB and dates):} 54.4\\
+\textbf{Archival storage (TB and dates):} 217.6\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 3\\
+\textbf{Dependencies:} G  \end{tabular}} & 03/30/2022 &  \\ \hline
+L - Pre-test fuel element calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 107,250\\
+\textbf{Filesystem storage (TB and dates):} 153\\
+\textbf{Archival storage (TB and dates):} 612\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 4\\
+\textbf{Dependencies:} K  \end{tabular}} & 03/30/2022 &  \\ \hline
+\end{tabular}
+\end{table}
+%
+%
+%Year 3 table. If appropriate, enter year 3 milestones in the table below.
+%
+%
+\vspace{-1cm}
+\begin{table}[h]
+\label{Tab3}
+\begin{tabular}{p{4cm} p{8cm} p{4cm} p{5cm}} \\ \hline
+\multicolumn{4}{l}{\textbf {Year 3 (if appropriate)}}\\ \hline
+\textbf{Milestone} & \textbf{Details} & \textbf{Dates} & \textbf{Status (renewals only)} \\ \hline
+E - Post-test thermal-striping calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 57,750 (2022)\\
+\textbf{Filesystem storage (TB and dates):} 13.6\\
+\textbf{Archival storage (TB and dates):} 54.4\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 2\\
+\textbf{Dependencies:} D  \end{tabular}} & 06/30/2023 &  \\ \hline
+F - Additional thermal-striping calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 77,000\\
+\textbf{Filesystem storage (TB and dates):} 13.6\\
+\textbf{Archival storage (TB and dates):} 54.4\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 2\\
+\textbf{Dependencies:} D  \end{tabular}} & 06/30/2023 &  \\ \hline
+I - Post-test mixing calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 231,000 (2022)\\
+\textbf{Filesystem storage (TB and dates):} 54.4\\
+\textbf{Archival storage (TB and dates):} 217.6\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 3\\
+\textbf{Dependencies:} H  \end{tabular}} & 6/30/2023 &  \\ \hline
+J - Post-test mixing calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 308,000\\
+\textbf{Filesystem storage (TB and dates):} 54.4\\
+\textbf{Archival storage (TB and dates):} 217.6\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 3\\
+\textbf{Dependencies:} H  \end{tabular}} & 6/30/2023 &  \\ \hline
+M - Post-test fuel element calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 321,750 (2022)\\
+\textbf{Filesystem storage (TB and dates):} 153\\
+\textbf{Archival storage (TB and dates):} 612\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 4\\
+\textbf{Dependencies:} L  \end{tabular}} & 6/30/2023 &  \\ \hline
+N - Additional fuel element calculations  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 429,000\\
+\textbf{Filesystem storage (TB and dates):} 153\\
+\textbf{Archival storage (TB and dates):} 612\\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task 4\\
+\textbf{Dependencies:} L  \end{tabular}} & 6/30/2023 &  \\ \hline
+\end{tabular}
+
+\end{table}
+\end{document}

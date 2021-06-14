@@ -1,0 +1,43 @@
+\documentclass[11pt,letterpaper,english]{article}
+ \usepackage[T1]{fontenc} % Standard package for selecting font encodings
+ \usepackage{txfonts} % makes spacing between characters space correctly
+ \usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX.
+%\usepackage{blindtext} % To create text
+%\usepackage{mdwlist} % mdwlist for compact enumeration/list items 
+%\usepackage[pagestyles]{titlesec} % related with sections—namely titles, headers and contents
+
+ \usepackage[final]{pdfpages}
+ \usepackage{hyperref}
+ \definecolor{darkblue}{rgb}{0.0,0.0,0.6}%0.3
+ \hypersetup{pageanchor=true}
+ \hypersetup{colorlinks,breaklinks,linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+
+ \usepackage{fancyhdr} % header footer placement
+
+ \usepackage[top=1in, bottom=1in, left=1in, right=1in] {geometry} % Margins
+ \usepackage{graphicx}   % Essential for adding images to you document.
+
+ \usepackage{sectsty}
+ \sectionfont{\large}
+ \subsectionfont{\normalsize}
+ \subsubsectionfont{\normalsize \it}
+
+ \usepackage{caption}
+ \captionsetup{labelsep=period}
+
+ \pagestyle{fancy} % allows you to use the header and footer commands 
+
+ \raggedright
+
+ \begin{document}
+
+ \includepdf[pages=-,pagecommand={}]{./merzari_cv.pdf}
+ \includepdf[pages=-,pagecommand={}]{./bolotnov_cv.pdf}
+ \includepdf[pages=-,pagecommand={}]{./fischer_cv.pdf}
+ \includepdf[pages=-,pagecommand={}]{./min_cv.pdf}
+ \includepdf[pages=-,pagecommand={}]{./liu_cv.pdf}
+ \includepdf[pages=-,pagecommand={}]{./hu_cv.pdf}
+
+\end{document}

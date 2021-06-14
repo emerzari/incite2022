@@ -1,0 +1,66 @@
+\documentclass[11pt,letterpaper,english]{article}
+\usepackage[T1]{fontenc} % Standard package for selecting font encodings
+\usepackage{txfonts} % makes spacing between characters space correctly
+\usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX.
+%\usepackage[pagestyles]{titlesec} % related with sections—namely titles, headers and contents
+%\usepackage{blindtext} % To create text
+%\usepackage{mdwlist} % mdwlist for compact enumeration/list items
+\usepackage{fancyhdr} % header footer placement
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in] {geometry} % Margins
+\usepackage{graphicx}  % Essential for adding images to you document.
+
+\usepackage{sectsty}
+\sectionfont{\large}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize \it}
+
+\usepackage{caption}
+\captionsetup{labelsep=period}
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+\pagestyle{fancy} % allows you to use the header and footer commands
+
+
+\raggedright
+\begin{document}
+
+
+\setlength{\parindent}{0in} % Amount of indentation at the first line of a paragraph.
+
+\pagestyle{fancy} \lhead{Large Eddy Simulation of Rod bundle cores} \rhead{E. Merzari et al.} \renewcommand{%
+\headrulewidth}{0.0pt}
+
+\begin{center}
+\bf {PERSONNEL JUSTIFICATION AND MANAGEMENT PLAN} \\
+\end{center}
+
+\vspace{-.25in}
+\begin{flushleft}
+{\noindent \bf  {PERSONNEL JUSTIFICATION}}
+
+The persons involved in this application have all preassigned roles. The co-PIs responsible for coordinating runs and executing tasks. Elia Merzari will be responsible for the overall  project. In addition to the PI four students are expected to setup numerical models and perform runs (two at Pennsylvania State University, one at North Carolina State University and one at University of Illinois Urbana-Champaign). A post-doctoral fellow at Argonne National laboratory is also expected to perform runs and support the students as needed.
+
+\vspace{-.15in}
+\begin{itemize}
+\item \textbf{Elia Merzari} is the PI and he is responsible for the overall coordination of the project. He has led several ALCC proposals and participated in several INCITE proposals. He will be also responsible for the execution of tasks 2 and 4. He will contribute also to tasks 1 and 3.
+\item \textbf{Paul Fischer} will contribute to Task 3. As chief architect of Nek5000, will also be  consulting actively to ensure that the optimal code options and meshing strategies are employed. Paul Fischer has led numerous INCITE proposals and has over 30 years experience in high performance computing. He is the recipient of a Gordon Bell Award and an R\&D100 Award.
+\item \textbf{Misun Min} as co-PI will support the work as consultant, given her extensive expertise on GPU architectures.
+\item \textbf{April Novak} will ...
+\item \textbf{Student 1 (PSU) - Victor Coppo Leite}, will support development of models and production runs for Task 1 and 4.
+\item \textbf{Student 2 (PSU) - Tri Nguyen}, will support development of models and production runs for Task 2 and 3.
+\item \textbf{Student 3 (UIUC) - TBD}, will support development of models and production runs for Task 3.
+\item \textbf{Post-Doctoral appointee (ANL) - TBD}, will support development of models and production runs for all tasks.
+\end{itemize}
+
+{\noindent \bf  {MANAGEMENT PLAN}}
+
+As stated in the previous section each person in the project has a pre-assigned role. The leadership team comprised of Elia Merzari, Paul Fischer, Misun Min and April Novak will meet (by teleconference) bi-weekly to review the status of milestones.  Moreover, broader coordination meetings of the center activities will be held twice a year with a broader group of PIs.
+
+Each task Task has a pre-assigned amount of resources and personnel assigned to them. Students at the  will be supervised by the local PI (Elia Merzari for PSU, Paul Fischer for UIUC and Igor Bolotnov for NCSU). The post-doctoral appointee will be supervised by Misun Min.
+
+\end{flushleft}
+
+\end{document}

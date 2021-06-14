@@ -1,0 +1,20 @@
+ \documentclass{article}
+
+ \usepackage[final]{pdfpages}
+ \usepackage{hyperref} 
+ \definecolor{darkblue}{rgb}{0.0,0.0,0.6}%0.3
+ \hypersetup{pageanchor=true}
+ \hypersetup{colorlinks,breaklinks,linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+            
+ \begin{document}
+
+ \includepdf[pages=-,pagecommand={}]{./summary.pdf}
+ \includepdf[pages=-,pagecommand={}]{./narrative.pdf}
+ \includepdf[pages=-,pagecommand={}]{./personnel.pdf}
+ \includepdf[pages=-,pagecommand={}]{./milestone.pdf}
+ \includepdf[pages=-,pagecommand={}]{./publication.pdf}
+ \includepdf[pages=-,pagecommand={}]{./biosketch.pdf}
+
+ \end{document}
+
