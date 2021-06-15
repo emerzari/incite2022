@@ -8,6 +8,7 @@
         pdflatex  --shell-escape bios/merzari_cv.tex
         pdflatex  --shell-escape bios/fischer_cv.tex
         pdflatex  --shell-escape bios/min_cv.tex
+        pdflatex  --shell-escape bios/novak_cv.tex
 
         pdflatex  --shell-escape bios/biosketch.tex
 
