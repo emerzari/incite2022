@@ -2,11 +2,11 @@
 \usepackage[T1]{fontenc} % Standard package for selecting font encodings
 \usepackage{txfonts} % makes spacing between characters space correctly
 \usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX.
-\usepackage{hyperref}  %The ability to create hyperlinks within the document
+\usepackage[hidelinks]{hyperref}  %The ability to create hyperlinks within the document
 \usepackage{eqnarray}
 %\usepackage{blindtext} % To create text
 %\usepackage{mdwlist} % mdwlist for compact enumeration/list items
-%\usepackage[pagestyles]{titlesec} % related with sections�namely titles, headers and contents
+%\usepackage[pagestyles]{titlesec} % related with sections, namely titles, headers, and contents
 \usepackage{fancyhdr} % header footer placement
 \usepackage{epsfig}
 \usepackage{epstopdf}
@@ -15,7 +15,6 @@
 \usepackage{mathptmx}
 \usepackage{enumitem}  % Helps with the reduce itemize/enumerate separations
 \usepackage{subfigure}
-
 
 \usepackage{sectsty}
 \sectionfont{\normalsize}
@@ -227,11 +226,15 @@
 
 \setlength{\parindent}{0in} % Amount of indentation at the first line of a paragraph.
 
-\pagestyle{fancy} \lhead{Large Eddy Simulation of rod bundle  cores} \rhead{TBD} \renewcommand{%
+
+% The information should be sufficient for peer review in your area of research and also appropriate for general scientific review, comparing your proposal with proposals in other disciplines. 
+%  Potential scientific or business impact is the predominant determinant for awards. 
+
+\pagestyle{fancy} \lhead{Large Eddy Simulation of Rod Bundle  Cores} \rhead{TBD} \renewcommand{%
 \headrulewidth}{0.0pt}
 
 \begin{center}
-{\bf PROJECT NARRATIVE}
+{\bf PROJECT NARRATIVE} % typically about 4 pages
 \end{center}
 
 \vspace{-.15in}
@@ -248,33 +251,97 @@
 \section{SIGNIFICANCE OF RESEARCH}
 \vspace{-.2in}
 
-In recent years there has been renewed interest in Small modular reactors and advanced nuclear reactors, as a wave of investment has spurred innovation and novel reactor designs. Nuclear energy stemming from advanced reactors promises to become a reliable, carbon-free resource capable of meeting our nation's and the world's energy needs.
+In recent years there has been renewed interest in Small Modular Reactors (SMRs) and advanced nuclear reactors, as a wave of investment has spurred innovation and novel reactor designs. Nuclear energy stemming from advanced reactors promises to become a reliable, carbon-free resource capable of meeting our nation's and the world's energy needs.
 
-Yet design, certification and licensing of novel reactor designs pose formidable hurdles to the successful deployment of such technologies. In fact, the lack of integral-effect test facilities for a wide range of scenarios and conditions considered in risk-informed analysis leads to a severe deficit of directly relevant data for these advanced designs. In order to develop appropriate models needed for system analysis of these novel designs, we envision that the scientific community will need to rely increasingly on advanced instrumented, typically small-scale, separate-effect experiments and high-fidelity numerical simulations. Only when designs are nearly finalized will integral-effect test facilities be needed and the related investment justified.
+The design, certification, and licensing of novel reactor designs pose formidable hurdles to the successful deployment of such technologies. In fact, the lack of integral-effect test facilities for a wide range of scenarios and conditions considered in risk-informed analysis leads to a severe deficit of directly relevant data for these advanced designs. In order to develop appropriate models needed for system analysis of these novel designs, we envision that the scientific community will need to increasingly rely on advanced instrumented, typically small-scale, separate-effect experiments and high-fidelity numerical simulations. Only when designs are nearly finalized will integral-effect test facilities be needed and the related investment justified.
 
-We turn in particular our attention to Sodium Fast Reactors (SFRs) and Light Water Small Modular Reactors (SMRs). Both of these designs have received considerable attention in recent years. The cores of such reactors are comprised of tens of thousands of rods, grouped in bundles of hundreds of rods. Coolant flow is established between the rods to remove heat from the nuclear fuel. Understanding of such fluid flow for a range of conditions has long been a priority and a challenge in nuclear engineering. Given the scale of the problem (flow in tens of thousands of channels at high Reynolds number), the applicability of turbulence resolving techniques has been limited to small portions of the reactor core. Significant compromises in accuracy have had to be accepted in order to perform simulations at the full core-scale. This has implications on the understanding of margins, which ultimately limit economic viability, but also has broader impact on design constraints that are harder to quantify directly.
+We turn in particular our attention to Sodium Fast Reactors (SFRs) and Light Water SMRs. Both of these designs have received considerable attention in recent years. The cores of such reactors are comprised of tens of thousands of rods, grouped in bundles of hundreds of rods. Coolant flow is established between the rods to remove heat from the nuclear fuel. Understanding of such fluid flow for a range of conditions has long been a priority and a challenge in nuclear engineering. Given the scale of the problem (flow in tens of thousands of channels at high Reynolds number), the applicability of turbulence resolving techniques has been limited to small portions of the reactor core. Significant compromises in accuracy have had to be accepted in order to perform simulations at the full core-scale. This has implications on the understanding of margins, which ultimately limit economic viability, but also has broader impact on design constraints that are harder to quantify directly.
 
-Recently the advent of pre-exascale machines has made possible to simulate full reactor cores at moderate Reynolds numbers. This proposal seeks to build on these recent achievements to develop a deeper understanding of core-wide thermal-fluid phenomena.
+Recently the advent of pre-exascale machines has made possible the simulation of full reactor cores at moderate Reynolds numbers. This proposal seeks to build on these recent achievements to develop a deeper understanding of core-wide thermal-fluid phenomena.
 
-\textit{To accelerate the deployment of SMRs and advanced reactors, this proposal seeks to establish an extensive  Large Eddy Simulation database supporting the development of lower fidelity methods. We envision that the work proposed here will increase the understanding and modeling of core-wide phenomena. The effort will take place over 2 years on the supercomputers Summit and Frontier.}
-
-\vspace{-.25in}
-\subsection{Background}
-\vspace{-.2in}
-
-Discuss past research, point out remaining issues and outstanding issues.
+\textit{To accelerate the deployment of SMRs and advanced reactors, this proposal seeks to establish an extensive Large Eddy Simulation (LES) database supporting the development of lower fidelity methods. We envision that the work proposed here will increase the understanding and modeling of core-wide phenomena. The effort will take place over 2 years on the supercomputers Summit and Frontier.}
 
 \vspace{-.25in}
 \subsection{The Challenge Problems}
 \vspace{-.2in}
 
-State clearly the challenge problem or problems we are trying to solve.
-Make clear statements about impact.
+% Discuss past research, point out remaining issues and outstanding issues.
+
+Thermal-hydraulic modeling of nuclear reactors is directed at predicting the proximity of the nuclear fuel to various design limits that can affect personnel radiation dose; the ability of power conversion equipment to reliably cool the core under a range of normal and degraded/failed equipment conditions; and the economic viability of new operating paradigms, such as load following. The accuracy of such simulations has direct implications on design certification, licensing, and eventual market share. 
+
+CFD is used widely in reactor design and safety analysis, but the scale required for full-core simulation has typically limited such geometries to less than 1\% of the core -- usually, a single ``fuel bundle,'' or grouping of rods \cite{wang2020,fanning,wang2020b}. The power and flow distributions in a reactor can be highly nonuniform, and many physics phenomena cannot be accurately predicted with such decoupled single-bundle models. The nuclear industry therefore relies on a multiscale bridging from small-scale CFD models to lower-resolution methods; examples of coarse-mesh methods combined with CFD include the homogenized porous media method \cite{wang2020c}; the ``subchannel'' method, a finite volume method specialized to rod-type nuclear fuels \cite{blyth}; and momentum source models \cite{hu2013}. CFD models isolated from the full-core physics through insulated or symmetry boundary conditions are used to predict bulk heat and mass transfer in the form of closure correlations that are then applied to coarse-mesh full-core models.
+
+By nature of the scale decoupling between the CFD domain and the full core, a key outstanding issue with this analysis approach is an inability to account for interaction between global and local scales. This recognized limitation increases reliance on approximate methods, which in turn further constrains the reactor design.
+
+Light water SMRs and SFRs both exhibit significant full-core thermal-hydraulic physics for which the available low-resolution analysis methods cannot capture important local/global interactions. In light water SMRs, intra-bundle mixing due to variations in mass flow rate plays an important role in fluid structure interaction (FSI) and deposition of coolant contaminants on heat transfer surfaces (TODO: references). TODO: describe more of what has been done in this area for background, and what the limitations of the analysis procedures are.
+
+In SFRs, a critical reactor design consideration is the structural expansion of the solid fuel structures in response to differential temperature and irradiation damage gradients. The ducted fuel bundles bow and deform, contacting neighboring bundles and transferring loads across the entire core to restraint rings welded to the reactor vessel. These changes in core geometry play an important role in reactor control and mechanical refueling operations. An incomplete understanding of the structural deformation of SFRs, especially the thermal-flow physics, has resulted in fuel melting \cite{brittan}, rapid surges in power \cite{chaumont}, and difficulty refueling \cite{shields}.
+
+For neutronic purposes related to transmutation and shielding, neighboring bundles vary by up to a factor of 100 in power and a factor of 50 in mass flowrate, depending on position \cite{abr}. An important driver of structural expansion in SFRs is heat transfer both within bundles and across thin gaps between adjacent bundles that contain laminar sodium flow, a heat transfer mechanism referred to as ``inter-assembly'' heat transfer. Even though inter-assembly heat transfer is driven by these vastly different flow regimes, large cross-bundle thermal gradients, and gap sodium flow, industry models for core thermal-hydraulics are based on closures obtained from experiments and CFD models of symmetric, isolated fuel bundles without consideration of realistic boundary conditions \cite{touran}. While some have combined Reynolds Average Navier-Stokes (RANS) CFD for the inter-assembly flow with a porous media or subchannel model for the interior of the bundle \cite{wang2020,gerschenfeld}, most full-core SFR models neglect the gap flow entirely \cite{touran} or homogenize the flow into other structural materials \cite{fiorina_of} -- often without correction terms to account for the un-resolved physics \cite{touran,fiorina_of}. Depending on flow regime, a consequence of this approximation can be a significant underprediction of heat removal \cite{gerschenfeld}, requiring over-engineered safety systems or less optimal power density.
+
+
+TODO: What other content should go here? Maybe more discussion of typical problem sizes people have done before? Typical DOFs for a full-core porous media/subchannel solve? Resolution comparison?
+
+
+
+%Explain what advances you expect to be enabled by an INCITE award that justifies an allocation of petascale resources (e.g., anticipated impact on community paradigms, valuable insights into or solving a long-standing challenge, etc.). 
+
+% Place the proposed research in the context of competing work in your discipline or business. 
+
+% State clearly the challenge problem or problems we are trying to solve.
+% Make clear statements about impact.
+
+\vspace{-.25in}
+\subsection{Impact and Insights}
+\vspace{-.2in}
+
+This proposal aims to provide insights into two grand challenges in the design of rod-type nuclear reactors by developing an LES database to support the development of lower fidelity models. Both grand challenges share the same motivating gap analysis -- reduced-geometry CFD models cannot properly account for the interaction between core-wide physics and local thermal-hydraulics. By developing more accurate lower fidelity models informed by turbulence-resolved CFD, this proposal seeks to reduce risk to the technical design, economic viability, and licensing of advanced reactor concepts. 
+
+The reactor development timeline, from conception to power generation, often takes decades to accomplish; much of the reactor design and analysis is ``front-loaded'' to allow sufficient time for the licensing process, a prerequisite to construction. The two challenge problems selected in this proposal will have immediate technical and business impact to the nuclear industry by coinciding with large LWR and SFR development programs in private industry.
+
+As part of the Department of Energy-Nuclear Energy (DOE-NE), the Advanced Reactor Demonstration Program (ARDP) in October 2020 awarded TerraPower, a private nuclear development company, funds to develop and build an advanced SFR within the next seven years. Similar to 
+
+% how are we going to address the gaps in knowledge
+
+% private industry doesn't have petascale resources
+
+%Many examples exist of late-stage design changes significantly prolonging the reactor development process \cite{baumer} . 
+
+%The proposed work will have a large impact on 
+
+% emphasize that the deformation isn't considered here - just building a LES database 
+
+
+% petascale resources are required to understand how core-wide flow and heat transfer affect important local phenomena. 
+
+
+
+TODO: Talk about the LWR SMR challenge problem
+% anticipated impact on community paradigms, valuable insights into or solving a long-standing challenge, etc.). 
+% Place the proposed research in the context of competing work in your discipline or business. 
+
+% talk about limitations to T/H modeling of SFRs in terms of resolution
+% then tie those limitations into important physical considerations in SFRs, and how we rely on correlations that are inapplicable or incomplete
+% and then motivate why we need full core modeling, in terms of the structural expansion phenomenon
+
+Petascale resources are required to understand how the interactions between laminar, mixed convection, and forced convection flow regimes affect inter-assembly heat transfer.
+
+\vspace{-.25in}
+\subsection{Previous INCITE Awards}
+\vspace{-.2in}
+
+
+List any previous INCITE award(s) received and discuss the relationship to the work proposed. 
 
 
 \vspace{-.25in}
-\section{RESEARCH OBJECTIVE AND MILESTONES}
+\section{RESEARCH OBJECTIVE AND MILESTONES} % typically about 6 pages
 \vspace{-.2in}
+
+% Describe the proposed research, including its goals and milestones and the theoretical and computational methods it employs. Goals and milestones should articulate simulation and developmental objectives and be sufficiently detailed to assess the progress of the project for each year of any allocation granted. 
+% Milestones should correlate with those in Section 4, “Milestone Table.” 
+% It is especially important that you provide clear connections between the project’s overarching milestones, the planned production simulations, and the compute time expected to be required for these simulations (e.g., should correlate with Section 2.3.i, “Use of Resources Requested”) in the research proposal. 
+% You should also make clear any dependencies of milestones on other milestones.
 
 In the past ten years the Nuclear Energy Advanced Modeling and Simulation (NEAMS) program \cite{sofu2017us} has invested in developing modern advanced computational fluid dynamics (CFD) software to facilitate the deployment of advanced reactor. In fact, CFD is currently in widespread use both in reactor design and in safety analysis, as testified by the increasing number of articles in the field. Among recent examples, Roelofs \cite{roelofs2018thermal} illustrates the importance of CFD for liquid metal reactor design and analysis. In fact, detailed modeling and simulation is of particular importance for advanced reactors,  where it can be used in conjunction with separate effect experiments, in the absence of extensive integral test data (at least in the initial phases of development).
 
