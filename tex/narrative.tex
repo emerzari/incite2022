@@ -277,16 +277,15 @@ Light water SMRs and SFRs both exhibit significant full-core thermal-hydraulic p
 
 In SFRs, a critical reactor design consideration is the structural expansion of the solid fuel components in response to differential temperature and irradiation damage gradients. The ducted fuel bundles bow and deform, contacting neighboring bundles and transferring loads across the entire core to restraint rings welded to the reactor vessel. These changes in core geometry play an important role in reactor control and mechanical refueling operations. An incomplete understanding of the structural deformation of SFRs, especially the thermal-flow physics, has resulted in fuel melting \cite{brittan}, rapid surges in power \cite{chaumont}, and difficulty refueling \cite{shields} in a number of SFRs operated around the world.
 
-For neutronic purposes related to transmutation and shielding, neighboring bundles can vary by up to a factor of 100 in power and a factor of 50 in mass flowrate, depending on position \cite{abr}. An important driver of structural expansion in SFRs is heat transfer both within bundles and across thin gaps between adjacent bundles that contain laminar sodium flow, a heat transfer mechanism referred to as ``inter-assembly'' heat transfer. Even though inter-assembly heat transfer is driven by these vastly different flow regimes, large cross-bundle thermal gradients, and gap sodium flow, industry models for core thermal-hydraulics are based on closures obtained from experiments and CFD models of symmetric, isolated fuel bundles without consideration of realistic boundary conditions \cite{touran}. While some have combined Reynolds Average Navier-Stokes (RANS) CFD for the inter-assembly flow with a porous media or subchannel model for the interior of the bundle \cite{wang2020,gerschenfeld}, most full-core SFR models neglect the gap flow entirely \cite{touran} or homogenize the flow into other structural materials \cite{fiorina_of} -- often without correction terms to account for the un-resolved physics \cite{touran,fiorina_of}. Depending on flow regime, a consequence of this approximation can be a significant underprediction of heat removal \cite{gerschenfeld}, requiring over-engineered safety systems or sub-optimal power density.
+For neutronic purposes related to transmutation and shielding, neighboring bundles can vary by up to a factor of 100 in power and a factor of 50 in mass flowrate, depending on position \cite{abr}. An important driver of structural expansion in SFRs is heat transfer both within bundles and across thin gaps between adjacent bundles that contain laminar sodium flow, a heat transfer mechanism referred to as ``inter-assembly'' heat transfer. Even though inter-assembly heat transfer is driven by these vastly different flow regimes, large cross-bundle thermal gradients, and gap sodium flow, industry models for core thermal-hydraulics are based on closures obtained from experiments and CFD models of symmetric, isolated fuel bundles without consideration of realistic boundary conditions \cite{touran}. While some have combined Reynolds Average Navier-Stokes (RANS) CFD for the inter-assembly flow with a porous media or subchannel model for the interior of the bundle \cite{wang2020,gerschenfeld}, most full-core SFR models neglect the gap flow entirely \cite{touran} or homogenize the flow into other structural materials \cite{fiorina_of} -- without correction terms to account for the un-resolved physics \cite{touran,fiorina_of}. 
 
-% could also add that heat transfer models don't include wire wrap effects? So this is going to be higher-resolution
-
-
+The nuclear industry has an acute need for LES-informed models for inter-assembly heat transfer -- no models exist for inter-assembly heat transfer considering the coupling between global and local effects. Depending on flow regime, a consequence of this knowledge gap can be a significant underprediction of heat removal \cite{gerschenfeld}, requiring over-engineered safety systems or sub-optimal power density. Therefore, the second challenge problem addressed here is to develop inter-assembly heat transfer models with full-core LES to properly account for the interaction between flow regime and power distributions on core-wide fission heat redistribution. 
 
 
-TODO: What other content should go here? Maybe more discussion of typical problem sizes people have done before? Typical DOFs for a full-core porous media/subchannel solve? Resolution comparison?
+{\bf TODO: What other content should go here? Maybe more discussion of typical problem sizes people have done before? Typical DOFs for a full-core porous media/subchannel solve? Resolution comparison?}
 
-
+{\bf Talk about why Petascale resources are required}
+Petascale resources are required to understand how the interactions between laminar, mixed convection, and forced convection flow regimes affect inter-assembly heat transfer.
 
 %Explain what advances you expect to be enabled by an INCITE award that justifies an allocation of petascale resources (e.g., anticipated impact on community paradigms, valuable insights into or solving a long-standing challenge, etc.). 
 
@@ -305,33 +304,13 @@ The reactor development timeline, from conception to power generation, often tak
 
 {\bf TODO: talk about current SMR activities and how this ties in - emphasize business impact}
 
-% maybe emphasize a bit stronger that we're not doing any deformation in this proposal here
-As part of the Department of Energy (DOE), the Advanced Reactor Demonstration Program (ARDP) awarded TerraPower, a private nuclear development company, funds to develop and build an advanced SFR by 2027 \cite{ardp_tp}. The next two to three years are the opportune moment for the LCF to have an impact on the viability of this SFR design by making available to industry more accurate lower-resolution models. The thermal-fluid physics is the most important contributor to transient structural expansion in SFRs \cite{wozniak}, and transient structural expansion often has the highest uncertainty among other important core phenomena in the limited experimental programs that have measured core deformations \cite{lum}. There are therefore significant potential business impacts to the success of this research that may result from more precise reactor design calculations. Such impacts may include 1)~reduced calculation uncertainty and an ability to operate nearer to thermal margins; 2)~improved fuel utilization and an ability to operate nearer to radiation damage limits; and 3)~increased passive reactor control and an ability to simplify the design of reactivity control mechanisms. As the U.S.'s nuclear plant construction experience has waned over the past decade \cite{schlissel}, the viability of nuclear power in a clean energy portfolio depends on reducing cost through design simplifications or uncertainty reductions in the licensing process. 
+% maybe emphasize a bit stronger that we're not doing any deformation in this proposal here so it's clear?
+As part of the Department of Energy (DOE), the Advanced Reactor Demonstration Program (ARDP) awarded TerraPower, a private nuclear development company, funds to develop and build an advanced SFR by 2027 \cite{ardp_tp}. The next two to three years are the opportune moment for the LCF to have an impact on the viability of this SFR design by making available to industry more accurate lower-resolution models. The thermal-fluid physics is the most important contributor to transient structural expansion in SFRs \cite{wozniak}, and transient structural expansion often has the highest uncertainty among other important core phenomena among the limited experimental data \cite{lum}. There are therefore significant potential business impacts to the success of this research that may result from more precise reactor design calculations. Such impacts may include 1)~reduced calculation uncertainty and operation nearer to thermal margins; 2)~improved fuel utilization and operation nearer to radiation damage limits; and 3)~increased passive reactor control and simplified design of reactivity control mechanisms. As the U.S.'s nuclear plant construction experience has waned over the past decade \cite{schlissel}, the viability of nuclear power in a clean energy portfolio depends on reducing cost through design simplifications or uncertainty reductions. 
 
-In addition to direct impacts in the nuclear industry, this research will spur a paradigm shift in high-resolution modeling of nuclear systems. 
-
-% how does this affect our domain, independent of the company impact
-
-
-
-Petascale resources are required to understand how the interactions between laminar, mixed convection, and forced convection flow regimes affect inter-assembly heat transfer.
-
-%private industry lacks the computing resources 
-
-% how are we going to address the gaps in knowledge
-
-% private industry doesn't have petascale resources
-
-%Many examples exist of late-stage design changes significantly prolonging the reactor development process \cite{baumer} . 
+In addition to direct impacts in the nuclear industry, this research will spur a paradigm shift in high-resolution modeling of nuclear systems. Competing work in our field remains directed at the single-bundle level both in CFD simulations \cite{wang2020,fanning,wang2020b} and experiments \cite{goth,song_2020,mathin2020,chang_2017}. {\bf Add some references here for the SMR side} Only LCF resources are viable for the proposed full-core LES simulations -- our simulations will be approximately 1000\(\times\) the size of current ``state-of-the-art'' experiments and CFD simulations, because only by modeling the entire reactor core can the interaction between global and local thermal-hydraulics be properly treated. Our full-core simulations will be first-of-a-kind in addressing core-wide reactor thermal-hydraulics ({\bf put references here for past nekRS full-core runs?}) and will change the notion that rod-resolved, full-core CFD is still 5\(+\) years away ({\bf Elia do you have a good reference for this? I've seen people quote this but I don't recall where}).
 
 % anticipated impact on community paradigms, valuable insights into or solving a long-standing challenge, etc.). 
 % Place the proposed research in the context of competing work in your discipline or business. 
-
-% talk about limitations to T/H modeling of SFRs in terms of resolution
-% then tie those limitations into important physical considerations in SFRs, and how we rely on correlations that are inapplicable or incomplete
-% and then motivate why we need full core modeling, in terms of the structural expansion phenomenon
-
-
 
 \vspace{-.25in}
 \subsection{Previous INCITE Awards}
