@@ -1,4 +1,4 @@
-# INCITE proposal by Elia
+# INCITE proposal for 2022
 
 - To compile:
 
