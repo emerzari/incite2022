@@ -156,67 +156,7 @@ Virginia Tech.  OCCA supports both CUDA and HIP backends (for Nvidia and AMD)
 and highly-tuned OCCA kernels that realize roofline-limited performance
 (1--2 Tflops, fp64, on the V100) are available in libParanumal \cite{fischer20a}.
 
-\vspace{-.25in}
-\subsection{Parallel performance}
-\vspace{-.2in}
-
-\paragraph{NekRS: Performance} The baseline performance of NekRS using the current version \cite{tomov2019ecp} is demonstrated here. Figure~\ref{fig:nekrs1} shows performance results on Summit for a 17x17 rod-bundle flow simulation in Figure~\ref{fig:nekrs2}. We started with a mesh using 277,000 elements of order $N=7$ (n=95M grid points total). The Reynolds number is 5000 based on hydraulic diameter. Periodic boundary conditions are used in the axial flow direction and the initial conditions comprise an array of meandering vortices.  Figure~\ref{fig:nekrs1} , left, shows strong scaling results on a few nodes of Summit using NekRS with six V100 GPUs per node or NekRS/Nek5000 with 42 CPUs per node. For the CPU version, NekRS uses Hypre as a coarse grid solver. In this case, NekRS is about 4X slower than Nek5000 because the pressure solver is not yet as optimized as the highly-tuned solver in Nek5000. For the GPU, the NekRS results improve substantially when the coarse grid solver is based on the AMG solver ParAlmond.  Figure~\ref{fig:nekrs1} , center, shows the pressure iteration counts for each of the four cases. Nek5000 uses Schwarz-smoothed p-multigrid; NekRS uses Chebyshev smoothing. When ParAlmond is used for the coarse-grid solve the NekRS iteration counts improve by a factor of two and are on par with those of Nek5000. The Chebyshev smoother requires more work per iteration than the Schwarz-based smoother.  With ongoing effort on the pressure solve we anticipate a 2X reduction in NekRS solution times, which will put it on par with the strong-scaled solution times of Nek5000 with more than 2X energy savings that are already observed for NekRS on Summit's V100s (Figure~\ref{fig:nekrs1} , right).
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{../figures/performance_nekrs}
-%\includegraphics[width=0.9\textwidth]{./figures/performance_nekrs}
-\caption{ NekRS and Nek5000 performance of GPUs vs. CPUs on Summit for turbulent flow simulations with Re=5000 for a 17x17 rod-bundle geometry using total number of grid points $n=95,011,000$. Based on timings from Step 11 to 60, time-per-step with ideal scalings shown as dashed lines (left), pressure iterations per step (center), and dofs-per-joule with respect to time-per-step (right) are shown.}
-\label{fig:nekrs1}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{../figures/fig_1717_2}
-%\includegraphics[width=0.8\textwidth]{./figures/fig_1717_2}
-\caption{Turbulent flow in a 17x17 rod-bundle computed with NekRS on Summit. Left - Overall view. Right - Detail.}
-\label{fig:nekrs2}
-\end{figure}
-
-\paragraph{NekRS: Scalability}  We discuss here weak-scaling studies performed on Summit (Oak Ridge National Laboratory). Table~\ref{wscaling} shows the solution times, parallel efficiency, and number of points per rank for the Summit results.  We observe in Table~\ref{wscaling} near-perfect weak-scaling performance up to 2,048 nodes considering 8,000 elements/GPU at $N=7$. The case considered is the DNS of Taylor-Green vortex flow with a triple periodic domain. We report results for 100 time-steps; at 2,048 nodes the runtime was 90 seconds. We note that the performance falls off for GPUs when decreasing the DOF per GPU.
-
-\begin{table} [!h]
-\begin{center} \begin{tabular}{ccc}
-%\toprule
- \hline
-\# of Nodes on Summit & DoF (billion) &  Efficiency on GPUs \\
-%\midrule
- \hline
- 128  & 3.1  & 1.0   \\
- 512  & 12.6 & 0.92  \\
- 1024 & 25.2 & 0.88  \\
- 2048 & 50.3 & 0.88 \\
- \hline
-%\bottomrule
-\end{tabular} \end{center}
-\caption{\label{wscaling} Taylor-Green Vortices. Weak-scaling on Summit. 8,000 elements per GPU, $N=7$.}
-\end{table}
-
-We compare also the performance of the GPU Nek5000 port with the CPU performance on Summit for 1,024 nodes. The same test case was used as for the weak-scaling study: the DNS of Taylor-Green vortices. We performed the simulations with 48,000 elements per node and $N=7$. The CPU simulation was performed with 42 MPI ranks per node, and the GPU simulation was performed with 6 MPI ranks per node. Overall the GPU solver was 11.5 times faster than the standard Nek5000 CPU solver for the same number of nodes.
-
-Table~\ref{wscaling2} shows results for 17x17 assembly calculations (as presented in Figure~\ref{fig:nekrs2}) with increasing mesh counts. The axial length was simply extended while keeping the mesh resolution the same. We note that the time per time-step stabilizes quickly indicating a good weak-scaling performance even for this more complex case.
-
-\begin{table} [!h]
-\begin{center} \begin{tabular}{ccc}
-%\toprule
- \hline
-\# of Nodes on Summit & Elements (Million) &  Average time per time-step \\
-%\midrule
- \hline
-6	  & 0.277	& 0.312 s \\
-66    & 3  	    & 0.455 s \\
-264   & 12	    & 0.648 s \\
-660   & 30	    & 0.506 s \\
-%\bottomrule
-\hline
-\end{tabular} \end{center}
-\caption{\label{wscaling2} 17x17 assembly case. Weak-scaling on Summit. 8,000 elements per GPU, $N=7$.}
-\end{table}
+\input tex/performance
 
 \vspace{-.25in}
 \subsection{Developmental Work}
