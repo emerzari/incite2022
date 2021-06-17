@@ -88,15 +88,15 @@ flow distributions in a reactor can be highly nonuniform, and many physics
 phenomena cannot be accurately predicted with single-bundle models; models that
 account for inter-bundle coupling across the entire core are required.  The
 scale of full-core CFD has traditionally precluded its use as an analysis tool
-in industry,  which instead relies on a multiscale bridging from single-bundle
-experiments or CFD models to lower-resolution methods. Examples of coarse-mesh
-methods combined with CFD include the homogenized porous media method
-\cite{wang2020c}; the ``subchannel'' method, a finite volume method specialized
-to rod-type nuclear fuels \cite{blyth}; and momentum source models
-\cite{hu2013}. CFD models and experiments isolated from the full-core physics
-through insulated or symmetry boundary conditions are used to predict bulk heat
-and mass transfer in the form of closure correlations that are then applied to
-coarse-mesh full-core models.
+in industry,  which instead must rely on multiscale bridging from single-bundle
+experiments or from CFD models to lower-resolution methods to perform full-core
+analysis.  Examples of coarse-mesh methods combined with CFD include the
+homogenized porous media method \cite{wang2020c}; the ``subchannel'' method, a
+finite volume method specialized to rod-type nuclear fuels \cite{blyth}; and
+momentum source models \cite{hu2013}. CFD models and experiments isolated from
+the full-core physics through insulated or symmetry boundary conditions are
+used to predict bulk heat and mass transfer in the form of closure correlations
+that are then applied to coarse-mesh full-core models.
 
 By nature of the scale decoupling between the CFD domain and the full core, a
 key outstanding issue with this analysis approach is an inability to account
