@@ -63,13 +63,13 @@ use NekRS, the GPU-oriented version of Nek5000, to establish a full-core Large E
 Simulation (LES) database to support development of low-fidelity models.  
 The simulations are aimed at providing critical understanding and model
 development for core-wide phenomena.  The effort will take place over three
-years on the supercomputers Summit and Frontier.
-\vspace{1em}
-NekRS is particularly performant on current generation GPUs such as the NVIDIA
+years on the supercomputers Summit and Frontier.\\
+\\
+\noindent NekRS is particularly performant on current generation GPUs such as the NVIDIA
 V100s and A100s and AMD MI100s.  With recent algorithmic developments, it is possible 
 to perform a single flow-through time for LES of a full core in just six hours 
-using 27684 V100s on Summit.
-\vspace{1em}
+using 27684 V100s on Summit.\\
+\\
 Our prior work in this area has led to deployment of Nek5000/RS within the 
 nuclear industry at vendors such as NuScale, Kairos, and Terrapower.
 Nek5000 has been approvied by the Nuclear Regulatory Commission (NRC), the
@@ -147,7 +147,8 @@ flowrate \cite{abr}. An important driver of structural
 expansion in SFRs is heat transfer both within bundles and across thin gaps
 between adjacent bundles that contain laminar sodium flow, a heat transfer
 mechanism referred to as ``inter-assembly'' heat transfer. Even though
-inter-assembly heat transfer is driven by these vastly different flow regimes,
+inter-assembly heat transfer is driven by these vastly different flow regimes
+(laminar, transitional, and turbulent),
 large cross-bundle thermal gradients, and gap sodium flow, industry models for
 core thermal-fluids are based on closures obtained from experiments and CFD
 models of symmetric, isolated fuel bundles without consideration of 
@@ -312,7 +313,7 @@ CFD software to facilitate the deployment of advanced reactors. In fact, CFD is
 currently in widespread use both in reactor design and in safety analysis, as
 testified by the increasing number of articles in the field. Among recent
 examples, Roelofs \cite{roelofs2018thermal} illustrates the importance of CFD
-for liquid metal reactor design and analysis. Detailed modeling and simulation
+to liquid metal reactor design and analysis. Detailed modeling and simulation
 is of particular importance for advanced reactors, where simulation can be used
 in conjunction with separate effect experiments, in the absence of extensive
 integral test data (at least in the initial phases of development).
@@ -322,14 +323,14 @@ Navier-Stokes (URANS) remain the workhorses for analysis conducted in industry,
 research centers, and academia.  However, despite significant advancements in
 turbulence modeling in recent years, RANS is limited in terms of accuracy.
 Turbulence modeling remains a source of uncertainty in complex engineering
-flows as RANS models are not general and are sensitive to even small geometric
+flows, as RANS models are not general and are sensitive to even small geometric
 changes \cite{merzari2010numerical}. Moreover, RANS and URANS remain limited in
 predicting turbulent fluctuations and high order statistics which may be of
 interest in important applications such as flow induced vibrations (FIV) and
 FSI \cite{yuan2017flow}.
 
 In contrast to RANS, wall-resolved LES and Direct Numerical Simulation (DNS)
-provide a much lesser degree of uncertainty, and they can provide valuable and
+provide a much lesser degree of uncertainty and can provide valuable and
 unprecedented insight into the flow physics. Historically, however, these
 methods have been limited to small geometries, such as sub-channels
 \cite{grotzbach1999direct}, due to the high computational cost associated with
@@ -339,18 +340,18 @@ a niche application for nuclear engineering flows. The review of Grotzbach
 available in that time frame. Toward the end of the 2000s however, larger scale
 calculations started to emerge \cite{pointer2009simulations}.
 
-In fact, thanks to the the advent of Petascale computing (i.e, computers
-capable of more than 1 Petaflop), the simulation of portions of nuclear
+Since the advent of petascale computing (i.e, computers
+capable of more than 1 petaflop), the simulation of portions of nuclear
 components has been demonstrated with LES \cite{merzari2017large}. For example,
-the simulation of large portions of fuel assemblies has been demonstrated,
+the simulation of large portions of single fuel assemblies has been demonstrated,
 including conjugate heat transfer calculations \cite{obabko2019}. These
 simulations can provide invaluable insight into the flow dynamics, which is
 difficult or often impossible to obtain with experiments alone. Moreover, large
 LES simulations allow investigation of global effects that otherwise are
-impossible to elucidate with smaller portions of the system. NEAMS has put
-considerable resources into scalable high-order CFD software that can leverage
-large scale supercomputers to deliver simulations of unprecedented detail and
-scale. Example of some landmark calculations are presented in
+impossible to elucidate with smaller portions of the system. NEAMS has invested
+considerable resources in scalable high-order CFD software that can leverage
+large supercomputers to deliver simulations of unprecedented detail and
+scale. Example of some landmark calculations conducted with Nek5000/RS are presented in
 Figure~\ref{f:examples}.
 
 \begin{figure}[!ht]
@@ -358,7 +359,7 @@ Figure~\ref{f:examples}.
 \includegraphics[width=0.93\textwidth]{../figures/examples.png}
 %\includegraphics[width=0.93\textwidth]{./figures/examples.png}
 \caption{Examples of large-scale LES/DNS simulation of nuclear reactor flows.
-a-b) Cross sections of the flow in helical coil steam generator experiment
+a-b) Cross sections of the flow in helical coil steam generator
 \cite{alper2018}; c) Velocity magnitude in a 61-pin wire-wrapped rod bundle
 \cite{goth2018comparison}; d) Velocity magnitude in a random pebble bed
 \cite{yuan2019}.} \label{f:examples}
@@ -366,48 +367,55 @@ a-b) Cross sections of the flow in helical coil steam generator experiment
 
 % add more of a description of the proposed research and its goals
 
-\textit{This proposal seeks the development of a set of high resolution
-datasets to address the challenge problems}.
+\begin{displayquote}
+\textit{
+This proposal seeks the development of a set of full-core LES
+datasets to address knowledge gaps in inter-assembly heat and mass
+transfer in nuclear reactors.
+}
+\end{displayquote}
 
 \vspace{-.25in}
 \subsection{Theoretical and Computational Methods}
 \vspace{-.2in}
 
-Let us consider first  the velocity, continuity, and energy equations that
+Let us consider first the velocity, continuity, and energy equations that
 describe the constant-property incompressible flow of a Newtonian fluid in the
 absence of other body or external forces:
 \begin{equation}
 \frac{\partial  u_i  }{\partial t} +  \frac{\partial}{\partial x_j} \left( u_i u_j \right) =-\frac{1}{\rho} \frac{\partial p}{\partial x_i} + \frac{\partial}{\partial x_j} \left[ \nu \left( \frac{\partial u_i}{\partial x_j} +\frac{\partial u_j}{\partial x_i} \right) \right]
-\label{UEqn}
+\label{eq:UEqn}
 \end{equation}
 \begin{equation}
 \frac{\partial u_i}{\partial x_i} = 0
-\label{rhoEqn}
+\label{eq:rhoEqn}
 \end{equation}
 \begin{equation}
 \rho c_p \left( \frac{\partial T }{\partial t} + u_j \frac{\partial T}{\partial x_j} \right) = \frac{\partial }{\partial x_j} \left( \lambda \frac{\partial T}{\partial x_j} \right)
-\label{EEqn}
+\label{eq:EEqn}
 \end{equation}
 where $u$ is the velocity, $p$ is the pressure, $T$ is the temperature, $\rho$
-is the  density of the fluid, $\nu$ is the kinematic viscosity, $\lambda$ is
-the thermal conductivity, and $c_p$ is the heat capacity. \textit{In natural
-convection cases the Boussinesq or low Mach approximations}
-\cite{tomboulides1997numerical} \textit{are applied, leading to different
-formulations, which are available in Nek5000/NekRS, the code we will employ
-primarily in this analysis}. {\bf Does this need to be italicized?}
+is the  density, $\nu$ is the kinematic viscosity, $\lambda$ is
+the thermal conductivity, and $c_p$ is the heat capacity. In natural
+convection cases, the Boussinesq or low Mach approximations
+\cite{tomboulides1997numerical} are applied, leading to different
+formulations available in Nek5000/RS. 
+{\it Nek5000/RS is the primary code that will be employed 
+in this analysis.}
 
-We restrict our discussion to turbulence-resolving simulations such as DNS and
-wall-resolved LES. We note that in advection-dominated problems such as the
-ones described by the equations presented at moderate to high Reynolds numbers,
+We restrict the proposed research to turbulence-resolving simulations such as DNS and
+wall-resolved LES. In advection-dominated problems such as the
+one described by Eqs. \ref{eq:UEqn}--\ref{eq:EEqn} at moderate to high Reynolds numbers,
 the high-wavenumber component of transported quantities does not decay
 exponentially, as observed in diffusion-dominated problems. Therefore, both
 meaningful signals and numerical errors can persist in time, and appropriate
-numerical schemes need to be selected in order to avoid excessive dispersion.
+numerical schemes must be selected in order to avoid excessive dispersion.
 Nek5000/NekRS, based on the spectral element method, is ideally suited for this
-type of analysis.
+type of analysis. {\bf Any more discussion on this point?}
 
 \vspace{-.25in}
 \subsection{Description of Tasks}
+\label{sec:tasks}
 \vspace{-.2in}
 
 % goals and milestones should articulate simulation and developmental
@@ -416,64 +424,74 @@ type of analysis.
 
 The overarching goals of this proposal are twofold -- first, to develop
 reference full-core LES CFD predictions that will be compared against
-lower-resolution models to identify the physics significance of resolving
-turbulence and the interaction between global and local effects. The second
-objective is to in turn perform several full-core CFD simulations conducted
-over a parameter space to generate an LES database from which closures
-applicable to common lower-resolution methods can be derived. Each of these
+lower-resolution models to {\it provide unprecedented insight into the interaction
+between global and local thermal-fluid effects} for rod bundle nuclear reactors. The second
+objective is to {\it develop a full-core LES CFD database to inform low-resolution methods}. Each of these
 goals are now detailed in terms of major tasks for each of the challenge
 problems.
 
+\vspace{-.25in}
+\subsubsection{Light Water Small Modular Reactor (SMR) Challenge Problem}
+\vspace{-.2in}
 {\bf TODO: describe the prototype that the SMR models will be based on, then
 describe the tasks}
+
+\vspace{-.25in}
+\subsubsection{Sodium Fast Reactor (SFR) Challenge Problem}
+\vspace{-.2in}
 
 To address the SFR challenge problem of inter-assembly heat transfer, full-core
 LES CFD simulations will be conducted for the Advanced Burner Reactor (ABR), an
 open-source reactor design that is considered a prototype of a large commercial
 SFR \cite{abr}. The objectives of these simulations are to 1)~answer
 outstanding questions about the nature of inter-assembly flow and heat transfer
-and 2)~utilize the produced LES database to generate bulk heat and mass
+and 2)~utilize the produced LES database to generate bulk heat 
 transfer correlations to improve the predictive capabilities of
 lower-resolution tools. The SFR simulations in this proposal will be directed
-in four stages. Each stage will be associated with several milestones,
-described in detail in Table~\ref{tab:milestones}. The tasks and relationship
-between each stage of the 36-month project and the overarching goals for the
-SFR challenge problem are as follows.
+in four stages. Each stage will be associated with several milestones, 
+described in detail with associated time frames
+in Table~\ref{tab:milestones}. The major tasks and relationship
+between each stage of the 36-month project for the
+SFR challenge problem are as follows. 
 
-\begin{enumerate}[label=\Roman*]
-\item {\bf Months 0--6}: Develop full-core meshes and test at scale to ensure high quality. Mesh convergence studies will be conducted for small groups of bundles under a variety of power and temperature gradients to establish applicability to full-core modeling. Develop full-core models based on the ABR specifications \cite{abr}.
-\item {\bf Months 7--8}: Develop reference low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be used to assess the physics effect of proper resolution of inter-assembly heat transfer in the present LES database, as well as serve as indicative of industry modeling capabilities. Models will be run with non-LCF computing resources.
-\item {\bf Months 9--24}: Conduct full-core LES CFD simulations of the ABR at three power-to-flow ratios that may be observed during actual operation. These conditions correspond to a)~full-power, nominal operation (\(Re=90,000\) and 1000 MWth); b)~full power operation with reduced cooling (\(Re=72,000\) and 1000 MWth); and c)~full power operation with further-reduced cooling (\(Re=60,000\) and 1000 MWth). A fourth condition at decay heat removal conditions (\(Re=650\) and 7.5 MWth) will also be included to cover the very low range in power-to-flow ratio.
-\item {\bf Months 24--28}: Compare LES database with reference low-resolution full core models developed in Stage II and evaluate the physics consequence of industry modeling simplifications to inter-assembly heat transfer.
-\item {\bf Months 29--36}: Post-process LES database to generate an effective thermal conductivity model applicable to subchannel and porous media methods. Apply new closure to the models developed in Stage II and quantify the improvement in accuracy. 
+\vspace{-.15in}
+\begin{enumerate}[label=\textbf{\Roman*}]
+\item Develop full-core meshes and test at scale to ensure high quality. Mesh convergence studies will be conducted for small groups of bundles under a variety of power and flow gradients to establish applicability to full-core geometries. Develop full-core models based on the ABR specifications \cite{abr}.
+\item Develop reference low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be compared against the generated LES database to assess the effect if proper resolution of global/local physics interactions. Low-resolution models will be run with non-LCF computing resources.
+\item Conduct full-core LES CFD simulations of the ABR at three power-to-flow ratios\footnote{The ``power-to-flow'' ratio is a measure of the relative balance between core power and core cooling. A power-to-flow ratio of unity indicates nominal operating conditions.} that may be observed during actual operation. These conditions correspond to full power (1000 MWth) and a)~nominal flow (\(Re=90000\)), b)~moderately reduced flow (\(Re=72000\)), and c)~significantly reduced flow (\(Re=60000\)). A fourth condition at decay heat removal conditions (\(Re=650\) and 7.5 MWth) will also be included to cover the very low range in power-to-flow ratio.
+\item Compare LES database with reference low-resolution models developed in Stage II. Evaluate the physics consequence of industry modeling simplifications to inter-assembly heat transfer.
+\item Post-process LES database to generate an effective thermal conductivity model applicable to subchannel and porous media methods. Apply new closure to the models developed in Stage II and quantify the improvement in accuracy. 
 \end{enumerate}
+\vspace{-.15in}
 
-Additional details are now provided for each stage. During Stage I, full-core meshes will be generated for the prototypic design. Mesh convergence will be performed with both \(h\)-type refinement to easily leverage past experience with optimal element counts per GPU on Summit. Full-core models will be constructed for the four operating conditions (detailed in Stage III) based on openly-available material properties, power, and mass flow distributions. During Stage II, equivalent low-resolution models will be constructed and run on workstations available to our group at ANL. 
+Additional details are now provided for each stage. During Stage I, full-core meshes will be generated for the prototypic design. Mesh convergence will be performed with \(h\)-type refinement\footnote{$h$-type refinement refers to mesh convergence evaluated by reducing element size.} to leverage past experience with optimal element counts per GPU on Summit. Full-core models will be constructed for the four operating conditions (detailed in Stage III) based on openly-available material properties, power, and mass flow distributions. During Stage II, equivalent low-resolution models will be constructed and run on workstations available to our group at ANL. 
 
-During Stage III, full-core LES CFD simulations will be conducted for four different combinations of core power and flowrate. The first condition corresponds to the nominal reactor state. The second two conditions correspond to power-to-flow ratios 25\% and 50\% higher than nominal conditions. A power-to-flow ratio near 1.25 is sometimes used as a reactor trip point \cite{chaumont}, so this condition represents the least-cooled reactor state before protected shutdown. A power-to-flow ratio of 1.5 is representative of conditions should safety equipment fail to actuate and the core be inadequately cooled.
+During Stage III, full-core LES CFD simulations will be conducted for four different combinations of core power and flowrate. The first condition corresponds to the nominal reactor state. The second two conditions correspond to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are indicative of reactor trip points \cite{chaumont} and unmitigated equipment failure, respectively. The last simulation corresponds to decay heat removal after the fission reaction has been terminated. 
 
 In Stage IV, the LES database will be compared against the reference low-resolution models to answer several outstanding questions:
 
+\vspace{-.15in}
 \begin{itemize}
-\item How does inter-assembly heat transfer affect core outlet temperature distributions? Non-uniformity in outlet temperatures result in thermal stresses on structural components, and therefore is an important design metric. 
-\item How is inter-assembly heat transfer affected by the power-to-flow ratio? The wide variation in flow regime across the core will result in different bundle responses to convective heat transfer from the rods to the coolant, which may cause global heat redistributions. 
-\item Are significant cross-flows generated across the core due to buoyancy effects? While flow nominally enters the inter-assembly space with a purely vertical velocity distribution, differential density changes could potentially induce cross-flows. Such flows would be of importance to accurately estimating core temperature distributions.
+\item How does inter-assembly heat transfer affect core temperatures? The core outlet temperature distribution has a direct impact on thermal stresses and lifetimes of downstream components.
+\item How is inter-assembly heat transfer affected by the power-to-flow ratio? The wide variation in flow regime across the core may result in global heat redistributions with flowrate changes. 
+\item Are significant cross-flows generated across the core? In submerged ``pool-type'' reactor concepts, such flows could draw fluid into the core from bypass regions, changing fuel temperature distributions.
 \end{itemize}
+\vspace{-.15in}
 
 The above questions will be addressed by comparing temperature and mass flux
 distributions across the LES database, as well as comparing temperature
-distributions between the LES database and lower-resolution models. Finally in
+distributions between the LES database and lower-resolution models. Finally, in
 Stage V, the LES database will be used to produce an effective conductivity
 model for use in lower-resolution tools. By homogenizing over element sizes
 typical of porous media models, the heat flux computed along the boundaries of
 the inter-assembly region will be used to compute an effective conductivity
 \(\kappa\),
-
 \begin{equation}
 q_i^{''}=-\kappa_{ij}\frac{\partial T}{\partial x_j}\ ,
 \end{equation}
+where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, Courant-Friedrichs-Lewy (CFL) limits, and ensuing time step limitations, are of paramount important to low-resolution methods. Therefore, low-resolution tools such as those used by Terrapower \cite{touran} approximate the fluid flow in the inter-assembly region as a conducting solid. By supplying a necessary closure, \(\kappa_{ij}\), for this model, the proposed research is {\it compatible with industry modeling tools} and can be rapidly integrated into the ARDP design process.
 
-where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, low-resolution tools such as those used by Terrapower substitute resolved fluid flow and the ensuing Courant-Friedrichs-Lewy (CFL) mesh concerns with a conducting solid that neglects all fluid flow \cite{touran}. This research is therefore compatible with industry modeling tools and can be rapidly integrated into the ARDP design process.
+{\bf Describe how the postprocessing will be done}
 
 {\bf Does this research plan sound reasonable?}
 
@@ -486,21 +504,52 @@ where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In o
 % provide clear connections between the project's overarching milestones, the planned production simulations, and the compute time expected for these simulations (should correlation with Section 2.3.i - use of resources requested). 
 
 A set of milestones has been developed to spread the computational burden over
-the expected 3 year term of the project; these milestones are listed in Table~\ref{tab:milestones}.
+the expected 3 year term of the project; these milestones are listed in Table~\ref{tab:milestones} and represent the tasks
+in Section~\ref{sec:tasks}. The milestones in Table~\ref{tab:milestones} are directly orrelated
+with the milestones shown in Section 4, where additional information is provided with respect
+to required computing resources.
 
-\begin{table}
+\begin{table}[h!]
 \centering
-\caption{Summary of the different tasks and milestones.}
-\begin{tabular}{llll}
+\caption{Summary of the tasks and milestones associated with this proposal.}
+\begin{tabular}{l l l l l}
 \toprule
-Milestone & Task & Description & End Date \\
+Problem & Stage & Milestone & Description & End Date \\
 \midrule
-A & 1 & Preliminary canonical flow simulations   & Jun  2022 \\
-B & 1 & Final canonical flow simulations         & Sept 2022 \\
+\multirow{5}{*}{SFR} & I & A & Mesh convergence studies for clusters of bundles & May 2022 \\
+& & B & Complete full-core Nek5000/RS CFD mesh and models & July 2022\\
+& & C & Preliminary tests of full-core CFD model & Sept 2022\\
+\\
+& II & A & Complete full-core Pronghorn low-resolution models & Nov 2022 \\
+& & B & Preliminary tests of full-core low-resolution model & Dec 2022\\
+& III & \\
+& IV & \\
+& V & \\
+\midrule
+\multirow{5}{*}{SMR} & I & 1 &    & Jun  2022 \\
+& II & 1 & Final canonical flow simulations         & Sept 2022 \\
+& III & \\
+& IV & \\
+& V & \\
 \bottomrule
 \end{tabular}
 \label{tab:milestones}
 \end{table}
+
+For the SFR modeling, Stage I encompasses model setup and preliminary testing for
+the LES CFD simulations. Our group is experienced at meshing such geometries ({\bf add evidence of this/more detail?); milestone
+I.A will develop guidelines for converged meshes for all subsequent simulations, while milestone
+I.B will generate full-core meshes and apply realistic power and mass flow distributions to the model.
+Milestone I.C will then conclude Stage I by conducting preliminary flow simulations to
+determine appropriate time step sizes 
+
+appropriate time step sizes, 
+
+CFL-constrained time step sizes,
+
+
+These milestones, their relationship to the project goals, and the research significance
+of the specific tasks undertaken, have been described in Section \ref{sec:tasks}. 
 
 
 \input tex/readiness
