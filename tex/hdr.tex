@@ -5,6 +5,7 @@
 \usepackage[hidelinks]{hyperref}  %The ability to create hyperlinks within the document
 \usepackage{eqnarray}
 \usepackage{booktabs}
+\usepackage{csquotes}
 %\usepackage{blindtext} % To create text
 %\usepackage{mdwlist} % mdwlist for compact enumeration/list items
 %\usepackage[pagestyles]{titlesec} % related with sections, namely titles, headers, and contents
@@ -18,6 +19,20 @@
 \usepackage{subfigure}
 \usepackage{pgfgantt}
 \usepackage{enumitem}
+
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+
+\renewcommand{\mkbegdispquote}[2]{\itshape}
+
+\newcommand{\volume}{\mathop{\ooalign{\hfil$V$\hfil\cr\kern0.08em--\hfil\cr}}\nolimits}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\renewenvironment{quote}
+  {\list{}{\rightmargin=0.5cm \leftmargin=0.5cm}%
+   \item\relax}
+  {\endlist}
 
 \usepackage{sectsty}
 \sectionfont{\normalsize}
