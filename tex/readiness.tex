@@ -4,6 +4,16 @@
 \vspace{-.2in}
 %Why is nekRS ready for the task? What simulations have we already done?
 
+The proposed simulations will be performed using a GPU-oriented version of 
+Nek5000, which is a highly scalable open-source code for fluid-thermal 
+simulation and a Gordon Bell Prize winner \cite{tufo99}.  This new code,
+NekRS, is based on high-performance kernels from the libParanumal library
+out of the Warburton group at Viginia Tech and is written in the open
+concurrent computed abstraction (OCCA) for platform portability.  OCCA
+is a decorated C extension that supports multiple back-ends, including CUDA,
+HIP, and OpenCL.  For the NVIDIA platforms it generates code that matches
+the roofline performance of hand-written CUDA. (See Fig. \ref{fig:ready}.)
+
 All simulations proposed here will be performed on GPUs. We propose to use
 Summit.  These will be performed with the Nek5000 code
 \cite{argonne:nekdoc}, an open-source CFD  community code for the simulation of
