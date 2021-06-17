@@ -114,14 +114,20 @@ constrains the reactor design.
 
 Light water SMRs and SFRs both exhibit significant full-core thermal-hydraulic
 physics for which the available low-resolution analysis methods cannot capture
-important local/global interactions. In light water SMRs, intra-bundle 
-{\bf (inter-bundle??)}
-mixing
+important local/global interactions. In light water SMRs, inter-bundle mixing
 due to variations in mass flow rate plays an important role in fluid structure
 interaction (FSI) and deposition of coolant contaminants on heat transfer
-surfaces (TODO: references). {\bf TODO: describe more of what has been done in
-this area for background, and what the limitations of the analysis procedures
-are.}
+surfaces (TODO: references). Meanwhile, researchers have to turn to lower-
+fidelity numerical methods to investigate the flow physics in a larger portion
+of SMR core. A common practice is to employ the porous
+medium model to simulate the core region \cite{Kim2020}. Thanks to the rapid 
+development of cutting-edge supercomputers, the pin-resolved CFD investigation
+for an entire SMR core has been recently achieved by our team \cite{Fang2021}. 
+A set of momentum sources was developed to account for the effects of mixing 
+spacer grids while the RANS approach was applied to model the turbulence. Further
+increase of the simulation fidelities (e.g., LES) will produce high-quality flow databases
+much needed to understand/model the SMR thermal-hydraulic performance at the full
+core scale. 
 
 In SFRs, a critical reactor design consideration is the structural expansion of
 the solid fuel components in response to differential temperature and
@@ -245,7 +251,7 @@ side} Only LCF resources are viable for the proposed full-core LES simulations
 ``state-of-the-art'' experiments and CFD simulations, because only by modeling
 the entire reactor core can the interaction between global and local
 thermal-hydraulics be properly treated. Our full-core simulations will be
-first-of-a-kind in addressing core-wide reactor thermal-hydraulics ({\bf put
+first-of-a-kind in addressing core-wide reactor thermal-hydraulics \cite{Fang2021} ({\bf put
 references here for past nekRS full-core runs?}) and will change the notion
 that rod-resolved, full-core CFD is still 5\(+\) years away ({\bf Elia do you
 have a good reference for this? I've seen people quote this but I don't recall
