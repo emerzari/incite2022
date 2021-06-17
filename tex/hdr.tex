@@ -1,0 +1,254 @@
+\documentclass[11pt,letterpaper,english]{article}
+\usepackage[T1]{fontenc} % Standard package for selecting font encodings
+\usepackage{txfonts} % makes spacing between characters space correctly
+\usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX.
+\usepackage[hidelinks]{hyperref}  %The ability to create hyperlinks within the document
+\usepackage{eqnarray}
+%\usepackage{blindtext} % To create text
+%\usepackage{mdwlist} % mdwlist for compact enumeration/list items
+%\usepackage[pagestyles]{titlesec} % related with sections, namely titles, headers, and contents
+\usepackage{fancyhdr} % header footer placement
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in] {geometry} % Margins
+%\usepackage{graphicx,subfig}   % Essential for adding images to you document.
+\usepackage{mathptmx}
+\usepackage{enumitem}  % Helps with the reduce itemize/enumerate separations
+\usepackage{subfigure}
+\usepackage{pgfgantt}
+\usepackage{enumitem}
+
+\usepackage{sectsty}
+\sectionfont{\normalsize}
+\subsectionfont{\normalsize}
+\subsubsectionfont{\normalsize \it}
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+\pagestyle{fancy} % allows you to use the header and footer commands
+
+\usepackage{setspace}
+\usepackage{lipsum}
+\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{alltt}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{caption}
+
+\usepackage{fancyvrb}
+\fvset{fontsize=\scriptsize} %\fvset{fontsize=\footnotesize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{}
+
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+%begin      p. fischer
+\def\ds{\displaystyle}
+\def\d{\partial}
+\def\dO{\partial \Omega}
+\def\dOt{\tilde {\partial \Omega}}
+\def\spn{ {\textstyle span} \{ }
+\def\ee{{\hat {\underline e}}}
+\def\uxh{{\hat {\underline x}}}
+\def\huu{{\hat {\underline u}}}
+\def\tbu{{\bmath{\tilde u}}}
+\def\huw{{\hat {\underline w}}}
+\def\tuu{{\tilde {\underline u}}}
+\def\eq{ \; = \; }
+%\def\eqq{ \, \equiv \, }
+\def\eqq{ \, := \, }
+% \def\es{ \, = \, }
+\def\es{ = }
+\def\ea{ \; & = & \; }
+\def\sp{ \; + \; }
+\def\sm{ \; - \; }
+\def\ds{ \Delta s }
+\def\dt{ \Delta t }
+\def\dx{ \Delta x }
+\def\XX{\raisebox{0.3ex}{$\chi$}}
+\def\cW{{\cal W}}
+\def\cL{{\cal L}}
+\def\cB{{\cal B}}
+\def\cH{{\cal H}}
+\def\cJ{{\cal J}}
+\def\cI{{\cal I}}
+\def\cM{{\cal M}}
+\def\cN{{\cal N}}
+\def\No{{N_o}}
+\def\cR{{\cal R}}
+\def\cl{{\cal l}}
+\def\scriptO{{{\it O}\kern -.42em {\it `}\kern + .20em}}
+\def\RR{{{\rm l}\kern - .15em {\rm R} }}
+\def\PP{{{\rm l}\kern - .15em {\rm P} }}
+%\def\L2{{{\cal L}^2}}
+%\def\H1{{{\cal H}^1}}
+%\def\L2{{{\bmath L}^2}}
+%\def\H1{{{\bmath H}^1}}
+\def\L2{{{\sf L}^2}}
+\def\H1{{{\sf H}^1}}
+\def\PNN{{\PP_{N}-\PP_{N}}}
+\def\PN2{{\PP_{N}-\PP_{N-2}}}
+\def\PNK{{\PP_{N,K}(\Omega)}}
+\def\complex{{{\rm C} \kern - .53em {\rm l} \kern + .38em}}
+\def\eop{\hbox{\vrule width 6pt height 6pt depth 0pt}}
+
+\def\am{{ | \lambda_{\max} |}}
+\def\a1{{ | \lambda_{\min} |}}
+\def\lm{{   \lambda_{\max}  }}
+\def\l1{{   \lambda_{\min}  }}
+\def\bhu{{\hat   {\bmath u}}}
+
+\def\bff{{\bmath f}}
+\def\tp {{\tilde p}}
+\def\btu{{\tilde {\bmath u}}}
+\def\utU{{\underline {\tilde {\bmath u}}}}
+\def\uU{{{\underline {\bmath u}}}}
+\def\bhu{{\hat   {\bmath u}}}
+\def\bhn{{\hat   {\bmath n}}}
+\def\bnh{{\hat   {\bmath n}}}
+\def\ugt{{\tilde {\underline g}}}
+\def\uut{{\tilde {\underline u}}}
+\def\uxt{{\tilde {\underline x}}}
+\def\ubt{{\tilde {\underline b}}}
+\def\bue{{\underline {\bmath e}}}
+\def\bur{{\underline {\bmath r}}}
+\def\bu0{{\underline {\bmath 0}}}
+\def\buu{{\underline {\bmath u}}}
+\def\buf{{\underline {\bmath f}}}
+\def\br{{\bmath r}}
+\def\bu{{\bmath u}}
+\def\bU{{\bmath U}\!}
+\def\bv{{\bmath v}}
+\def\bx{{\bmath x}}
+\def\by{{\bmath y}}
+\def\bxt{{\tilde {\bmath x}}}
+\def\bA{{\bmath A}}
+\def\bB{{\bmath B}}
+\def\bD{{\bmath D}}
+\def\bH{{\bmath H}}
+\def\bI{{\bmath I}}
+\def\bQ{{\bmath Q}}
+
+\def\At{{\tilde A}}
+\def\Bt{{\tilde B}}
+\def\Bb{{\bar B}}
+\def\Dt{{\tilde D}}
+\def\It{{\tilde I}}
+\def\Ut{{\tilde U}}
+\def\xt{{\tilde x}}
+\def\yt{{\tilde y}}
+\def\zt{{\tilde z}}
+\def\tu{{\tilde u}}
+\def\uft{{\tilde {\underline f}}}
+
+\def\Ah{{\hat A}}
+\def\Fh{{\hat F}}
+\def\ih{{\hat \imath}}
+\def\jh{{\hat \jmath}}
+\def\kh{{\hat k}}
+\def\Bh{{\hat B}}
+\def\Dh{{\hat D}}
+\def\Eh{{\hat E}}
+\def\Ih{{\hat I}}
+\def\Oh{{\hat \Omega}}
+\def\Ot{{\tilde \Omega}}
+\def\Ok{{\Omega^k}}
+\def\Rh{{\hat R}}
+\def\hu{{\hat u}}
+\def\hr{{\hat r}}
+\def\hs{{\hat s}}
+\def\th{{\hat t}}
+\def\hv{{\hat v}}
+\def\Jh{{\hat J}}
+
+\def\ua{{\underline a}}
+\def\ub{{\underline b}}
+\def\uc{{\underline c}}
+\def\ud{{\underline d}}
+\def\ue{{\underline e}}
+\def\uf{{\underline f}}
+\def\ug{{\underline g}}
+\def\uh{{\underline h}}
+\def\ui{{\underline i}}
+\def\uj{{\underline j}}
+\def\uk{{\underline k}}
+\def\ul{{\underline l}}
+\def\um{{\underline m}}
+\def\un{{\underline n}}
+\def\uo{{\underline o}}
+\def\up{{\underline p}}
+\def\uq{{\underline q}}
+\def\ur{{\underline r}}
+\def\us{{\underline s}}
+\def\ut{{\underline t}}
+\def\uu{{\underline u}}
+\def\uzeta{{\underline \zeta}}
+\def\bzeta{\bmath{\zeta}}
+\def\uone{{\underline 1}}
+\def\uv{{\underline v}}
+\def\uw{{\underline w}}
+\def\ux{{\underline x}}
+\def\vx{{\vec x}}
+\def\uy{{\underline y}}
+\def\uz{{\underline z}}
+\def\u0{{\underline 0}}
+
+\def\uxb{{\bar {\underline x}}}
+
+
+\def\inn{ {\textstyle \;  \; {\rm in} \;  }}
+\def\onn{ {\textstyle \;  \; {\rm on} \;  }}
+\def\for{ {\textstyle \;  \; {\rm for} \;  }}
+
+
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2} }
+\newcommand{\dd}[2]{\frac{d #1}{d #2} }
+
+
+%\usepackage[font=bf]{caption}
+%\captionsetup{labelsep=period}
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+
+\pagestyle{fancy} % allows you to use the header and footer commands
+\newcommand{\refeqn}[1]{Eq.~(\ref{#1})}
+\newcommand{\reftab}[1]{Tab.~\ref{#1}}
+\newcommand{\reffig}[1]{Fig.~\ref{#1}}
+
+\raggedright
+\begin{document}
+
+\setlength{\parindent}{0in} % Amount of indentation at the first line of a paragraph.
+
+
+% The information should be sufficient for peer review in your area of research and also appropriate for general scientific review, comparing your proposal with proposals in other disciplines. 
+%  Potential scientific or business impact is the predominant determinant for awards. 
+
+\pagestyle{fancy} \lhead{Large Eddy Simulation of Rod Bundle  Cores} \rhead{TBD} \renewcommand{%
+\headrulewidth}{0.0pt}
+
+\begin{center}
+{\bf PROJECT NARRATIVE} % typically about 4 pages
+\end{center}
+
+\vspace{-.15in}
+
+%\colorbox{yellow} {\bf {\emph{[Refer to the guidelines for additional instructions for preparing the proposal.]}}}
+
+%\vspace{.15in}
+
+%{\bf References and visual materials, such as charts, graphs, pictures, etc., are included in the 15 page limit.} References should be included at the end of the Project Narrative. URLs that provide information related to the proposal should not be included  {\bf The 15-page limit will be strictly enforced.}  The Project Narrative should address the following points:
+
+
+
+\vspace{-.25in}
+\section{SIGNIFICANCE OF RESEARCH}
+\vspace{-.2in}
