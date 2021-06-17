@@ -14,7 +14,7 @@ nation's and the world's energy needs.  A wave of investment over the past
 several years has spurred innovation in new SMR designs. 
 The U.S. is home to over 60 private sector advanced nuclear projects \cite{third_way},
 with reactor concepts including a passively-safe Light Water SMR from NuScale \cite{nuscale},
-a salt-cooled Pebble Bed Reactor from Kairos \cite{kairos},
+a Salt Pebble Bed Reactor from Kairos \cite{kairos},
 and a Sodium Fast Reactor (SFR) coupled with energy storage from Terrapower, 
 a company co-founded by Bill Gates \cite{natrium}. Recent growth in nuclear's private
 sector represents an important trend as academic research projects mature
@@ -55,33 +55,33 @@ of full reactor cores at moderate Reynolds numbers cite[paper1,paper2?].  This
 proposal seeks to build on these recent achievements to develop a deeper
 understanding of core-wide thermal-fluid phenomena.
 
-{\em
+% I don't like how the footnote interrupts this point. Would like to reformat
+\begin{displayquote}
+{\it
 To accelerate the deployment of SMRs and advanced reactors, this project will
-use NekRS, the GPU-oriented version of Nek5000, to establish a Large Eddy
+use NekRS, the GPU-oriented version of Nek5000, to establish a full-core Large Eddy
 Simulation (LES) database to support development of low-fidelity models.  
 The simulations are aimed at providing critical understanding and model
 development for core-wide phenomena.  The effort will take place over three
 years on the supercomputers Summit and Frontier.
-
+\vspace{1em}
 NekRS is particularly performant on current generation GPUs such as the NVIDIA
 V100s and A100s and AMD MI100s.  With recent algorithmic developments, it is possible 
 to perform a single flow-through time for LES of a full core in just six hours 
 using 27684 V100s on Summit.
-
+\vspace{1em}
 Our prior work in this area has led to deployment of Nek5000/RS within the 
 nuclear industry at vendors such as NuScale, Kairos, and Terrapower.
 Nek5000 has been approvied by the Nuclear Regulatory Commission (NRC), the
 organization tasked with licensing reactors for commercial use,
-for purposes in the licensing process for thermal-hydraulic analysis.
+for purposes in the licensing process for thermal-fluid analysis.
 }
-
+\end{displayquote}
 
 \vspace{-.25in} \subsection{The Challenge Problems}
 \vspace{-.2in}
 
-% Discuss past research, point out remaining issues and outstanding issues.
-
-Thermal-hydraulic modeling of nuclear reactors is directed at predicting the
+Thermal-fluid modeling of nuclear reactors is used to predict the
 proximity of the nuclear fuel to various design limits that can affect
 personnel radiation dose; the ability of power conversion equipment to reliably
 cool the core under a range of normal and degraded/failed equipment conditions;
@@ -94,45 +94,45 @@ analysis, but the scale required for full-core simulation has typically limited
 such geometries to less than 1\% of the core -- usually, a single ``fuel
 bundle,'' or grouping of rods \cite{wang2020,fanning,wang2020b}. The power and
 flow distributions in a reactor can be highly nonuniform, and many physics
-phenomena cannot be accurately predicted with single-bundle models; models that
-account for inter-bundle coupling across the entire core are required.  The
+phenomena cannot be accurately predicted with single-bundle models -- models that
+account for inter-bundle coupling across the entire core are required.  
+
+However, the
 scale of full-core CFD has traditionally precluded its use as an analysis tool
-in industry,  which instead must rely on multiscale bridging from single-bundle
-experiments or from CFD models to lower-resolution methods to perform full-core
-analysis.  Examples of coarse-mesh methods combined with CFD include the
-homogenized porous media method \cite{wang2020c}; the ``subchannel'' method, a
+in industry. Design teams instead rely on multiscale bridging from single-bundle
+experiments/CFD models to low-cost, lower-resolution methods.
+These single-bundle experiments/simulations are {\it isolated} from
+the full-core physics via insulated or symmetry boundary conditions, and then used
+to predict bulk heat and mass transfer corrections in the lower-resolution methods.
+  Examples of coarse-mesh methods combined with CFD include the
+homogenized porous media method \cite{wang2020c,Kim2020}; the ``subchannel'' method, a
 finite volume method specialized to rod-type nuclear fuels \cite{blyth}; and
-momentum source models \cite{hu2013}. CFD models and experiments isolated from
-the full-core physics through insulated or symmetry boundary conditions are
-used to predict bulk heat and mass transfer in the form of closure correlations
-that are then applied to coarse-mesh full-core models.
+momentum source models \cite{hu2013}. 
 
 By nature of the scale decoupling between the CFD domain and the full core, a
 key outstanding issue with this analysis approach is an inability to reliably 
-account for interaction between global and local scales. This recognized
+account for {\it interaction between global and local scales}. This recognized
 limitation increases reliance on approximate methods, which in turn further
 constrains the reactor design.
 
-Light Water SMRs and SFRs both exhibit significant full-core thermal-hydraulic
+Light Water SMRs and SFRs both exhibit significant full-core thermal-fluid
 physics for which the available low-resolution analysis methods cannot capture
 important local/global interactions. In Light Water SMRs, inter-bundle mixing
 due to variations in mass flow rate plays an important role in fluid structure
 interaction (FSI) and deposition of coolant contaminants on heat transfer
-surfaces (TODO: references). Meanwhile, researchers have to turn to lower-
-fidelity numerical methods to investigate the flow physics in a larger portion
-of SMR core. A common practice is to employ the porous
-medium model to simulate the core region \cite{Kim2020}. Thanks to the rapid 
+surfaces ({\bf TODO: references}). Thanks to the rapid 
 development of cutting-edge supercomputers, the pin-resolved CFD investigation
 for an entire SMR core has been recently achieved by our team \cite{Fang2021}. 
 A set of momentum sources was developed to account for the effects of mixing 
 spacer grids while the RANS approach was applied to model the turbulence. Further
 increase of the simulation fidelities (e.g., LES) will produce high-quality flow databases
-much needed to understand/model the SMR thermal-hydraulic performance at the full
-core scale. 
+much needed to understand/model the SMR thermal-fluid performance at the full
+core scale.  % This is good, but I think it should be moved somewhere else
+{\bf more discussion about business impact of what we can learn in this proposal}
 
 In SFRs, a critical reactor design consideration is the structural expansion of
 the solid fuel components in response to differential temperature and
-irradiation damage gradients. The ducted fuel bundles bow and deform,
+irradiation damage gradients. The ducted fuel bundles bend and deform,
 contacting neighboring bundles and transferring loads across the entire core to
 restraint rings welded to the reactor vessel. These changes in core geometry
 play an important role in reactor criticality (passive control) and mechanical
@@ -142,49 +142,48 @@ melting \cite{brittan}, rapid surges in power \cite{chaumont}, and difficulty
 refueling \cite{shields} in several SFRs operated around the world.
 
 For neutronic purposes related to transmutation and shielding, neighboring
-bundles can vary by up to a factor of 100 in power and a factor of 50 in mass
-flowrate, depending on position \cite{abr}. An important driver of structural
+bundles in SFRs can vary by up to a factor of 100 in power and a factor of 50 in mass
+flowrate \cite{abr}. An important driver of structural
 expansion in SFRs is heat transfer both within bundles and across thin gaps
 between adjacent bundles that contain laminar sodium flow, a heat transfer
 mechanism referred to as ``inter-assembly'' heat transfer. Even though
 inter-assembly heat transfer is driven by these vastly different flow regimes,
 large cross-bundle thermal gradients, and gap sodium flow, industry models for
-core thermal-hydraulics are based on closures obtained from experiments and CFD
+core thermal-fluids are based on closures obtained from experiments and CFD
 models of symmetric, isolated fuel bundles without consideration of 
 full-core effects and realistic boundary conditions \cite{touran}. 
 
-While some models have combined Reynolds Average Navier-Stokes (RANS) CFD for the
-inter-assembly flow with a porous media or subchannel model for the interior of
-the bundle \cite{wang2020,gerschenfeld}, most full-core SFR models neglect the
-gap flow entirely \cite{touran} or homogenize the flow into other structural
-materials \cite{fiorina_of} -- without correction terms to account for the
-un-resolved physics \cite{touran,fiorina_of}. Most fuel bundles are in close
-contact with six neighboring bundles; in addition to the previously-described
-limitations, some industry models also neglect heat flow azimuthally around
-bundles by assuming that each bundle face only communicates thermally with one
-neighbor \cite{touran}. Approximations of this nature do not fully characterize
-the global heat transfer paths in these reactors, which may either over- or
-under-estimate fuel temperatures depending on the power distribution.
+Despite the fact that inter-assembly heat transfer is a major contributor 
+to the structural behavior of SFR cores, most industry approaches to full-core
+analysis neglect the
+gap flow entirely \cite{touran}, homogenize the flow into other structural
+materials \cite{fiorina_of}, or neglect certain azimuthal heat transfer 
+paths between neighboring bundles \cite{touran} -- without correction terms to account for the
+un-resolved physics \cite{touran,fiorina_of}. Some researchers substitute Reynolds
+Averaged Navier-Stokes (RANS) CFD for small regions in a full-core low-resolution
+model \cite{wang2020,gerschenfeld,Kim2020}, an approach that is still subject to
+ reduced accuracy compared to resolved CFD simulations. 
 
 The nuclear industry has an acute need for LES-informed models for
 inter-assembly heat transfer -- no models exist for inter-assembly heat
-transfer considering the coupling between global and local effects. Depending
-on flow regime, a consequence of this knowledge gap can be a significant
+transfer considering the coupling between global and local effects. Common
+approximations for local heat transfer do not fully characterize this
+global heat transfer mechanism, and this knowledge gap
+may result in significant
 underprediction of heat removal \cite{gerschenfeld}, requiring over-engineered
 safety systems or sub-optimal power density. Therefore, the second challenge
 problem addressed here is to develop inter-assembly heat transfer models with
-full-core LES to properly account for the interaction between flow regime and
+full-core LES that properly account for the interaction between flow regime and
 power distributions on core-wide fission heat redistribution. 
 
+%{\bf TODO: What other content should go here? Maybe more discussion of typical
+%problem sizes people have done before? Typical DOFs for a full-core porous
+%media/subchannel solve? Resolution comparison?}
 
-{\bf TODO: What other content should go here? Maybe more discussion of typical
-problem sizes people have done before? Typical DOFs for a full-core porous
-media/subchannel solve? Resolution comparison?}
-
-{\bf Talk about why Petascale resources are required}
-Petascale resources are required to understand how the interactions between
-laminar, mixed convection, and forced convection flow regimes affect
-inter-assembly heat transfer.
+%{\bf Talk about why Petascale resources are required}
+%Petascale resources are required to understand how the interactions between
+%laminar, mixed convection, and forced convection flow regimes affect
+%inter-assembly heat transfer.
 
 %Explain what advances you expect to be enabled by an INCITE award that
 %justifies an allocation of petascale resources (e.g., anticipated impact on
@@ -205,7 +204,7 @@ This proposal aims to provide insights into two grand challenges in the design
 of rod-type nuclear reactors by developing an LES database to support the
 development of lower fidelity models. Both grand challenges share the same
 motivating gap analysis -- reduced-geometry CFD models cannot properly account
-for the interaction between core-wide physics and local thermal-hydraulics. By
+for the interaction between core-wide physics and local thermal-fluids. By
 developing more accurate lower fidelity models informed by turbulence-resolved
 CFD, this proposal seeks to reduce risk to the technical design, economic
 viability, and licensing of advanced reactor concepts. 
@@ -224,23 +223,27 @@ business impact}
 % maybe emphasize a bit stronger that we're not doing any deformation in this
 % proposal here so it's clear?
 As part of the Department of Energy (DOE), the Advanced Reactor Demonstration
-Program (ARDP) awarded TerraPower, a private nuclear development company, funds
+Program (ARDP) awarded TerraPower, a private nuclear development company
+co-founded by Bill Gates, funds
 to develop and build an advanced SFR by 2027 \cite{ardp_tp}. The next two to
 three years are the opportune moment for the LCF to have an impact on the
 viability of this SFR design by making available to industry more accurate
-lower-resolution models. The thermal-fluid physics is the most important
-contributor to transient structural expansion in SFRs \cite{wozniak}, and
-transient structural expansion often has the highest uncertainty among other
-important core phenomena among the limited experimental data \cite{lum}. There
+inter-assembly heat transfer models. The thermal-fluid physics is the most important
+contributor to transient structural deformation in SFRs \cite{wozniak}, and
+structural deformation measurements often have the highest uncertainty among a number of
+other important core phenomena \cite{lum}. 
+
+Limited experimental data exists for inter-bundle mixing in Light Water SMRs
+and for inter-assembly heat transfer in SFRs, necessitating greater reliance on
+modeling and simulation. There
 are therefore significant potential business impacts to the success of this
-research that may result from more precise reactor design calculations. Such
-impacts may include 1)~reduced calculation uncertainty and operation nearer to
-thermal margins; 2)~improved fuel utilization and operation nearer to radiation
-damage limits; and 3)~increased passive reactor control and simplified design
-of reactivity control mechanisms. As the U.S.'s nuclear plant construction
+research, such as 1)~reduced calculation uncertainty that enables operation closer
+to thermal and irradiation limits; 2)~simplified reactivity control mechanisms;
+and 3)~improved predictive maintenance capabilities. 
+As the U.S.'s nuclear plant construction
 experience has waned over the past decade \cite{schlissel}, the viability of
 nuclear power in a clean energy portfolio depends on reducing cost through
-design simplifications or uncertainty reductions. 
+uncertainty reductions and design simplifications such as the above.
 
 In addition to direct impacts in the nuclear industry, this research will spur
 a paradigm shift in high-resolution modeling of nuclear systems. Competing work
@@ -251,17 +254,16 @@ side} Only LCF resources are viable for the proposed full-core LES simulations
 -- our simulations will be approximately 1000\(\times\) the size of current
 ``state-of-the-art'' experiments and CFD simulations, because only by modeling
 the entire reactor core can the interaction between global and local
-thermal-hydraulics be properly treated. Our full-core simulations will be
-first-of-a-kind in addressing core-wide reactor thermal-hydraulics \cite{Fang2021} ({\bf put
-references here for past nekRS full-core runs?}) and will change the notion
+thermal-fluids be properly treated. Our full-core simulations will be
+first-of-a-kind in addressing core-wide reactor thermal-fluids and build upon
+our group's previous works \cite{Fang2021}. The success of this research will
+change the notion
 that rod-resolved, full-core CFD is still 5\(+\) years away ({\bf Elia do you
 have a good reference for this? I've seen people quote this but I don't recall
 where}).
 
 % anticipated impact on community paradigms, valuable insights into or solving
 % a long-standing challenge, etc.). 
-% Place the proposed research in the context of competing work in your
-% discipline or business. 
 
 \vspace{-.25in}
 \subsection{Previous INCITE Awards}
