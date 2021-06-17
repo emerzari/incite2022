@@ -491,8 +491,6 @@ q_i^{''}=-\kappa_{ij}\frac{\partial T}{\partial x_j}\ ,
 \end{equation}
 where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, Courant-Friedrichs-Lewy (CFL) limits, and ensuing time step limitations, are of paramount important to low-resolution methods. Therefore, low-resolution tools such as those used by Terrapower \cite{touran} approximate the fluid flow in the inter-assembly region as a conducting solid. By supplying a necessary closure, \(\kappa_{ij}\), for this model, the proposed research is {\it compatible with industry modeling tools} and can be rapidly integrated into the ARDP design process.
 
-{\bf Describe how the postprocessing will be done}
-
 {\bf Does this research plan sound reasonable?}
 
 
@@ -505,26 +503,31 @@ where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In o
 
 A set of milestones has been developed to spread the computational burden over
 the expected 3 year term of the project; these milestones are listed in Table~\ref{tab:milestones} and represent the tasks
-in Section~\ref{sec:tasks}. The milestones in Table~\ref{tab:milestones} are directly orrelated
+in Section~\ref{sec:tasks}. The milestones in Table~\ref{tab:milestones} are directly correlated
 with the milestones shown in Section 4, where additional information is provided with respect
 to required computing resources.
 
 \begin{table}[h!]
 \centering
-\caption{Summary of the tasks and milestones associated with this proposal.}
-\begin{tabular}{l l l l l}
+\caption{Summary of the tasks and milestones associated with this proposal. ``Low-res.'' indicates ``low-resolution.''}
+\begin{tabular}{l l c l l}
 \toprule
 Problem & Stage & Milestone & Description & End Date \\
 \midrule
-\multirow{5}{*}{SFR} & I & A & Mesh convergence studies for clusters of bundles & May 2022 \\
+\multirow{14}{*}{SFR} & \multirow{3}{*}{I} & A & Mesh convergence studies for clusters of bundles & May 2022 \\
 & & B & Complete full-core Nek5000/RS CFD mesh and models & July 2022\\
-& & C & Preliminary tests of full-core CFD model & Sept 2022\\
-\\
-& II & A & Complete full-core Pronghorn low-resolution models & Nov 2022 \\
-& & B & Preliminary tests of full-core low-resolution model & Dec 2022\\
-& III & \\
-& IV & \\
-& V & \\
+& & C & Preliminary tests of full-core CFD model & Sep 2022\\\cmidrule{2-5}
+& \multirow{3}{*}{II} & A & Complete full-core Pronghorn low-res. models & Nov 2022 \\
+& & B & Preliminary tests of full-core low-res. model & Nov 2022\\
+& & C & Full-core low-resolution simulations & Dec 2022\\\cmidrule{2-5}
+& \multirow{2}{*}{III} & A & Final canonical CFD simulations at \(Re=640\) & Apr 2023\\
+& & B & Final canonical CFD simulations at \(Re=6E4\) to \(9E4\) & Dec 2023\\\cmidrule{2-5}
+& \multirow{2}{*}{IV} & A & Temperature comparisons between LES and low-res. models & Mar 2024\\
+& & B & Crossflow measurements from LES database & Jun 2024\\\cmidrule{2-5}
+& \multirow{4}{*}{V} & A & Correlate LES database with effective conductivity model & Sep 2024\\
+& & B & Apply conductivity closure to low-res. model & Oct 2024\\
+& & C & Repeat full-core low-res. simulations with new closure & Oct 2024\\
+& & D & Temperature comparisons between LES and low-res. models & Dec 2024\\
 \midrule
 \multirow{5}{*}{SMR} & I & 1 &    & Jun  2022 \\
 & II & 1 & Final canonical flow simulations         & Sept 2022 \\
@@ -537,19 +540,23 @@ Problem & Stage & Milestone & Description & End Date \\
 \end{table}
 
 For the SFR modeling, Stage I encompasses model setup and preliminary testing for
-the LES CFD simulations. Our group is experienced at meshing such geometries ({\bf add evidence of this/more detail?); milestone
+the LES CFD simulations. Our group is experienced at meshing such geometries ({\bf add evidence of this/more detail?}); milestone
 I.A will develop guidelines for converged meshes for all subsequent simulations, while milestone
 I.B will generate full-core meshes and apply realistic power and mass flow distributions to the model.
 Milestone I.C will then conclude Stage I by conducting preliminary flow simulations to
-determine appropriate time step sizes 
+determine appropriate time step sizes and flow-through times to establish convergence
+of various thermal transport speeds across the coupled core.
 
-appropriate time step sizes, 
+During Stage II, we will develop low-resolution models of the same reactor system;
+due to the small computational requirements of these low-resolution models, mesh
+refinement studies will be performed directly on the full core model.
 
-CFL-constrained time step sizes,
+In Stage III, we will begin our canonical flow simulations for the \(Re=650\) and then
+follow with simulations at higher Reynolds number. This strategy will allow us to
+continue gaining insights into the parallelization strategies for the flow case with the
+lowest mesh resolution requirements.
 
-
-These milestones, their relationship to the project goals, and the research significance
-of the specific tasks undertaken, have been described in Section \ref{sec:tasks}. 
+{\bf Talk about how we will postprocess the Nek results, and then tie that into IV and V}
 
 
 \input tex/readiness
