@@ -11,14 +11,18 @@ We should also update the PBR with the 352K picture?
 Nuclear energy stemming from advanced small modular reactor (SMR) designs
 holds promise as a reliable carbon-free resource capable of meeting our
 nation's and the world's energy needs.  A wave of investment over the past
-several years has spurred innovation in new SMR designs.
-[Here, why not mention Bill Gates and other industrial names, NuScale,
-Terrapower, etc.?  We want the lay person to be able to relate to this
-proposal?]
+several years has spurred innovation in new SMR designs. 
+The U.S. is home to over 60 private sector advanced nuclear projects \cite{third_way},
+with reactor concepts including a passively-safe Light Water SMR from NuScale \cite{nuscale},
+a salt-cooled Pebble Bed Reactor from Kairos \cite{kairos},
+and a Sodium Fast Reactor (SFR) coupled with energy storage from Terrapower, 
+a company co-founded by Bill Gates \cite{natrium}. Recent growth in nuclear's private
+sector represents an important trend as academic research projects mature
+toward commercialization.
 
 The design, certification, and licensing of novel reactor designs pose
-formidable hurdles to the successful deployment of such technologies. In fact,
-the lack of integral-effect test facilities for a wide range of scenarios and
+formidable hurdles to the successful deployment of such technologies. 
+The lack of integral-effect test facilities for a wide range of scenarios and
 conditions considered in risk-informed analysis leads to a severe deficit of
 directly relevant data for these advanced designs.  Development of  appropriate
 models for full-system analysis will require {\em high-fidelity numerical
@@ -27,8 +31,8 @@ lay the ground work for subsequent integral-effect tests, when the related
 facilities investment is justified.
 
 Our objective is to provide the high-fidelity simulation capabilities that are
-essential to this mission.  In particular, we consider Sodium Fast Reactors
-(SFRs) and Light Water SMRs. Both of these designs have received considerable
+essential to this mission.  In particular, we consider SFRs and Light Water SMRs.
+Both of these designs have received considerable
 attention in recent years. The cores of such reactors comprise tens of
 thousands of fueled rods, grouped in bundles of hundreds of rods. Coolant flow,
 which is the central energy-transfer mechanism between the fissioning fuel and
@@ -36,14 +40,14 @@ electricity-generating turbines, is established between the rods to remove heat
 from the nuclear fuel.  Understanding of such fluid flow over a range of
 conditions is a major priority and challenge in reactor design and engineering.
 Given the scale of the problem (flow in tens of thousands of channels at high
-Reynolds number\footnote{The Reynolds number is a nondimensional measure of flow
+Reynolds number\footnote{The Reynolds number is a non-dimensional measure of flow
 speed; high Reynolds number flows are generally turbulent, which makes them
 challenging to simulate.}), the
 applicability of turbulence-resolving techniques has been limited to small
 portions of the reactor core. Significant compromises in accuracy have had to
 be accepted in order to perform simulations at the {\em full-core} scale.
 These computational economies have implications on the understanding of safety
-margins, which ultimately limit economic viability, but also has broader impact
+margins, which ultimately limit economic viability, but also have broader impact
 on design constraints that are harder to quantify directly.
 
 Recently, the advent of pre-exascale machines has made possible the simulation
@@ -60,14 +64,15 @@ development for core-wide phenomena.  The effort will take place over three
 years on the supercomputers Summit and Frontier.
 
 NekRS is particularly performant on current generation GPUs such as the NVIDIA
-V100 and A100s and AMD MI100s.  With recent algorithmic developments, it is possible 
+V100s and A100s and AMD MI100s.  With recent algorithmic developments, it is possible 
 to perform a single flow-through time for LES of a full core in just six hours 
 using 27684 V100s on Summit.
 
 Our prior work in this area has led to deployment of Nek5000/RS within the 
-nuclear industry at vendors such as NuScale, Terrapower, and Kairos.
-Nek5000 has been identified by the NRC as one of the codes approved 
-in the licensing process for thermal-hydraulic analysis.
+nuclear industry at vendors such as NuScale, Kairos, and Terrapower.
+Nek5000 has been approvied by the Nuclear Regulatory Commission (NRC), the
+organization tasked with licensing reactors for commercial use,
+for purposes in the licensing process for thermal-hydraulic analysis.
 }
 
 
@@ -108,9 +113,9 @@ account for interaction between global and local scales. This recognized
 limitation increases reliance on approximate methods, which in turn further
 constrains the reactor design.
 
-Light water SMRs and SFRs both exhibit significant full-core thermal-hydraulic
+Light Water SMRs and SFRs both exhibit significant full-core thermal-hydraulic
 physics for which the available low-resolution analysis methods cannot capture
-important local/global interactions. In light water SMRs, inter-bundle mixing
+important local/global interactions. In Light Water SMRs, inter-bundle mixing
 due to variations in mass flow rate plays an important role in fluid structure
 interaction (FSI) and deposition of coolant contaminants on heat transfer
 surfaces (TODO: references). Meanwhile, researchers have to turn to lower-
@@ -210,7 +215,7 @@ takes decades to accomplish; much of the reactor design and analysis is
 ``front-loaded'' to allow sufficient time for the licensing process, a
 prerequisite to construction. The two challenge problems selected in this
 proposal will have immediate technical and business impact to the nuclear
-industry by coinciding with large light water SMR and SFR development programs
+industry by coinciding with large Light Water SMR and SFR development programs
 in private industry.
 
 {\bf TODO: talk about current SMR activities and how this ties in - emphasize
