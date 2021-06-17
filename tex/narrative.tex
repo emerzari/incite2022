@@ -8,21 +8,21 @@ We should also update the PBR with the 352K picture?
 
 }
 
-
 Nuclear energy stemming from advanced small modular reactor (SMR) designs
 holds promise as a reliable carbon-free resource capable of meeting our
 nation's and the world's energy needs.  A wave of investment over the past
 several years has spurred innovation in new SMR designs. 
-[Here, why not mention Bill Gates and other industrial names, NuScale,
-Terrapower, etc.?  We want the lay person to be able to relate to this
-proposal?]
-
-[ALSO, do we {\em have} to use the ragged format?? It looks awful in my
-opinion.]
+The U.S. is home to over 60 private sector advanced nuclear projects \cite{third_way},
+with reactor concepts including a passively-safe Light Water SMR from NuScale \cite{nuscale},
+a salt-cooled Pebble Bed Reactor from Kairos \cite{kairos},
+and a Sodium Fast Reactor (SFR) coupled with energy storage from Terrapower, 
+a company co-founded by Bill Gates \cite{natrium}. Recent growth in nuclear's private
+sector represents an important trend as academic research projects mature
+toward commercialization.
 
 The design, certification, and licensing of novel reactor designs pose
-formidable hurdles to the successful deployment of such technologies. In fact,
-the lack of integral-effect test facilities for a wide range of scenarios and
+formidable hurdles to the successful deployment of such technologies. 
+The lack of integral-effect test facilities for a wide range of scenarios and
 conditions considered in risk-informed analysis leads to a severe deficit of
 directly relevant data for these advanced designs.  Development of  appropriate
 models for full-system analysis will require {\em high-fidelity numerical
@@ -31,8 +31,8 @@ lay the ground work for subsequent integral-effect tests, when the related
 facilities investment is justified.
 
 Our objective is to provide the high-fidelity simulation capabilities that are
-essential to this mission.  In particular, we consider Sodium Fast Reactors
-(SFRs) and Light Water SMRs. Both of these designs have received considerable
+essential to this mission.  In particular, we consider SFRs and Light Water SMRs.
+Both of these designs have received considerable
 attention in recent years. The cores of such reactors comprise tens of
 thousands of fueled rods, grouped in bundles of hundreds of rods. Coolant flow,
 which is the central energy-transfer mechanism between the fissioning fuel and
@@ -40,18 +40,18 @@ electricity-generating turbines, is established between the rods to remove heat
 from the nuclear fuel.  Understanding of such fluid flow over a range of
 conditions is a major priority and challenge in reactor design and engineering.
 Given the scale of the problem (flow in tens of thousands of channels at high
-Reynolds number\footnote{The Reynolds number is a nondimensional measure of flow
+Reynolds number\footnote{The Reynolds number is a non-dimensional measure of flow
 speed; high Reynolds number flows are generally turbulent, which makes them
 challenging to simulate.}), the
 applicability of turbulence-resolving techniques has been limited to small
 portions of the reactor core. Significant compromises in accuracy have had to
 be accepted in order to perform simulations at the {\em full-core} scale.
 These computational economies have implications on the understanding of safety
-margins, which ultimately limit economic viability, but also has broader impact
+margins, which ultimately limit economic viability, but also have broader impact
 on design constraints that are harder to quantify directly.
 
 Recently, the advent of pre-exascale machines has made possible the simulation
-of full reactor cores at moderate Reynolds numbers cite[paper1,paper2?].  This
+of full reactor cores at moderate Reynolds numbers cite \cite{Fang2021}.  This
 proposal seeks to build on these recent achievements to develop a deeper
 understanding of core-wide thermal-fluid phenomena.
 
@@ -64,14 +64,15 @@ development for core-wide phenomena.  The effort will take place over three
 years on the supercomputers Summit and Frontier.
 
 NekRS is particularly performant on current generation GPUs such as the NVIDIA
-V100 and A100s and AMD MI100s.  With recent algorithmic developments, it is possible 
+V100s and A100s and AMD MI100s.  With recent algorithmic developments, it is possible 
 to perform a single flow-through time for LES of a full core in just six hours 
 using 27684 V100s on Summit.
 
 Our prior work in this area has led to deployment of Nek5000/RS within the 
-nuclear industry at vendors such as NuScale, Terrapower, and Kairos.
-Nek5000 has been identified by the NRC as one of the codes approved 
-in the licensing process for thermal-hydraulic analysis.
+nuclear industry at vendors such as NuScale, Kairos, and Terrapower.
+Nek5000 has been approvied by the Nuclear Regulatory Commission (NRC), the
+organization tasked with licensing reactors for commercial use,
+for purposes in the licensing process for thermal-hydraulic analysis.
 }
 
 
@@ -112,9 +113,9 @@ account for interaction between global and local scales. This recognized
 limitation increases reliance on approximate methods, which in turn further
 constrains the reactor design.
 
-Light water SMRs and SFRs both exhibit significant full-core thermal-hydraulic
+Light Water SMRs and SFRs both exhibit significant full-core thermal-hydraulic
 physics for which the available low-resolution analysis methods cannot capture
-important local/global interactions. In light water SMRs, inter-bundle mixing
+important local/global interactions. In Light Water SMRs, inter-bundle mixing
 due to variations in mass flow rate plays an important role in fluid structure
 interaction (FSI) and deposition of coolant contaminants on heat transfer
 surfaces (TODO: references). Meanwhile, researchers have to turn to lower-
@@ -214,11 +215,27 @@ takes decades to accomplish; much of the reactor design and analysis is
 ``front-loaded'' to allow sufficient time for the licensing process, a
 prerequisite to construction. The two challenge problems selected in this
 proposal will have immediate technical and business impact to the nuclear
-industry by coinciding with large light water SMR and SFR development programs
+industry by coinciding with large Light Water SMR and SFR development programs
 in private industry.
 
-{\bf TODO: talk about current SMR activities and how this ties in - emphasize
-business impact}
+% feel to add some statements that can further highlight the business impact
+Several strategically important projects have been identified and are being pursued by 
+the Exascale Computing Project (ECP) for the upcoming exascale computing platforms. 
+Among these, the ExaSMR project is specifically focused on the SMRs.
+SMRs offer the prospect of affordable baseload electricity production while 
+avoiding some of the traditional limitations that encumber large reactor designs, 
+such as high capital costs and long construction timelines. 
+As a result, government, industry, and academia have all expressed interest in 
+SMR research and development.
+The objective of the ExaSMR project is to use exascale computing platforms to 
+carry out extreme-fidelity multi-physics simulations of SMRs, namely, 
+to enable verification and validation of current analysis methods by 
+generating detailed power distributions during startup conditions, 
+full-cycle depletion analysis, and fast transient behavior characteristics of 
+accident scenarios \cite{Merzari2018}. 
+Significant progress has been made in both the coupling of Monte Carlo (MC) Neutronics 
+and CFD \cite{Hamilton2018,Hamilton2019} and the development of CFD modleing 
+capability \cite{Fang2021,Merzari2018}.
 
 % maybe emphasize a bit stronger that we're not doing any deformation in this
 % proposal here so it's clear?
@@ -244,9 +261,9 @@ design simplifications or uncertainty reductions.
 In addition to direct impacts in the nuclear industry, this research will spur
 a paradigm shift in high-resolution modeling of nuclear systems. Competing work
 in our field remains directed at the single-bundle level both in CFD
-simulations \cite{wang2020,fanning,wang2020b} and experiments
-\cite{goth,song_2020,martin2020}. {\bf Add some references here for the SMR
-side} Only LCF resources are viable for the proposed full-core LES simulations
+simulations \cite{wang2020,fanning,wang2020b,Boyd2016} and experiments
+\cite{Nguyen2017,Bhowmik2021,goth,song_2020,martin2020}. 
+Only LCF resources are viable for the proposed full-core LES simulations
 -- our simulations will be approximately 1000\(\times\) the size of current
 ``state-of-the-art'' experiments and CFD simulations, because only by modeling
 the entire reactor core can the interaction between global and local
@@ -438,7 +455,7 @@ In Stage IV, the LES database will be compared against the reference low-resolut
 \begin{itemize}
 \item How does inter-assembly heat transfer affect core outlet temperature distributions? Non-uniformity in outlet temperatures result in thermal stresses on structural components, and therefore is an important design metric. 
 \item How is inter-assembly heat transfer affected by the power-to-flow ratio? The wide variation in flow regime across the core will result in different bundle responses to convective heat transfer from the rods to the coolant, which may cause global heat redistributions. 
-\item Are significant cross-flows generated across the core due to buoyancy effects? While flow nominally enters the inter-assembly space with a purely vertical velocity distribution, differential density changes could potentially induce cross-flows. Such flows would be of importance to accurately pin-pointing broken fuel elements (if present) by detection of advected fission products. 
+\item Are significant cross-flows generated across the core due to buoyancy effects? While flow nominally enters the inter-assembly space with a purely vertical velocity distribution, differential density changes could potentially induce cross-flows. Such flows would be of importance to accurately estimating core temperature distributions.
 \end{itemize}
 
 The above questions will be addressed by comparing temperature and mass flux
@@ -466,22 +483,19 @@ where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In o
 % milestones should correlate with those in Section 4, Milestone Table
 % provide clear connections between the project's overarching milestones, the planned production simulations, and the compute time expected for these simulations (should correlation with Section 2.3.i - use of resources requested). 
 
-A set of milestones has been developed (Table~\ref{tab:milestones}) to spread the computational burden over
-the expected 3 year term of the project and they are listed in the milestone table attached (Table~\ref{tab:milestones}).
+A set of milestones has been developed to spread the computational burden over
+the expected 3 year term of the project; these milestones are listed in Table~\ref{tab:milestones}.
 
 \begin{table}
 \centering
 \caption{Summary of the different tasks and milestones.}
 \begin{tabular}{llll}
-\hline
-\hline
+\toprule
 Milestone & Task & Description & End Date \\
-\hline
-\hline
+\midrule
 A & 1 & Preliminary canonical flow simulations   & Jun  2022 \\
 B & 1 & Final canonical flow simulations         & Sept 2022 \\
-\hline
-\hline
+\bottomrule
 \end{tabular}
 \label{tab:milestones}
 \end{table}
