@@ -51,7 +51,7 @@ margins, which ultimately limit economic viability, but also have broader impact
 on design constraints that are harder to quantify directly.
 
 Recently, the advent of pre-exascale machines has made possible the simulation
-of full reactor cores at moderate Reynolds numbers cite[paper1,paper2?].  This
+of full reactor cores at moderate Reynolds numbers cite \cite{Fang2021}.  This
 proposal seeks to build on these recent achievements to develop a deeper
 understanding of core-wide thermal-fluid phenomena.
 
@@ -218,8 +218,24 @@ proposal will have immediate technical and business impact to the nuclear
 industry by coinciding with large Light Water SMR and SFR development programs
 in private industry.
 
-{\bf TODO: talk about current SMR activities and how this ties in - emphasize
-business impact}
+% feel to add some statements that can further highlight the business impact
+Several strategically important projects have been identified and are being pursued by 
+the Exascale Computing Project (ECP) for the upcoming exascale computing platforms. 
+Among these, the ExaSMR project is specifically focused on the SMRs.
+SMRs offer the prospect of affordable baseload electricity production while 
+avoiding some of the traditional limitations that encumber large reactor designs, 
+such as high capital costs and long construction timelines. 
+As a result, government, industry, and academia have all expressed interest in 
+SMR research and development.
+The objective of the ExaSMR project is to use exascale computing platforms to 
+carry out extreme-fidelity multi-physics simulations of SMRs, namely, 
+to enable verification and validation of current analysis methods by 
+generating detailed power distributions during startup conditions, 
+full-cycle depletion analysis, and fast transient behavior characteristics of 
+accident scenarios \cite{Merzari2018}. 
+Significant progress has been made in both the coupling of Monte Carlo (MC) Neutronics 
+and CFD \cite{Hamilton2018,Hamilton2019} and the development of CFD modleing 
+capability \cite{Fang2021,Merzari2018}.
 
 % maybe emphasize a bit stronger that we're not doing any deformation in this
 % proposal here so it's clear?
@@ -245,9 +261,9 @@ design simplifications or uncertainty reductions.
 In addition to direct impacts in the nuclear industry, this research will spur
 a paradigm shift in high-resolution modeling of nuclear systems. Competing work
 in our field remains directed at the single-bundle level both in CFD
-simulations \cite{wang2020,fanning,wang2020b} and experiments
-\cite{goth,song_2020,martin2020}. {\bf Add some references here for the SMR
-side} Only LCF resources are viable for the proposed full-core LES simulations
+simulations \cite{wang2020,fanning,wang2020b,Boyd2016} and experiments
+\cite{Nguyen2017,Bhowmik2021,goth,song_2020,martin2020}. 
+Only LCF resources are viable for the proposed full-core LES simulations
 -- our simulations will be approximately 1000\(\times\) the size of current
 ``state-of-the-art'' experiments and CFD simulations, because only by modeling
 the entire reactor core can the interaction between global and local
