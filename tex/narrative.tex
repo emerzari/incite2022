@@ -8,17 +8,13 @@ We should also update the PBR with the 352K picture?
 
 }
 
-
 Nuclear energy stemming from advanced small modular reactor (SMR) designs
 holds promise as a reliable carbon-free resource capable of meeting our
 nation's and the world's energy needs.  A wave of investment over the past
-several years has spurred innovation in new SMR designs. 
+several years has spurred innovation in new SMR designs.
 [Here, why not mention Bill Gates and other industrial names, NuScale,
 Terrapower, etc.?  We want the lay person to be able to relate to this
 proposal?]
-
-[ALSO, do we {\em have} to use the ragged format?? It looks awful in my
-opinion.]
 
 The design, certification, and licensing of novel reactor designs pose
 formidable hurdles to the successful deployment of such technologies. In fact,
@@ -438,7 +434,7 @@ In Stage IV, the LES database will be compared against the reference low-resolut
 \begin{itemize}
 \item How does inter-assembly heat transfer affect core outlet temperature distributions? Non-uniformity in outlet temperatures result in thermal stresses on structural components, and therefore is an important design metric. 
 \item How is inter-assembly heat transfer affected by the power-to-flow ratio? The wide variation in flow regime across the core will result in different bundle responses to convective heat transfer from the rods to the coolant, which may cause global heat redistributions. 
-\item Are significant cross-flows generated across the core due to buoyancy effects? While flow nominally enters the inter-assembly space with a purely vertical velocity distribution, differential density changes could potentially induce cross-flows. Such flows would be of importance to accurately pin-pointing broken fuel elements (if present) by detection of advected fission products. 
+\item Are significant cross-flows generated across the core due to buoyancy effects? While flow nominally enters the inter-assembly space with a purely vertical velocity distribution, differential density changes could potentially induce cross-flows. Such flows would be of importance to accurately estimating core temperature distributions.
 \end{itemize}
 
 The above questions will be addressed by comparing temperature and mass flux
@@ -466,22 +462,19 @@ where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In o
 % milestones should correlate with those in Section 4, Milestone Table
 % provide clear connections between the project's overarching milestones, the planned production simulations, and the compute time expected for these simulations (should correlation with Section 2.3.i - use of resources requested). 
 
-A set of milestones has been developed (Table~\ref{tab:milestones}) to spread the computational burden over
-the expected 3 year term of the project and they are listed in the milestone table attached (Table~\ref{tab:milestones}).
+A set of milestones has been developed to spread the computational burden over
+the expected 3 year term of the project; these milestones are listed in Table~\ref{tab:milestones}.
 
 \begin{table}
 \centering
 \caption{Summary of the different tasks and milestones.}
 \begin{tabular}{llll}
-\hline
-\hline
+\toprule
 Milestone & Task & Description & End Date \\
-\hline
-\hline
+\midrule
 A & 1 & Preliminary canonical flow simulations   & Jun  2022 \\
 B & 1 & Final canonical flow simulations         & Sept 2022 \\
-\hline
-\hline
+\bottomrule
 \end{tabular}
 \label{tab:milestones}
 \end{table}
