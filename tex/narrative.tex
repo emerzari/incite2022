@@ -448,10 +448,10 @@ outstanding questions about the nature of inter-assembly flow and heat transfer
 and 2)~utilize the produced LES database to generate bulk heat 
 transfer correlations to improve the predictive capabilities of
 lower-resolution tools. The SFR simulations in this proposal will be directed
-in four stages. Each stage will be associated with several milestones, 
+in four tasks. Each task will be associated with several milestones, 
 described in detail with associated time frames
 in Table~\ref{tab:milestones}. The major tasks and relationship
-between each stage of the 36-month project for the
+between each task of the 36-month project for the
 SFR challenge problem are as follows. 
 
 \vspace{-.15in}
@@ -459,16 +459,16 @@ SFR challenge problem are as follows.
 \item Develop full-core meshes and test at scale to ensure high quality. Mesh convergence studies will be conducted for small groups of bundles under a variety of power and flow gradients to establish applicability to full-core geometries. Develop full-core models based on the ABR specifications \cite{abr}.
 \item Develop reference low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be compared against the generated LES database to assess the effect if proper resolution of global/local physics interactions. Low-resolution models will be run with non-LCF computing resources.
 \item Conduct full-core LES CFD simulations of the ABR at three power-to-flow ratios\footnote{The ``power-to-flow'' ratio is a measure of the relative balance between core power and core cooling. A power-to-flow ratio of unity indicates nominal operating conditions.} that may be observed during actual operation. These conditions correspond to full power (1000 MWth) and a)~nominal flow (\(Re=90000\)), b)~moderately reduced flow (\(Re=72000\)), and c)~significantly reduced flow (\(Re=60000\)). A fourth condition at decay heat removal conditions (\(Re=650\) and 7.5 MWth) will also be included to cover the very low range in power-to-flow ratio.
-\item Compare LES database with reference low-resolution models developed in Stage II. Evaluate the physics consequence of industry modeling simplifications to inter-assembly heat transfer.
-\item Post-process LES database to generate an effective thermal conductivity model applicable to subchannel and porous media methods. Apply new closure to the models developed in Stage II and quantify the improvement in accuracy. 
+\item Compare LES database with reference low-resolution models developed in Task II. Evaluate the physics consequence of industry modeling simplifications to inter-assembly heat transfer.
+\item Post-process LES database to generate an effective thermal conductivity model applicable to subchannel and porous media methods. Apply new closure to the models developed in Task II and quantify the improvement in accuracy. 
 \end{enumerate}
 \vspace{-.15in}
 
-Additional details are now provided for each stage. During Stage I, full-core meshes will be generated for the prototypic design. Mesh convergence will be performed with \(h\)-type refinement\footnote{$h$-type refinement refers to mesh convergence evaluated by reducing element size.} to leverage past experience with optimal element counts per GPU on Summit. Full-core models will be constructed for the four operating conditions (detailed in Stage III) based on openly-available material properties, power, and mass flow distributions. During Stage II, equivalent low-resolution models will be constructed and run on workstations available to our group at ANL. 
+Additional details are now provided for each task. During Task I, full-core meshes will be generated for the prototypic design. Mesh convergence will be performed with \(h\)-type refinement\footnote{$h$-type refinement refers to mesh convergence evaluated by reducing element size.} to leverage past experience with optimal element counts per GPU on Summit. Full-core models will be constructed for the four operating conditions (detailed in Task III) based on openly-available material properties, power, and mass flow distributions. During Task II, equivalent low-resolution models will be constructed and run on workstations available to our group at ANL. 
 
-During Stage III, full-core LES CFD simulations will be conducted for four different combinations of core power and flowrate. The first condition corresponds to the nominal reactor state. The second two conditions correspond to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are indicative of reactor trip points \cite{chaumont} and unmitigated equipment failure, respectively. The last simulation corresponds to decay heat removal after the fission reaction has been terminated. 
+During Task III, full-core LES CFD simulations will be conducted for four different combinations of core power and flowrate. The first condition corresponds to the nominal reactor state. The second two conditions correspond to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are indicative of reactor trip points \cite{chaumont} and unmitigated equipment failure, respectively. The last simulation corresponds to decay heat removal after the fission reaction has been terminated. 
 
-In Stage IV, the LES database will be compared against the reference low-resolution models to answer several outstanding questions:
+In Task IV, the LES database will be compared against the reference low-resolution models to answer several outstanding questions:
 
 \vspace{-.15in}
 \begin{itemize}
@@ -481,7 +481,7 @@ In Stage IV, the LES database will be compared against the reference low-resolut
 The above questions will be addressed by comparing temperature and mass flux
 distributions across the LES database, as well as comparing temperature
 distributions between the LES database and lower-resolution models. Finally, in
-Stage V, the LES database will be used to produce an effective conductivity
+Task V, the LES database will be used to produce an effective conductivity
 model for use in lower-resolution tools. By homogenizing over element sizes
 typical of porous media models, the heat flux computed along the boundaries of
 the inter-assembly region will be used to compute an effective conductivity
@@ -512,7 +512,7 @@ to required computing resources.
 \caption{Summary of the tasks and milestones associated with this proposal. ``Low-res.'' indicates ``low-resolution.''}
 \begin{tabular}{l l c l l}
 \toprule
-Problem & Stage & Milestone & Description & End Date \\
+Problem & Task & Milestone & Description & End Date \\
 \midrule
 \multirow{14}{*}{SFR} & \multirow{3}{*}{I} & A & Mesh convergence studies for clusters of bundles & May 2022 \\
 & & B & Complete full-core Nek5000/RS CFD mesh and models & July 2022\\
@@ -539,19 +539,19 @@ Problem & Stage & Milestone & Description & End Date \\
 \label{tab:milestones}
 \end{table}
 
-For the SFR modeling, Stage I encompasses model setup and preliminary testing for
+For the SFR modeling, Task I encompasses model setup and preliminary testing for
 the LES CFD simulations. Our group is experienced at meshing such geometries ({\bf add evidence of this/more detail?}); milestone
 I.A will develop guidelines for converged meshes for all subsequent simulations, while milestone
 I.B will generate full-core meshes and apply realistic power and mass flow distributions to the model.
-Milestone I.C will then conclude Stage I by conducting preliminary flow simulations to
+Milestone I.C will then conclude Task I by conducting preliminary flow simulations to
 determine appropriate time step sizes and flow-through times to establish convergence
 of various thermal transport speeds across the coupled core.
 
-During Stage II, we will develop low-resolution models of the same reactor system;
+During Task II, we will develop low-resolution models of the same reactor system;
 due to the small computational requirements of these low-resolution models, mesh
 refinement studies will be performed directly on the full core model.
 
-In Stage III, we will begin our canonical flow simulations for the \(Re=650\) and then
+In Task III, we will begin our canonical flow simulations for the \(Re=650\) and then
 follow with simulations at higher Reynolds number. This strategy will allow us to
 continue gaining insights into the parallelization strategies for the flow case with the
 lowest mesh resolution requirements.
