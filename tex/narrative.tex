@@ -529,13 +529,14 @@ with the milestones shown in Section 4, where additional information is provided
 to required computing resources.
 
 \begin{table}[h!]
+\footnotesize
 \centering
 \caption{Summary of the tasks and milestones associated with this proposal. ``Low-res.'' indicates ``low-resolution.''}
-\begin{tabular}{c c c l l}
+\begin{tabular}{c c c l l l l}
 \toprule
-Problem & Task & Milestone & Description & End Date \\
+Problem & Task & Milestone & Description & End Date & System & Node Hours\\
 \midrule
-\multirow{5}{*}{SMR} & \multirow{2}{*}{I} & A & Mesh and input setup (1 assembly explicit) & Jun 2022 \\
+\multirow{6}{*}{SMR} & \multirow{2}{*}{I} & A & Mesh and input setup (1 assembly explicit) & Jun 2022 \\
 &  & B & Zonal LES simulation (1 assembly explicit)  & Dec 2022 \\\cmidrule{2-5}
 & \multirow{2}{*}{II} & A & Mesh and input setup (9 assembly explicit)  & Jun 2023 \\
 &  & B & Zonal LES simulation (9 assembly explicit)  & Dec 2023 \\\cmidrule{2-5}
@@ -543,19 +544,18 @@ Problem & Task & Milestone & Description & End Date \\
 &  & B & Full core LES simulation  & Dec 2024 \\
 \midrule
 \multirow{14}{*}{SFR} & \multirow{3}{*}{I} & A & Mesh convergence studies for clusters of bundles & May 2022 \\
-& & B & Complete full-core Nek5000/RS CFD mesh and models & July 2022\\
+& & B & Complete full-core mesh and models & July 2022\\
 & & C & Preliminary results of full-core CFD model (RANS) & Dec 2022\\\cmidrule{2-5}
 & \multirow{3}{*}{II} & A & Complete full-core Pronghorn low-res. models & Nov 2022 \\
 & & B & Preliminary tests of full-core low-res. model & Nov 2022\\
 & & C & Full-core low-resolution simulations & Dec 2022\\\cmidrule{2-5}
 & \multirow{2}{*}{III} & A & Preliminary LES simulations  & Dec 2023\\
 & & B & Final LES simulations  & Dec 2024\\\cmidrule{2-5}
-& \multirow{2}{*}{IV} & A & Temperature comparisons between LES and low-res. models & Mar 2024\\
+& \multirow{2}{*}{IV} & A & Temperature measurements from LES database & Mar 2024\\
 & & B & Crossflow measurements from LES database & Jun 2024\\\cmidrule{2-5}
-& \multirow{4}{*}{V} & A & Correlate LES database with effective conductivity model & Sep 2024\\
-& & B & Apply conductivity closure to low-res. model & Oct 2024\\
-& & C & Repeat full-core low-res. simulations with new closure & Oct 2024\\
-& & D & Temperature comparisons between LES and low-res. models & Dec 2024\\
+& \multirow{3}{*}{V} & A & Correlate LES database with \(\kappa\) model & Sep 2024\\
+& & B & Repeat full-core low-res. simulations with new closure & Oct 2024\\
+& & C & Temperature measurements from LES database & Dec 2024\\
 \bottomrule
 \end{tabular}
 \label{tab:milestones}
@@ -577,4 +577,5 @@ follow with simulations at higher Reynolds number. This strategy will allow us t
 continue gaining insights into the parallelization strategies for the flow case with the
 lowest mesh resolution requirements. Task IV and V focus on the post-processing of the data and comparisons with results from Task II. They are conducted in parallel with Task III.
 
+{\bf Need to describe HERE a node hours justification for each task, and how the tasks differ from each other in that regard. Must match table in appendix.}
 \input tex/readiness
