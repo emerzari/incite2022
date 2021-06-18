@@ -506,12 +506,33 @@ lower-resolution tools. The major tasks have been identified as follows:
 
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
-\item Develop full-core meshes and test at scale to ensure high quality. Mesh convergence studies will be conducted for small groups of bundles under a variety of power and flow gradients to establish applicability to full-core geometries. Develop full-core models based on the ABR specifications \cite{abr}.
-\item Develop low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be compared against the generated LES database to assess the effect if proper resolution of global/local physics interactions. Low-resolution models will be run with non-LCF computing resources, including the {\em Nek5000}
-cluster at ANL.
-\item Conduct full-core LES CFD simulations of the ABR at three power-to-flow ratios\footnote{The ``power-to-flow'' ratio is a measure of the relative balance between core power and core cooling. A power-to-flow ratio of unity indicates nominal operating conditions.} that may be observed during actual operation. These conditions correspond to full power (1000 MWth) and a)~nominal flow (\(Re=90000\)), b)~moderately reduced flow (\(Re=72000\)), and c)~significantly reduced flow (\(Re=60000\)). A fourth condition at decay heat removal conditions (\(Re=650\) and 7.5 MWth) will also be included to cover the very low range in power-to-flow ratio.
-\item Compare LES database with reference low-resolution models developed in Task II. Evaluate the physics consequence of industry modeling simplifications to inter-assembly heat transfer.
-\item Post-process LES database to generate an effective thermal conductivity model applicable to subchannel and porous media methods. Apply new closure to the models developed in Task II and quantify the improvement in accuracy.
+\item Develop full-core meshes and test at scale to ensure high quality. Mesh
+    convergence studies will be conducted for small groups of bundles under a
+    variety of power and flow gradients to establish applicability to full-core
+    geometries. Develop full-core models based on the ABR specifications \cite{abr}.  
+\item Develop low-resolution full-core models using the NEAMS
+    porous media application, Pronghorn \cite{novak2021b}. These models will be
+    compared against the generated LES database to assess the effect if proper
+    resolution of global/local physics interactions. Low-resolution models will be
+    run with non-LCF computing resources, including the {\em Nek5000} cluster in
+    ANL's Nuclear Engineering Division.
+\item Conduct full-core LES CFD simulations of the ABR at three power-to-flow
+  ratios\footnote{The ``power-to-flow'' ratio is a measure of the relative
+  balance between core power and core cooling. A power-to-flow ratio of unity
+  indicates nominal operating conditions.} that may be observed during actual
+  operation. These conditions correspond to full power (1000 MWth) and a)~nominal
+  flow (\(Re=90000\)), b)~moderately reduced flow (\(Re=72000\)), and
+  c)~significantly reduced flow (\(Re=60000\)). A fourth condition at decay heat
+  removal conditions (\(Re=650\) and 7.5 MWth) will also be included to cover the
+  very low range in power-to-flow ratio.  
+\item Compare LES database with
+  reference low-resolution models developed in Task II. Evaluate the physics
+  consequence of industry modeling simplifications to inter-assembly heat
+  transfer.  
+\item Post-process LES database to generate an effective thermal
+  conductivity model applicable to subchannel and porous media methods. Apply new
+  closure to the models developed in Task II and quantify the improvement in
+  accuracy.
 \end{enumerate}
 \vspace{-.15in}
 
@@ -576,18 +597,24 @@ where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In o
 \vspace{-.2in}
 
 % milestones should correlate with those in Section 4, Milestone Table
-% provide clear connections between the project's overarching milestones, the planned production simulations, and the compute time expected for these simulations (should correlation with Section 2.3.i - use of resources requested).
+% provide clear connections between the project's overarching milestones, the
+% planned production simulations, and the compute time expected for these
+% simulations (should correlation with Section 2.3.i - use of resources
+% requested).
 
-A set of milestones has been developed to spread the computational burden over
-the expected 3 year term of the project; these milestones are listed in Table~\ref{tab:milestones} and represent the tasks
-in Section~\ref{sec:tasks}. The milestones in Table~\ref{tab:milestones} are directly correlated
-with the milestones shown in Section 4, where additional information is provided with respect
-to required computing resources.
+A set of milestones has been developed to spread the computational load over
+the expected 3 year term of the project; these milestones are listed in
+Table~\ref{tab:milestones} and represent the tasks in Section~\ref{sec:tasks}.
+The milestones in Table~\ref{tab:milestones} are directly correlated with the
+Milestones (Section 4 in the submitted material), where additional information
+is provided with respect to required computing resources.
 
 \begin{table}[h!]
 \footnotesize
 \centering
-\caption{Summary of the tasks and milestones associated with this proposal. ``Low-res.'' indicates ``low-resolution.''}
+\caption{Summary of the tasks and milestones associated with this proposal. 
+%``Low-res.'' indicates ``low-resolution.''
+}
 \begin{tabular}{c c c l l l l}
 \toprule
 Problem & Task & Milestone & Description & End Date & System & Node Hours\\
@@ -636,7 +663,8 @@ lowest mesh resolution requirements. Task IV and V focus on the post-processing
 of the data and comparisons with results from Task II. They are conducted in
 parallel with Task III.
 
-{\bf Need to describe HERE a node hours justification for each task, and how the tasks differ from each other in that regard. Must match table in appendix.}
+%{\bf Need to describe HERE a node hours justification for each task, and how
+%the tasks differ from each other in that regard. Must match table in appendix.}
 \input tex/readiness
 
 
