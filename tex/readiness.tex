@@ -31,7 +31,7 @@ explicitly).  Finally in the third year, we perform a 37 assembly simulation
 comprising 6.3 billion elements.
 %
 Using testing performed on Summit with the case of Busco
-\cite{fischer2021nekrs} at $N=7$ we estimate that to advance the full-core mesh
+\cite{nekrs} at $N=7$ we estimate that to advance the full-core mesh
 with 1 assembly modeled explicitly on 3420 nodes on Summit will require 0.275s
 per time step. We also estimate that 500,000 time steps will be required to
 reach statistical convergence based on past experience. This will translate in
@@ -43,7 +43,7 @@ using a similar process. We estimate them to cost 1.17 million Summit
 equivalent node-hours (9 assemblies modeled explicitly) and 4.8 million Summit
 equivalent node-hours (full core LES).
 
-For this challenge problem we request  173,000 node-hours on Summit for year 1 (130,000 node-hours for the run, 10\% additional hours for testing and 30,000 node-hours for mesh generation and mesh convergence studies). The total storage on the file system is estimated as 300 TB. The value is obtained by noting that the case has 90 billion grid points, and a NekRS 50 billion grid point restart file occxupies 1.4 TB, without compression. We typically store of the order of 100 files for a given run becore archiving to faciliate testing. For year 2 we request 1.04 million node-hours on Frontier, assuming a conversion of node-hour 1:1.33 between Summit and Frontier (we assume Frontier to have 25,000 nodes, with each node equipeed with 4 GPUs twice as fast as a V100). The hours are split between meshing (80,000) and the run, with additional 80,000 node-hours for testing. We also request 384 TB of storage, assuming now either a reduction to 25 files or the use of compression.  For year 3 we request 3.81 million node-hours on Frontier, witha  similar split between meshing and testing and the actual run. We request 453 TB of storage following a similar philosophy.
+For this challenge problem we request  173,000 node-hours on Summit for year 1 (130,000 node-hours for the run, 10\% additional hours for testing and 30,000 node-hours for mesh generation and mesh convergence studies). The total storage on the file system is estimated as 300 TB. The value is obtained by noting that the case has 90 billion grid points, and a NekRS 50 billion grid point restart file occxupies 1.4 TB, without compression. We typically store of the order of 100 files for a given run becore archiving to faciliate testing. For year 2 we request 1.04 million node-hours on Frontier, assuming a conversion of node-hour 1.33:1 between Summit and Frontier (we assume Frontier to have 25,000 nodes, with each node equipeed with 4 GPUs twice as fast as a V100). The hours are split between meshing (80,000) and the run, with additional 80,000 node-hours for testing. We also request 384 TB of storage, assuming now either a reduction to 25 files or the use of compression.  For year 3 we request 3.81 million node-hours on Frontier, witha  similar split between meshing and testing and the actual run. We request 453 TB of storage following a similar philosophy.
 
 \noindent{\bf Challenge 2.}
 A 217-pin SFR assembly with 5 wire-wrapper spans is estimated to require
