@@ -94,7 +94,7 @@ and the economic viability of new operating paradigms, such as load following.
 The accuracy of such simulations has direct implications on design
 certification, licensing, and eventual market share.
 
-The range of scales involved in the simulation of SMRs, and in general of rodded cores, is shown in Figure~\ref{fig:smr1}: it can easily span 6 to 8 orders of magnitude from the micrometers involved in turbulent dissipation to meters, posing a formidable challenge.
+The range of scales involved in the simulation of light water SMRs and SFRs, and in general of rodded cores, is shown in Figure~\ref{fig:smr1}: it can easily span 6 to 8 orders of magnitude from the micrometers involved in turbulent dissipation to meters, posing a formidable challenge.
 Computational Fluid Dynamics (CFD) is used widely in reactor design and safety
 analysis, but the scale required ro resolve all relevant scales for a full-core simulation has typically limited
 such geometries to less than 1\% of the core -- usually, a single ``fuel
@@ -106,7 +106,7 @@ account for inter-bundle coupling across the entire core are required.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.93\textwidth]{../figs/smr01.png}
+\includegraphics[width=0.9\textwidth]{../figs/smr01.png}
  \caption{\label{fig:smr1} Scales involved in the simulation of an SMR ranging from meters to the micrometers involves in the turbulent dissipation generated in the wake of mixing vanes.}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,19 +131,22 @@ constrains the reactor design.
 
 Light Water SMRs and SFRs both exhibit significant full-core thermal-fluid
 physics for which the available low-resolution analysis methods cannot capture
-important local/global interactions. In Light Water SMRs, inter-bundle mixing
-due to variations in mass flow rate plays an important role in fluid structure
-interaction (FSI) and deposition of coolant contaminants on heat transfer
-surfaces ({\bf TODO: references}). Thanks to the rapid
+important local/global interactions.
+
+In Light Water SMRs, inter-bundle mixing
+due to variations in mass flow rate between assemblies as well as three-dimensional non-axial components
+of the velocity (induced for example by "LOCA holes" \cite{jacques1997flow}) influence directly flow induced vibration (FIV) and related fuel failures.
+Furthermore the flow distribution plays an important role in the deposition of coolant contaminants on heat transfer
+surfaces \cite{petrov2016prediction}. Thanks to the rapid
 development of cutting-edge supercomputers, the pin-resolved CFD investigation
 for an entire SMR core has been recently achieved by our team \cite{Fang2021}.
 A set of momentum sources was developed to account for the effects of mixing
-spacer grids while the RANS approach was applied to model the turbulence. Further
-increase of the simulation fidelities (e.g., LES) will produce high-quality databases
-much needed to understand/model the SMR thermal-fluid performance at the full
-core scale, and thus facilitates the development and deployment of SMRs.
+
+spacer grids while the RANS approach was applied to model the turbulence.
+Further increase of the simulation fidelity including the explicit modeling of mixing vanes with Large Eddy Simulation will increase the accuracy
+in the prediction in the flow distribution and heat transfer and produce high-quality datasets.  These unprecedented datasets will provide the basis needed to better understand the impact of three-dimensional effects, non-homogenous flow distribution and inter-assembly mixing and improve the performance of lower fidelity models typically used in modeling the core at the design stage. This increase in accuracy will translate in a reduction in uncertainty and a consequent reduction in margins and better economics. We emphasize that a complete picture of three-dimensional core-wide flows is nearly impossible to obtain with experiments alone, due to the scales involved, or even through operational data, due to the lack of adequate instrumentation in actual reactors.
 % This is good, but I think it should be moved somewhere else
-{\bf more discussion about business impact of what we can learn in this proposal}
+
 
 In SFRs, a critical reactor design consideration is the structural expansion of
 the solid fuel components in response to differential temperature and
@@ -284,15 +287,13 @@ simulations \cite{wang2020,fanning,wang2020b,Boyd2016} and experiments
 \cite{Nguyen2017,Bhowmik2021,goth,song_2020,martin2020}.
 Only LCF resources are viable for the proposed full-core LES simulations
 -- our simulations will be approximately 1000\(\times\) the size of current
-``state-of-the-art'' experiments and CFD simulations, because only by modeling
-the entire reactor core can the interaction between global and local
-thermal-fluids be properly treated. Our full-core simulations will be
-first-of-a-kind in addressing core-wide reactor thermal-fluids and build upon
-our group's previous works \cite{Fang2021}. The success of this research will
-change the notion
-that rod-resolved, full-core CFD is still 5\(+\) years away ({\bf Elia do you
-have a good reference for this? I've seen people quote this but I don't recall
-where}).
+``state-of-the-art'' experiments and CFD simulations performed by other groups.
+Our full-core simulations will be first-of-a-kind in addressing core-wide reactor thermal-fluids and build upon
+our group's previous works \cite{Fang2021}, helping ushering in a new era where such simulations are possible.
+
+%The success of this research will
+%change the notion
+%that rod-resolved, full-core CFD is still 5\(+\) years away.
 
 % anticipated impact on community paradigms, valuable insights into or solving
 % a long-standing challenge, etc.).
@@ -302,8 +303,7 @@ where}).
 \vspace{-.2in}
 
 
-List any previous INCITE award(s) received and discuss the relationship to the
-work proposed.
+The PI has not received any INCITE award and no previous INCITE award is directly related to the outlined project.
 
 \vspace{-.25in}
 \section{RESEARCH OBJECTIVE AND MILESTONES} % typically about 6 pages
@@ -355,19 +355,10 @@ a niche application for nuclear engineering flows. The review of Grotzbach
 available in that time frame. Toward the end of the 2000s however, larger scale
 calculations started to emerge \cite{pointer2009simulations}.
 
-Since the advent of petascale computing (i.e, computers
+In fact, since the advent of petascale computing (i.e, computers
 capable of more than 1 petaflop), the simulation of portions of nuclear
-components has been demonstrated with LES \cite{merzari2017large}. For example,
-the simulation of large portions of single fuel assemblies has been demonstrated,
-including conjugate heat transfer calculations \cite{obabko2019}. These
-simulations can provide invaluable insight into the flow dynamics, which is
-difficult or often impossible to obtain with experiments alone. Moreover, large
-LES simulations allow investigation of global effects that otherwise are
-impossible to elucidate with smaller portions of the system. NEAMS has invested
-considerable resources in scalable high-order CFD software that can leverage
-large supercomputers to deliver simulations of unprecedented detail and
-scale. Example of some landmark calculations conducted with Nek5000/RS are presented in
-Figure~\ref{f:examples}.
+components has been demonstrated with LES \cite{merzari2017large}. For example, some landmark calculations conducted with Nek5000/RS are presented in
+Figure~\ref{f:examples}. The advent of pre-exascale machines has enabled the simulation of larger systems including a full core SMR \cite{Fang2021}.
 
 \begin{figure}[!ht]
 \centering
@@ -384,7 +375,7 @@ a-b) Cross sections of the flow in helical coil steam generator
 
 \begin{displayquote}
 \textit{
-This proposal seeks the development of a set of full-core LES
+Building upon the extensive experience of our group and recent achievements, this proposal seeks the development of a set of full-core LES
 datasets to address knowledge gaps in inter-assembly heat and mass
 transfer in nuclear reactors.
 }
