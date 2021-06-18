@@ -11,7 +11,7 @@ out of the Warburton group at Viginia Tech
 written in the open concurrent computed abstraction (OCCA) for platform
 portability \cite{occa}.  NekRS, libParanumal, and OCCA are being developed as
 part of DOE's Exascale Computing Project
- in the Center for Efficient Exascale Discretizations (CEED). 
+ in the Center for Efficient Exascale Discretizations (CEED).
 
 \vspace{-.25in}
 \subsection{Usage of Resources Requested }
@@ -42,6 +42,8 @@ The cost of the second and third year simulations on Frontier can be estimated
 using a similar process. We estimate them to cost 1.17 million Summit
 equivalent node-hours (9 assemblies modeled explicitly) and 4.8 million Summit
 equivalent node-hours (full core LES).
+
+For this challenge problem we request  173,000 node-hours on Summit for year 1 (130,000 node-hours for the run, 10\% additional hours for testing and 30,000 node-hours for mesh generation and mesh convergence studies). The total storage on the file system is estimated as 300 TB. The value is obtaines by noting that the cases to be run have 90 billion grid points, and a NekRS 50 billion grid point restart file occxupies 1.4 TB, without compression. We typically store of the order of 100 files for a given run becore archiving to faciliate testing. For year 2 we request 1.04 million node-hours on Frontier, assuming a conversion of node-hour 1:1.33 between Summit and Frontier (we assume Frontier to have 25,000 nodes, with each node equipeed with 4 GPUs twice as fast as a V100). The hours are split between meshing (80,000) and the run, with additional 80,000 node-hours for testing. We request 384 TB of storage, assuming now either a reductioin to 25 files or the use of compression.  For year 3 we request 3.81 million node-hours on Frontier, witha  similar split between meshing and testing and the actual run. We request 453 TB of storage following a similar philosophy. 
 
 \noindent{\bf Challenge 2.}
 A 217-pin SFR assembly with 5 wire-wrapper spans is estimated to require
@@ -75,13 +77,13 @@ $O(nN)$ work for a discretization involving $n=EN^3$ gridpoints, where $E$ is
 the number of spectral elements and $N$ is the discretization order (typically,
 $N=$6--10) \cite{dfm02}.  This low complexity contrasts sharply with that of
 the $p$-type FEM, which has work and storage complexity of $O(nN^3)$ that
-effectively precludes using $N>3$.  
+effectively precludes using $N>3$.
 
 Because of their ability to accurately transport small-scale flow features over
 large domains (for a given resolution, $n$), high-order discretizations have
 been the mainstay of DNS and LES turbulence simulations since the early 1970s
-\cite{kreiss72,sao72}.   The SEM allows one to employ high-order methods in 
-complex domains relevant to reactor analysis  \cite{pat84,sao80}.   
+\cite{kreiss72,sao72}.   The SEM allows one to employ high-order methods in
+complex domains relevant to reactor analysis  \cite{pat84,sao80}.
 The central idea is to map
 quantities from a reference element, $\Oh:=[-1,1]^3$ to curvilinear brick
 elements, $\Omega^e$, $e=1,\dots,E$.  On each element, $e$, the velocity
@@ -104,14 +106,14 @@ $u_{ijk}^e$, that are addressed lexicographically with no indirect
 addressing.\footnote{Indirect addressing (with communication) is used,
 however, to {\em assemble} the residuals at element interfaces \cite{dfm02}.},
 The derivative can be evaluated with $\approx n$ memory references and
-$\approx 2nN$ operations, which yields a favorable $O(N)$ flops-to-byte ratio 
+$\approx 2nN$ operations, which yields a favorable $O(N)$ flops-to-byte ratio
 (computational intensity).
-Differentiation in physical space on $\Omega^e$ is performed by the chain rule, 
-(e.g., $u_x = 
-u_{\xi}   \mbox{\footnotesize $\xi_x$}    \,+\, 
-u_{\eta}  \mbox{\footnotesize $\eta_x$}   \,+\, 
-u_{\zeta} \mbox{\footnotesize $\zeta_x$}  $), 
-which is applied pointwise at the GLL nodes in $\approx 5n$ operations.  
+Differentiation in physical space on $\Omega^e$ is performed by the chain rule,
+(e.g., $u_x =
+u_{\xi}   \mbox{\footnotesize $\xi_x$}    \,+\,
+u_{\eta}  \mbox{\footnotesize $\eta_x$}   \,+\,
+u_{\zeta} \mbox{\footnotesize $\zeta_x$}  $),
+which is applied pointwise at the GLL nodes in $\approx 5n$ operations.
 The principal advantage of the SEM is that the error in the polynomial
 interpolants decreases exponentially fast with $N$, {\em error}$\sim e^{-\sigma
 N}$, $\sigma > 0$, when the solution is smooth (i.e., resolved).
@@ -148,7 +150,7 @@ the Cray-XC40, Beskow.  At this limit, Nek5000 continues to exhibit ideal linear
 scaling, which means that, for the same computational resources (node hours and
 joules), the solution time is reduced by an order of magnitude.  With a reduced
 number of gridpoints ($n$) and time-per-gridpoint (seconds per
-degree-of-freedom) we can conclude that Nek5000/RS is well suited for the 
+degree-of-freedom) we can conclude that Nek5000/RS is well suited for the
 proposed high-fidelity simulations.
 
 
@@ -157,7 +159,7 @@ proposed high-fidelity simulations.
 \centering
 \includegraphics[width=0.94\textwidth]{figs/libp_kernels.png}
 \caption{\label{fig:roof}\small{
-libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$) 
+libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$)
 vs.  polynomial order, $N$   \cite{ceed_pb_paper_2020}.}}
 \vspace{-0.8em}
 \end{wrapfigure}
@@ -177,7 +179,7 @@ nested parallel {\em for} loops in the kernel are annotated with
 \texttt{@outer} and \texttt{@inner} to describe how they are to be mapped to a
 grid of work-item and work-groups in OpenCL or threads and thread-blocks in
 CUDA and HIP. All iterations that are annotated with \texttt{@outer} or
-\texttt{@inner} are assumed to be free of loop carried dependencies. 
+\texttt{@inner} are assumed to be free of loop carried dependencies.
 The OCCA-based libParanumal kernels
 typically saturate the roofline on the NVIDIA GPUs, as illustrated
 in Fig. \ref{fig:roof}, where we see that the local Poisson kernel
@@ -206,7 +208,7 @@ requires only 0.1--0.4 seconds per step on Summit.  Moreover, production
 Nek5000 runs on all or half of Mira were limited to about 15 million elements
 ($n \approx 5$B), whereas 100-million-element runs with $n \approx 50$--75
 billion are readily accessible on Summit with NekRS operating at its
-strong-scale (i.e., {\em fast}) limit.  
+strong-scale (i.e., {\em fast}) limit.
 Table \ref{tab:mira} compares the Nek5000/NekRS Mira/Summit
 performance for DNS of a 1.1B-point rod-bundle simulation with a detailed
 spacer grid geometry.  The Mira data point is at its strong-scale limit
@@ -222,27 +224,27 @@ points, NekRS/Summit is about 4.5 times faster than Nek5000/Mira. \\
 
   \begin{center} \begin{tabular}{|l|l|c|r|r|r|r|r|r|r|}
   \hline
-  \multicolumn{10}{|c|}{{\bf Spacer-Grid DNS Performance on Mira vs. Summit, $E=3235953$, $N=7$, $n=1.10B$}} \\ 
+  \multicolumn{10}{|c|}{{\bf Spacer-Grid DNS Performance on Mira vs. Summit, $E=3235953$, $N=7$, $n=1.10B$}} \\
   \hline
   \hline
   System & Code      & Device & Node & Rank & R/N & $E$/Rank & $n$/Rank &  $t_{step} (s) $ &  Eff  \\
   \hline
   \hline
    Mira  &Nek5000&CPU &  8192 &262144 & 32 &  12   &  4116   &  6.90e-01 & 100  \\
-  \hline          
-  \hline          
+  \hline
+  \hline
 %%%%%%%%
 %OLD data&       &    &   38  & 1596  & 42 &  2027 & 695446  &  1.06e+01 & 100  \\
 %%%%%%%%
          &       &    &   38  & 1596  &  42 & 2027  & 695446 &  1.68e+01 & 100 \\
   Summit &Nek5000&CPU &   76  & 3192  &  42 & 1013  & 347723 &  0.50e+01 & 106 \\
          &       &    &  152  & 6384  &  42 & 506   & 173861 &  0.23e+01 & 114 \\
-         &       &    &  304  &12768  &  42 & 253   &  86930 &  0.11e+01 & 120 \\ \hline \hline          
+         &       &    &  304  &12768  &  42 & 253   &  86930 &  0.11e+01 & 120 \\ \hline \hline
          &       &    &   38  & 228   &   6 &  14193&  4.8M  &  2.75e-01 & 100 \\
   Summit & NekRS &GPU &   60  & 360   &   6 &  8988 &  3.0M  &  1.92e-01 &  90 \\
          &       &    &   76  & 456   &   6 &  7096 &  2.4M  &  1.64e-01 &  84 \\
          &       &    &   98  & 588   &   6 &  5503 &  1.8M  &  1.39e-01 &  77 \\
-  \hline 
+  \hline
   \multicolumn{10}{ c }{{}} \vspace*{-.4in}
   \end{tabular}
   \end{center}
@@ -310,8 +312,8 @@ with pressure tol= 1.e-05 and velocity tol= 5.e-12. R/N is the number of ranks p
 Table~\ref{rod-strong-weak} demonstrates NekRS scaling on Summit for a
 $17 \times 17$ rod-bundle configuration, averaged over 100 timesteps
 using 3rd-order timestepping with a Courant number of CFL=0.54.
-In this case, 80\% strong-scale efficiency is realized for 
-$n_{0.8} = n/P \approx 2.6$M.  The weak-scale study was conducted at a 
+In this case, 80\% strong-scale efficiency is realized for
+$n_{0.8} = n/P \approx 2.6$M.  The weak-scale study was conducted at a
 challenging value of $n/P = $2.1M $< n_{0.8}$ and sustains $> 80\%$
 efficiency out to all of Summit---over a 50-fold increase in processor count.
 %%%% $n/P$: number of grid points per gpu,
@@ -322,14 +324,14 @@ efficiency out to all of Summit---over a 50-fold increase in processor count.
 %% NEK: pebbles
 Table~\ref{peb352k-strong} shows strong-scaling for the 352,625-pebble reactor
 configuration of Fig. 1 (right), which is representative of the type of flow
-compexity anticipated in the proposed work.  Here, the pressure Poisson 
+compexity anticipated in the proposed work.  Here, the pressure Poisson
 problem is challenged and requires an average of 7.2 iterations per step
 for this $n=51$B gridpoint problem ($E$=98M, $N$=8).  The Courant number
 is CFL $\approx$ 4.  For this case, the strong-scale limit is $n_{0.8}\approx 1.9$M.
 %% fluid mesh comprising $E = 98782067$
 %% is the full core for the pebble bed reactor, which
 %% has 352,625 spherical pebbles and a fluid mesh comprising $E = 98782067$
-%% elements of order $N=8$ ($n\approx 51B$). 
+%% elements of order $N=8$ ($n\approx 51B$).
 
 %% NEK: single rod on advaned arch
 Finally, in anticipation of running on Frontier, we present in
@@ -356,7 +358,7 @@ A100, which shows a 1.6 speed-up over the V100.
 %
 %  \begin{center} \begin{tabular}{|l|l|c|r|r|r|c|r|}
 %  \hline
-%  \multicolumn{8}{|c|}{{\bf DNS $5\times 5$, Performance on Mira vs. Summit, $E=8387008$, $N=7$, $n=2.87B$}} \\ 
+%  \multicolumn{8}{|c|}{{\bf DNS $5\times 5$, Performance on Mira vs. Summit, $E=8387008$, $N=7$, $n=2.87B$}} \\
 %  \hline
 %  System & Code & Device & Node & Rank &  $n$/Rank &  $t_{step} (s) $ & Eff  \\
 %  \hline
@@ -376,10 +378,10 @@ A100, which shows a 1.6 speed-up over the V100.
 %  \hline
 %  \end{tabular}
 %  \end{center}
-%  \caption{\label{dns-strong}Performance on Mira and Summit.}  
+%  \caption{\label{dns-strong}Performance on Mira and Summit.}
 %%\caption{\label{dns-strong} Performance on Mira (Nek5000) vs. Summit CPU (Nek5000) and GPU (NekRS).
-%%Timings are in seconds for the wall time per step, $t_{step}$. 
-%%{\bf DNS $5\times5$}: 400 timesteps over simulation time interval [59.71, 59.78] 
+%%Timings are in seconds for the wall time per step, $t_{step}$.
+%%{\bf DNS $5\times5$}: 400 timesteps over simulation time interval [59.71, 59.78]
 %% with $\dt$= 1.9e-04 (CFL=0.32) at $Re_D=19000$.  BDF2+EXT2. }
 %\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -463,7 +465,7 @@ Nek5000 \cite{otero18}.  Additionally, we are able to use Nek5000/RS to perform
 all of the data analysis, at scale.  Both codes collect statistics (e.g., mean,
 RMS, and cross-correlations) for velocity and temperature at runtime and
 extensive turbulent-statistics post-processing utilities are available for
-Nek5000 that are compatible with NekRS. 
+Nek5000 that are compatible with NekRS.
 
 Another concern is construction and use of very large meshes.  The record
 for Nek5000 on Mira was 15M elements.  We have recently extended Nek5000/RS
@@ -471,9 +473,9 @@ to support over 1B elements ($n$=216B).   This extension required promoting
 several arrays to support int8 indexing during problem-setup.  (These
 are arrays that are used to identify face-face and edge-edge connections
 between elements---the array sizes scale as $E/P$ and are thus fully
-scalable.)   Fortunately, for mesh construction, we can use many of the 
+scalable.)   Fortunately, for mesh construction, we can use many of the
 available FEM tools because the number of elements required for the SEM
-is two orders of magnitude smaller than that required for low-order FEM 
+is two orders of magnitude smaller than that required for low-order FEM
 simulations at the same resolution.
 For mesh partitioning, we have recently developed parallel domain partitioners,
 parRCB and parRSB, that couple with Nek5000/RS.  parRCB uses recursive
@@ -518,4 +520,3 @@ team is immediately ready to conduct the high-impact science described.
 \bibliography{references,ref_nt,emmd,main}
 
 \end{document}
-
