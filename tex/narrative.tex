@@ -496,7 +496,7 @@ cluster at ANL.
 Additional details are now provided for each task. During Task I, full-core
 meshes will be generated for the prototypic design. Mesh convergence will be
 performed with \(h\)-type refinement\footnote{$h$-type refinement refers to
-mesh convergence evaluated by reducing element size.} to leverage past
+mesh convergence realized by reducing element size.} to leverage past
 experience with optimal element counts per GPU on Summit. Initial RANS
 simulations will be performed on Summit.  Full-core models will be constructed
 for the four operating conditions (detailed in Task III) based on
@@ -544,7 +544,7 @@ the inter-assembly region will be used to compute an effective conductivity
 q_i^{''}=-\kappa_{ij}\frac{\partial T}{\partial x_j}\ ,
 \end{equation}
 where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, Courant-Friedrichs-Lewy (CFL) limits, and ensuing time step limitations, are of paramount important to low-resolution methods. Therefore, low-resolution tools such as those used by Terrapower \cite{touran} approximate the fluid flow in the inter-assembly region as a conducting solid. By supplying a necessary closure, \(\kappa_{ij}\), for this model, the proposed research is {\it compatible with industry modeling tools} and can be rapidly integrated into the ARDP design process.
-\\
+\\[2ex]
 
 \vspace{-.25in}
 \subsection{Milestones}
