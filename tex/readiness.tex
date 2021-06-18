@@ -153,7 +153,7 @@ proposed high-fidelity simulations.
 \vspace{-0.8em}
 \centering
 \includegraphics[width=0.94\textwidth]{figs/libp_kernels.png}
-\caption{\label{fig:roof}\footnotesize{
+\caption{\label{fig:roof}\small{
 libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$) 
 vs.  polynomial order, $N$   \cite{ceed_pb_paper_2020}.}}
 \vspace{-0.8em}
@@ -178,10 +178,8 @@ CUDA and HIP. All iterations that are annotated with \texttt{@outer} or
 The OCCA-based libParanumal kernels
 typically saturate the roofline on the NVIDIA GPUs, as illustrated
 in Fig. \ref{fig:roof}, where we see that the local Poisson kernel
-(without parallel communication) realizes 1.5 TFLOPS FP64 on a single V100
-of Summit \cite{ceed_bp_paper_2020}.
-%
-
+(without parallel communication) realizes 1.25 TFLOPS FP64 for polynomial
+order $N=7$ on a single V100 of Summit \cite{ceed_bp_paper_2020}.
 
 
 
