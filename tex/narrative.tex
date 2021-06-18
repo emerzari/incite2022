@@ -102,21 +102,28 @@ and the economic viability of new operating paradigms, such as load following.
 The accuracy of such simulations has direct implications on design
 certification, licensing, and eventual market share.
 
-The range of scales involved in the simulation of light water SMRs and SFRs, and in general of rodded cores, is shown in Figure~\ref{fig:smr1} -- the range can easily span 6 to 8 orders of magnitude, from the micrometers involved in turbulent dissipation to meters, posing a formidable challenge.
-Computational Fluid Dynamics (CFD) is used widely in reactor design and safety
-analysis, but the computational power required to resolve all relevant scales for a full-core simulation has typically limited
-such geometries to less than 1\% of the core -- usually, a single ``fuel
-bundle,'' or grouping of rods \cite{wang2020,fanning,wang2020b}.
-The power and flow distributions in a reactor can be highly nonuniform, and many physics
-phenomena cannot be accurately predicted with single-bundle models. Models that
-account for inter-bundle coupling across the entire core are required.
+The range of scales involved in the simulation of light water SMRs and SFRs,
+and in general of rodded cores, is shown in Figure~\ref{fig:smr1} -- the range
+can easily span 6 to 8 orders of magnitude, from the micrometers involved in
+turbulent dissipation to meters, posing a formidable challenge.  Computational
+Fluid Dynamics (CFD) is used widely in reactor design and safety analysis, but
+the computational power required to resolve all relevant scales for a full-core
+simulation has typically limited such geometries to less than 1\% of the core
+-- usually, a single ``fuel bundle,'' or grouping of rods
+\cite{wang2020,fanning,wang2020b}.  The power and flow distributions in a
+reactor can be highly nonuniform, and many physics phenomena cannot be
+accurately predicted with single-bundle models. Models that account for
+inter-bundle coupling across the entire core are required.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/smr01.png}
- \caption{\label{fig:smr1} Scales involved in the simulation of an SMR ranging from meters to the micrometers involves in the turbulent dissipation generated in the wake of mixing vanes.}
-\end{figure}
+ \caption{\label{fig:smr1} 
+Range of scales in the simulation of an SMR spanning from the full reactor
+(meters, left) to turbulent dissipation (micrometers, right) generated in the
+wake of mixing vanes.
+} \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 However, the
@@ -608,6 +615,8 @@ Table~\ref{tab:milestones} and represent the tasks in Section~\ref{sec:tasks}.
 The milestones in Table~\ref{tab:milestones} are directly correlated with the
 Milestones (Section 4 in the submitted material), where additional information
 is provided with respect to required computing resources.
+
+\input tex/table1
 
 \begin{table}[h!]
 \footnotesize
