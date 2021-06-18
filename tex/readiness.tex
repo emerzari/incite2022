@@ -44,7 +44,7 @@ using a similar process. We estimate them to cost 1.17 million Summit
 equivalent node-hours (9 assemblies modeled explicitly) and 4.8 million Summit
 equivalent node-hours (full core LES).
 
-For this challenge problem we request  173,000 node-hours on Summit for year 1 (130,000 node-hours for the run, 10\% additional hours for testing and 30,000 node-hours for mesh generation and mesh convergence studies). The total storage on the file system is estimated as 300 TB. The value is obtained by noting that the case has 90 billion grid points, and a NekRS 50 billion grid point restart file occxupies 1.4 TB, without compression. We typically store of the order of 100 files for a given run becore archiving to faciliate testing. For year 2 we request 1.04 million node-hours on Frontier, assuming a conversion of node-hour 1.33:1 between Summit and Frontier (we assume Frontier to have 25,000 nodes, with each node equipeed with 4 GPUs twice as fast as a V100). The hours are split between meshing (80,000) and the run, with additional 80,000 node-hours for testing. We also request 384 TB of storage, assuming now either a reduction to 25 files or the use of compression.  For year 3 we request 3.81 million node-hours on Frontier, witha  similar split between meshing and testing and the actual run. We request 453 TB of storage following a similar philosophy.
+For this problem we request  173,000 node-hours on Summit for year 1 (130,000 node-hours for the run, 10\% additional hours for testing and 30,000 node-hours for mesh generation and mesh convergence studies). The total storage on the file system is estimated as 300 TB. The value is obtained by noting that the case has 90 billion grid points, and a NekRS 50 billion grid point restart file occxupies 1.4 TB, without compression. We typically store of the order of 100 files for a given run becore archiving to faciliate testing. For year 2 we request 1.04 million node-hours on Frontier, assuming a conversion of node-hour 1.33:1 between Summit and Frontier (we assume Frontier to have 25,000 nodes, with each node equipped with 4 GPUs twice as fast as a V100). The hours are split between meshing (80,000) and the run, with additional 80,000 node-hours for testing. We also request 384 TB of storage, assuming now either a reduction to 25 files or the use of compression.  For year 3 we request 3.81 million node-hours on Frontier, with a similar split between meshing and testing and the actual run. We request 453 TB of storage following a similar philosophy.
 
 \noindent{\bf Challenge 2.}
 A 217-pin SFR assembly with 5 wire-wrapper spans is estimated to require
@@ -63,7 +63,7 @@ The cost of the second and third year simulations on Frontier can be estimated
 using a similar process. We estimate them to cost between 1.4 and 4.2 million
 Summit equivalent node-hours depending on the Reynolds number.
 
-For this challenge problem we request  340,000 node-hours on Summit for year 1 (250,000 node-hours for the run, 30,000 additional hours for testing and 60,000 node-hours for mesh generation and mesh convergence studies). The total storage on the file system is estimated as 350 TB (the mesh is estimated to have 125 billion grid points).  For year 2 we request 1.5 million node-hours on Frontier. We also request 480 TB of storage, assuming only the files of one of the concurrent runs is at a given time on the file system and a considerable reduction in the number of files used and/or the use of compression.  For year 3 we request 4.5 million node-hours on Frontier, witha  similar split between meshing and testing and the actual run. We request 480 TB of storage following a similar philosophy. 
+For this problem we request  340,000 node-hours on Summit for year 1 (250,000 node-hours for the run, 30,000 additional hours for testing and 60,000 node-hours for mesh generation and mesh convergence studies). The total storage on the file system is estimated as 350 TB (the mesh is estimated to have 125 billion grid points).  For year 2 we request 1.5 million node-hours on Frontier. We also request 480 TB of storage, assuming only the files of one of the concurrent runs is at a given time on the file system and a considerable reduction in the number of files used and/or the use of compression.  For year 3 we request 4.5 million node-hours on Frontier, witha  similar split between meshing and testing and the actual run. We request 480 TB of storage following a similar philosophy. 
 
 
 \vspace{-.25in}
@@ -326,18 +326,18 @@ efficiency out to all of Summit---over a 50-fold increase in processor count.
 %%%% $\Delta t=$ 3e-4, corresponding to CFL=0.54.
 
 %% NEK: pebbles
-Table~\ref{peb352k-strong} shows strong-scaling for the 352,625-pebble reactor
-configuration of Fig. 1 (right), which is representative of the type of flow
-compexity anticipated in the proposed work.  Here, the pressure Poisson
-problem is challenged and requires an average of 7.2 iterations per step
-for this $n=51$B gridpoint problem ($E$=98M, $N$=8).  The Courant number
-is CFL $\approx$ 4.  For this case, the strong-scale limit is $n_{0.8}\approx 1.9$M.
 %% fluid mesh comprising $E = 98782067$
 %% is the full core for the pebble bed reactor, which
 %% has 352,625 spherical pebbles and a fluid mesh comprising $E = 98782067$
 %% elements of order $N=8$ ($n\approx 51B$).
 
 %% NEK: single rod on advaned arch
+Table~\ref{peb352k-strong} shows strong-scaling for the 352,625-pebble reactor
+configuration of Fig. 1 (right), which is representative of the type of flow
+compexity anticipated in the proposed work.  Here, the pressure Poisson
+problem is challenged and requires an average of 7.2 iterations per step
+for this $n=51$B gridpoint problem ($E$=98M, $N$=8).  The Courant number
+is CFL $\approx$ 4.  For this case, the strong-scale limit is $n_{0.8}\approx 1.9$M.
 Finally, in anticipation of running on Frontier, we present in
 Table~\ref{singlerod} single-GPU results for NekRS on the AMD MI100.  These
 results are enabled by the portability of OCCA, which has support for a HIP
