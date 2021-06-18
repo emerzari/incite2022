@@ -4,36 +4,24 @@
 \vspace{-.2in}
 %Why is nekRS ready for the task? What simulations have we already done?
 
-The proposed simulations will be performed using a GPU-oriented version of 
-Nek5000, which is a highly scalable open-source code for fluid-thermal 
-simulation and a Gordon Bell Prize winner \cite{tufo99}.  This new code,
-NekRS, is based on high-performance kernels from the libParanumal library
+All proposed simulations will be performed on GPUs using a GPU-oriented version
+of Nek5000. Nek5000 is a highly scalable open-source code for thermal-fluid 
+simulation and a Gordon Bell Prize winner \cite{tufo99} with a long development
+history on leading-edge parallel platforms. This new GPU-oriented version of Nek5000,
+{\it NekRS}, is written in C++ and is being developed as part of DOE's Exascale Computing
+Project in the Center for Efficient Exascale Discretizations (CEED). {\bf mention ECP?}
+
+NekRS is based on high-performance kernels from the libParanumal library
 out of the Warburton group at Viginia Tech and is written in the open
 concurrent computed abstraction (OCCA) for platform portability.  OCCA
 is a decorated C extension that supports multiple back-ends, including CUDA,
-HIP, and OpenCL.  For the NVIDIA platforms it generates code that matches
-the roofline performance of hand-written CUDA. (See Fig. \ref{fig:ready}.)
+HIP, and OpenCL. For the NVIDIA platforms, OCCA generates code that matches
+the roofline performance of hand-written CUDA. 
 
-All simulations proposed here will be performed on GPUs. We propose to use
-Summit.  These will be performed with the Nek5000 code
-\cite{argonne:nekdoc}, an open-source CFD  community code for the simulation of
-unsteady and incompressible or low Mach number fluid flow, heat transfer,
-combustion, and magnetohydrodynamics in general three-dimensional domains. We
-will in particular use the novel GPU version of Nek5000 - NekRS.
-
-The simulations will be performed using the open source spectral element codes
-Nek5000 and NekRS.   {\em Nek5000} is a Gordon Bell prize winning code with a
-long development history on leading-edge parallel platforms.  It strong scales
-to $>$1M ranks \cite{fischer15} and is currently used by about 400 researchers
-around the world for the study of turbulence, heat transfer, combustion, and
-other flow phenomena.  {\em NekRS} is a new GPU-oriented version of Nek5000
-written in C++ that is being developed as part of DOE's Exascale Computing
-Project in the Center for Efficient Exascale Discretizations (CEED).  It is
-based on OCCA, the open concurrent compute abstraction developed by Warburton
-and co-workers, and uses fast OCCA kernels coming out of Warburton's
-libParanumal project.  All simulations on Summit use NekRS, which typically
+We propose to use Summit and Frontier for all proposed simulations. Past experience shows that
+NekRS typically
 runs 12--14 times faster than Nek5000 on the Summit nodes because of the
-relative performance of the 6 V100s compared to the 42 CPU cores.  (The
+relative performance of the 6 V100s compared to the 42 CPU cores (he
 principal kernels are sustaining 1-2 Tflops (fp64) on the Nvidia V100s
 \cite{fischer20a,warburton2019}.) As part of the CEED mandate, OCCA supports
 backends for Nvidia and AMD architectures, so we expect to have state of the
