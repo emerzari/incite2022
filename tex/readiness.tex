@@ -149,16 +149,16 @@ degree-of-freedom) we can conclude that Nek5000/RS is well suited for the
 proposed high-fidelity simulations.
 
 
-\noindent{\bf Parallel Performance.}
 \begin{wrapfigure}{R}{0.40\textwidth}
 \vspace{-0.8em}
 \centering
-\includegraphics[width=0.35\textwidth]{figs/libp_kernels.png}
+\includegraphics[width=0.45\textwidth]{figs/libp_kernels.png}
 \caption{\label{fig:roof}\footnotesize{
 libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$) 
 vs.  polynomial order, $N$   \cite{ceed_pb_paper_2020}.}}
 \vspace{-0.8em}
 \end{wrapfigure}
+\noindent{\bf Parallel Performance.}
 NekRS has been developed in close collaboration with the libParanumal project
 \cite{warburton2019,ChalmersKarakusAustinSwirydowiczWarburton2020,streamParanumal2020},
 which provides high-performance kernels for high-order methods on GPUs.  The
