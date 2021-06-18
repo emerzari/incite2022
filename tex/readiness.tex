@@ -12,6 +12,31 @@ the open concurrent computed abstraction (OCCA) for platform portability
 DOE's ECP in the Center for Efficient Exascale
 Discretizations (CEED). 
 
+\vspace{-.25in}
+\subsection{Usage of resources requested }
+\vspace{-.2in}
+
+A single SMR assembly with mixing vanes explicitly modeled is expected to involve
+approximately 170 million elements. This estimate is based on the work of
+Busco et. al. \cite{busco2019invariant} for a 5x5 bundle and extrapolating to 5 17x17 axial grids or roughly $60 x$ larger.
+
+Therefore the first simulation on Summit will aim for 270 million elements (1 assembly modeled explicitly) with the rest of the full core modeled with RANS (using the mesh of Fang which comprises 100  million elements \cite{Fang2021}). In the second year we follow with 1.6 billion elements (9 assemblies modeled explicitly).
+Finally in the third year, we perform a 37 assembly simulation comprising 6.3 billion elements.
+
+Using testing performed on Summit with the case of Busco \cite{fischer2021nekrs} at $N=7$ we estimate that to advance the full-core mesh with 1 assembly modeled explicitly on 3420 nodes on Summit will require 0.275s per time step. We also estimate that 500,000 time steps will be required to reach statistical convergence based on past experience. This will translate in 130,000 node-hours for the first year on Summit. We note that this calculation will exceed 90 billion grid points.
+
+The cost of the second and third year simulations on Frontier can be estimated using a similar process. We estimate them to cost 1.17 million Summit equivalent node-hours (9 assemblies modeled explicitly) and 4.8 million Summit equivalent node-hours (full core LES).
+
+A 217-pin SFR assembly with 5 wire-wrapper spans, is estimated to require between 10 and 30 million elements depending on the Reynolds number for an LES, based on past models \cite{merzari2020toward}. The full core simulation (~200 assemblies) is then estimated to require between 2 and 6 billion elements with LES at $N=7$.  RANS modeling can be conducted with a coarser resolution and can be achieved with lower resolution and it is estimated to require 1 billion elements at $N=5$ (125 billion grid points).
+
+On the first year we assume the RANS calculation will require a cost per time step of 0.4s per step on 4608 cores, based on past experience with wire-wrappers on Summit.  This will translate for 500,000 time steps in a computational cost of 256,000 node-hours.
+
+The cost of the second and third year simulations on Frontier can be estimated using a similar process. We estimate them to cost between 1.4 and 4.2 million Summit equivalent node-hours depending on the Reynolds number.
+
+\vspace{-.25in}
+\subsection{Computational Approach }
+\vspace{-.2in}
+
 \noindent{\em State-of-the-Art}
 The numerical discretization of the Navier-Stokes and thermal-transport equations
 in Nek5000/RS is based on the spectral element method (SEM) \cite{pat84}, which
