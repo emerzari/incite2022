@@ -28,7 +28,7 @@ facilities investment is justified.
 \centering
 \includegraphics[width=0.93\textwidth]{figs/pebble01.png}
  \caption{\label{fig:350k} 
-High fidelity reactor simulations of turbulent flow performed on OLCF/Summit,
+\small High fidelity reactor simulations of turbulent flow performed on OLCF/Summit,
 enabled through DOE/NEAMS, ECP/ExaSMR and ECP/CEED collaborations:  
 up to a full pebble bed core with 352,625 pebbles using an all-hex mesh comprising 
 $E$=98,782,067 spectral elements of order $N=8$.
@@ -119,7 +119,7 @@ inter-bundle coupling across the entire core are required.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/smr01.png}
- \caption{\label{fig:smr1} 
+ \caption{\label{fig:smr1}\small
 Range of scales in the simulation of an SMR spanning from the full reactor
 (meters, left) to turbulent dissipation (micrometers, right) generated in the
 wake of mixing vanes.
@@ -380,7 +380,7 @@ Figure~\ref{f:examples}. The advent of pre-exascale machines has enabled the sim
 \centering
 \includegraphics[width=0.93\textwidth]{figs/examples.png}
 %\includegraphics[width=0.93\textwidth]{figs/examples.png}
-\caption{Examples of large-scale LES/DNS simulation of nuclear reactor flows.
+\caption{\small Examples of large-scale LES/DNS simulation of nuclear reactor flows.
 a-b) Cross sections of the flow in helical coil steam generator
 \cite{alper2018}; c) Velocity magnitude in a 61-pin wire-wrapped rod bundle
 \cite{goth2018comparison}; d) Velocity magnitude in a random pebble bed
@@ -482,7 +482,7 @@ have been identified as follows:
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
 \item Develop full-core RANS mesh with one assembly explicitly modeled using
-LES.  Perform Mesh convergence studies for a single LES bundle. Conduct CFD
+LES.  Perform mesh convergence studies for a single LES bundle. Conduct CFD
 simulations and extract relevant information on flow spectra and mixing at the
 interface between the resolved (LES) and RANS assemblies.
 \item Develop a full-core RANS mesh with nine assemblies explicitly modeled. Conduct CFD simulations and extract relevant information on flow spectra and mixing at the interface 
@@ -493,6 +493,17 @@ inter-bundle mixing at the interface between assemblies. Perform averaging and
 characterize flow distribution across the full core.
 \end{enumerate}
 \vspace{-.15in}
+
+This work will answer several outstanding questions:
+
+\vspace{-.15in}
+\begin{itemize}
+\item How does inter-bundle mixing affect core temperatures? Temperatures correlate with deposition of coolant contaminants on the fuel heat transfer surface.
+\item How does the mixing vane impact momentum losses and inter-bundle mixing? Trade-offs between pressure loss and enhanced mixing may illuminate new insights into nuclear fuel design.
+\end{itemize}
+\vspace{-.15in}
+
+The above questions will be addressed by comparing temperature, pressure, and mass flux distributions across the LES database.
 
 % {\bf Is it worth mentioning what system we're modeling? I call out ABR in the
 % next section. Either let's do the same here or cut out the ABR specifics in the
@@ -516,7 +527,7 @@ lower-resolution tools. The major tasks have been identified as follows:
 \item Develop full-core meshes and test at scale to ensure high quality. Mesh
     convergence studies will be conducted for small groups of bundles under a
     variety of power and flow gradients to establish applicability to full-core
-    geometries. Develop full-core models based on the ABR specifications \cite{abr}.  
+    geometries. 
 \item Develop low-resolution full-core models using the NEAMS
     porous media application, Pronghorn \cite{novak2021b}. These models will be
     compared against the generated LES database to assess the effect if proper
@@ -556,7 +567,7 @@ for the four operating conditions (detailed in Task III) based on
 openly-available material properties, power, and mass flow distributions.
 During Task II, equivalent low-resolution models will be constructed and run on
 workstations available to our group at ANL.
-\\[-5ex]
+
 
 During Task III, full-core LES CFD simulations will be conducted for four
 different combinations of core power and flowrate. The first condition
@@ -579,7 +590,7 @@ In Task IV, the LES database will be compared against the reference low-resoluti
       redistributions with flowrate changes.  
 \\[-4.5ex]
 \item Are significant cross-flows generated across the core? In submerged
-    ``pool-type'' reactor concepts, such flows could draw fluid into the core from
+    ``pool-type'' reactor concepts, such flows could draw fluid from
     bypass regions, changing fuel temperature distributions.  
 \\[-4.5ex]
 \end{itemize}
@@ -596,8 +607,7 @@ the inter-assembly region will be used to compute an effective conductivity
 \begin{equation}
 q_i^{''}=-\kappa_{ij}\frac{\partial T}{\partial x_j}\ ,
 \end{equation}
-where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, Courant-Friedrichs-Lewy (CFL) limits, and ensuing time step limitations, are of paramount important to low-resolution methods. Therefore, low-resolution tools such as those used by Terrapower \cite{touran} approximate the fluid flow in the inter-assembly region as a conducting solid. By supplying a necessary closure, \(\kappa_{ij}\), for this model, the proposed research is {\it compatible with industry modeling tools} and can be rapidly integrated into the ARDP design process.
-\\[2ex]
+where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, Courant-Friedrichs-Lewy (CFL) limits, and ensuing time step limitations, are of paramount important to low-resolution methods. Therefore, low-resolution tools such as those used by Terrapower \cite{touran} approximate the fluid flow in the inter-assembly region as a conducting solid. By supplying a necessary closure, \(\kappa_{ij}\), for this model, the proposed research is {\it compatible with industry modeling tools} and can be rapidly integrated into the industry design process.
 
 \vspace{-.25in}
 \subsection{Milestones}

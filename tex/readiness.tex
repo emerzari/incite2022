@@ -193,7 +193,7 @@ computation, use of mixed precision in preconditioners to reduce
 injection-bandwidth pressure, improved preconditioners, projection-based
 initial guesses \cite{fisc98}, and run-time optimized
 communication strategies that select between GPU-direct, GPU-packed+host-based,
-or pure host-based communication, we have made signifcant strides in delivering
+or pure host-based communication, we have made significant strides in delivering
 performance for NekRS \cite{nekrs}.  On Summit, NekRS is significantly faster at
 its strong-scale limit ($n/P \approx $2.1M, where $P$ is the number of V100s)
 than Nek5000 is on Mira at its strong-scale limit ($n/P \approx 4000$, where $P$
@@ -246,7 +246,7 @@ points, NekRS/Summit is about 4.5 times faster than Nek5000/Mira. \\
   \multicolumn{10}{ c }{{}} \vspace*{-.4in}
   \end{tabular}
   \end{center}
-\caption{\label{tab:mira}
+\caption{\label{tab:mira}\small
 Spacer-Grid performance on Mira (Nek5000), Summit CPU (Nek5000), and Summit GPU
 (NekRS).  $t_{step}$ is the average wall-time in seconds over 100 timesteps with $\dt$= 6.e-5 (CFL=1.706) at $Re_D=14000$
 with pressure tol= 1.e-05 and velocity tol= 5.e-12. R/N is the number of ranks per node. }
@@ -292,7 +292,7 @@ with pressure tol= 1.e-05 and velocity tol= 5.e-12. R/N is the number of ranks p
  4608 & 27648 & 175M      & 60B   &  2.1M  & 1.03e-01  & 83    \\% 82.5  \\
  \hline
  \end{tabular}
- \caption{\label{rod-strong-weak} NekRS full-scale performance on Summit.}
+ \caption{\small\label{rod-strong-weak} NekRS full-scale performance on Summit.}
 %\caption{\label{rod-strong-weak}
 %   NekRS strong and weak scaling for rod bundle simulations.
 %   $n/P$: number of grid points per gpu,
@@ -407,7 +407,7 @@ A100, which shows a 1.6 speed-up over the V100.
  \hline
  \end{tabular}
 \end{center}
- \caption{\label{peb352k-strong} NekRS full-core pebble-bed reactor, full-scale simulation on Summit.}
+ \caption{\small\label{peb352k-strong} NekRS full-core pebble-bed reactor, full-scale simulation on Summit.}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -434,7 +434,7 @@ A100, which shows a 1.6 speed-up over the V100.
   \hline
   \end{tabular}
   \end{center}
-  \caption{\label{singlerod} NekRS single GPU performance on advanced architectures.}
+  \caption{\small\label{singlerod} NekRS single GPU performance on advanced architectures.}
  %\caption{\label{singlerod} NekRS performance on a single GPU.
  % Simulations are performed for 500 steps and the averaged timing per step, $t_{step}$,
  % is measured in seconds for 101-500 steps. R is the ratio of $t_{step}$ to Summit V100.
@@ -502,7 +502,7 @@ for full- and partial-core reactor systems with excellent parallel performance.
 No additional developmental work is required for the proposed research -- our
 team is immediately ready to conduct the high-impact science described.
 
-
+\clearpage
 \vspace{-.15in}
 \section{REFERENCES}
 \vspace{-.15in}
