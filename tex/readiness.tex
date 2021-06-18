@@ -166,6 +166,11 @@ nested parallel {\em for} loops in the kernel are annotated with
 grid of work-item and work-groups in OpenCL or threads and thread-blocks in
 CUDA and HIP. All iterations that are annotated with \texttt{@outer} or
 \texttt{@inner} are assumed to be free of loop carried dependencies. 
+The OCCA-based libParanumal kernels
+typically saturate the roofline on the NVIDIA GPUs, as illustrated
+in Fig. \ref{fig:roof}, where we see that the local Poisson kernel
+(without parallel communication) realizes 1.5 TFLOPS FP64 on a single V100
+of Summit \cite{ceed_bp_paper_2020}.
 %
 \begin{wrapfigure}{rt}{3.0in} \begin{center}
 {\setlength{\unitlength}{1.0in} \begin{picture}(3.000,0.600)(-.2,0)
@@ -175,11 +180,6 @@ libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$) vs.
 polynomial order, $N$   \cite{ceed_pb_paper_2020}.  \vspace*{-.2in} }
 \end{center} \end{wrapfigure}
 %
-The OCCA-based libParanumal kernels
-typically saturate the roofline on the NVIDIA GPUs, as illustrated
-in Fig. \ref{fig:roof}, where we see that the local Poisson kernel
-(without parallel communication) realizes 1.5 TFLOPS FP64 on a single V100
-of Summit \cite{ceed_bp_paper_2020}.
 
 
 
