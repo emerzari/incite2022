@@ -505,7 +505,13 @@ During Task II, equivalent low-resolution models will be constructed and run on
 workstations available to our group at ANL.
 \\[-5ex]
 
-During Task III, full-core LES CFD simulations will be conducted for four different combinations of core power and flowrate. The first condition corresponds to the nominal reactor state. The second two conditions correspond to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are indicative of reactor trip points \cite{chaumont} and unmitigated equipment failure, respectively. The last simulation corresponds to decay heat removal after the fission reaction has been terminated.
+During Task III, full-core LES CFD simulations will be conducted for four
+different combinations of core power and flowrate. The first condition
+corresponds to the nominal reactor state. The second two conditions correspond
+to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are
+indicative of reactor trip points \cite{chaumont} and unmitigated equipment
+failure, respectively. The last simulation corresponds to decay heat removal
+after the fission reaction has been terminated.
 
 In Task IV, the LES database will be compared against the reference low-resolution models to answer several outstanding questions: \\[-5ex]
 
@@ -538,6 +544,7 @@ the inter-assembly region will be used to compute an effective conductivity
 q_i^{''}=-\kappa_{ij}\frac{\partial T}{\partial x_j}\ ,
 \end{equation}
 where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, Courant-Friedrichs-Lewy (CFL) limits, and ensuing time step limitations, are of paramount important to low-resolution methods. Therefore, low-resolution tools such as those used by Terrapower \cite{touran} approximate the fluid flow in the inter-assembly region as a conducting solid. By supplying a necessary closure, \(\kappa_{ij}\), for this model, the proposed research is {\it compatible with industry modeling tools} and can be rapidly integrated into the ARDP design process.
+\\
 
 \vspace{-.25in}
 \subsection{Milestones}
