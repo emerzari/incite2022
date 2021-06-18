@@ -81,11 +81,11 @@ use an order-of-magnitude larger stepsize without compromising stability
 \cite{patel18}.  Rezaeiravesh {\em et al.} \cite{schlatter21} illustrate that,
 for the same number of gridpoints, Nek5000 outperforms OpenFOAM by an a factor
 of 12 to 15 at the strong-scale limit of $n/P \approx 6000$ ($P=960$ cores) on
-the Cray-XC40, Beskok.  At this limit, Nek5000 continues to exhibit linear
+the Cray-XC40, Beskow.  At this limit, Nek5000 continues to exhibit linear
 scaling, which means that, for the same computational resources (node hours and
 joules), the solution time is reduced by an order of magnitude.  With a reduced
 number of gridpoints ($n$) and time-per-gridpoint (seconds per
-degree-of-freedom) we can conclude that Nek5000 is well suited for the 
+degree-of-freedom) we can conclude that Nek5000/RS is well suited for the 
 proposed high-fidelity simulations.
 
 Scalable multilevel iterative solvers are critical to the overall performance
