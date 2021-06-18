@@ -1,4 +1,4 @@
-\input ../tex/hdr
+\input tex/hdr
 
 
 Nuclear energy stemming from advanced small modular reactor (SMR) designs
@@ -26,7 +26,7 @@ facilities investment is justified.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.93\textwidth]{../figs/pebble01.png}
+\includegraphics[width=0.93\textwidth]{figs/pebble01.png}
  \caption{\label{fig:350k} High fidelity reactor simulations of turbulent flow performed on OLCF/Summit:
   up to a full pebble bed core with 352,625 pebbles using an all-hex mesh comprising
   $E$=98,782,067 elements of order $N=8$. We emphasize the difference in size enabled by Summit versus Mira.}
@@ -106,7 +106,7 @@ account for inter-bundle coupling across the entire core are required.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.9\textwidth]{../figs/smr01.png}
+\includegraphics[width=0.9\textwidth]{figs/smr01.png}
  \caption{\label{fig:smr1} Scales involved in the simulation of an SMR ranging from meters to the micrometers involves in the turbulent dissipation generated in the wake of mixing vanes.}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -366,8 +366,8 @@ Figure~\ref{f:examples}. The advent of pre-exascale machines has enabled the sim
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.93\textwidth]{../figs/examples.png}
-%\includegraphics[width=0.93\textwidth]{../figs/examples.png}
+\includegraphics[width=0.93\textwidth]{figs/examples.png}
+%\includegraphics[width=0.93\textwidth]{figs/examples.png}
 \caption{Examples of large-scale LES/DNS simulation of nuclear reactor flows.
 a-b) Cross sections of the flow in helical coil steam generator
 \cite{alper2018}; c) Velocity magnitude in a 61-pin wire-wrapped rod bundle
@@ -445,16 +445,23 @@ problems.
 \vspace{-.2in}
 
 To address the SMR challenge problem of assessing three-dimensional core-wide flow and heat transfer behavior we examine an extension of the work of Fang et al. \cite{Fang2021}.
-In this previous work we have modeled with RANS and momentum sources an SMR core comprised of 37 17x17 assemblies, inspired by the Nuscale core. Each assembly has an active fuel length of $2 m$ for which the the power distribution is obtained with a precursor Monte Carlo calculations. The Reynolds number defined based on the rod diameter and the bulk velocity is $Re=50,000$. The Prandtl number is $Pr=1$.
+In this previous work we have modeled with RANS and momentum sources an SMR core comprised of 37 17x17 assemblies, inspired by the Nuscale core. Each assembly has an active fuel length of $2 m$ for which the power distribution is obtained with a precursor Monte Carlo calculations. The Reynolds number defined based on the rod diameter and the bulk velocity is $Re=50,000$. The Prandtl number is $Pr=1$.
 
 We now propose to gradually increase the resolution of the simulations modeling an increasing number of assemblies with higher resolution using a zonal LES approach \cite{menter2012global}. The mixing vanes in the higher resolution assemblies will be modeled explicitly, and turbulence will be resolved using large eddy simulation. Finally, on Frontier, we propose to model the entire core with LES. The gradual approach will allow to make maximum use of available resources (i.e., an LES with mixing vanes is currently impossible on Summit) and it will also allow to identify the number of explicit assemblies needed to accurately account for the flow within a target assembly within the context of a zonal LES simulation.
 
 The following tasks have been identified:
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
-\item Develop full-core RANS mesh with one assembly explicitly modeled. Perform Mesh convergence studies for a single  LES bundles. Conduct CFD simulations and extract relevant information on flow spectra and mixing at the interface between resolved assembly and RANS model.
-\item Develop full-core RANS mesh with nine assemblies explicitly modeled. Conduct CFD simulations and extract relevant information on flow spectra and mixing at the interface between resolved assembly and RANS model.
-\item Develop full-core LES mesh with all assemblies explicitly modeled. Conduct CFD simulation. Extract relevant information on flow spectra and mixing at the interface between assemblies. Perform averaging and characterize flow distribution within the core.
+\item Develop full-core RANS mesh with one assembly explicitly modeled using
+LES.  Perform Mesh convergence studies for a single LES bundle. Conduct CFD
+simulations and extract relevant information on flow spectra and mixing at the
+interface between the resolved (LES) and RANS assemblies.
+\item Develop a full-core RANS mesh with nine assemblies explicitly modeled. Conduct CFD simulations and extract relevant information on flow spectra and mixing at the interface 
+between the resolved and RANS assemblies.
+\item Develop full-core LES mesh with all assemblies explicitly modeled.
+Conduct CFD simulation. Extract relevant information on flow spectra and 
+inter-bundle mixing at the interface between assemblies. Perform averaging and
+characterize flow distribution across the full core.
 \end{enumerate}
 \vspace{-.15in}
 
@@ -479,7 +486,8 @@ SFR challenge problem are as follows.
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
 \item Develop full-core meshes and test at scale to ensure high quality. Mesh convergence studies will be conducted for small groups of bundles under a variety of power and flow gradients to establish applicability to full-core geometries. Develop full-core models based on the ABR specifications \cite{abr}.
-\item Develop reference low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be compared against the generated LES database to assess the effect if proper resolution of global/local physics interactions. Low-resolution models will be run with non-LCF computing resources.
+\item Develop reference low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be compared against the generated LES database to assess the effect if proper resolution of global/local physics interactions. Low-resolution models will be run with non-LCF computing resources, including the {\em Nek5000}
+cluster at ANL.
 \item Conduct full-core LES CFD simulations of the ABR at three power-to-flow ratios\footnote{The ``power-to-flow'' ratio is a measure of the relative balance between core power and core cooling. A power-to-flow ratio of unity indicates nominal operating conditions.} that may be observed during actual operation. These conditions correspond to full power (1000 MWth) and a)~nominal flow (\(Re=90000\)), b)~moderately reduced flow (\(Re=72000\)), and c)~significantly reduced flow (\(Re=60000\)). A fourth condition at decay heat removal conditions (\(Re=650\) and 7.5 MWth) will also be included to cover the very low range in power-to-flow ratio.
 \item Compare LES database with reference low-resolution models developed in Task II. Evaluate the physics consequence of industry modeling simplifications to inter-assembly heat transfer.
 \item Post-process LES database to generate an effective thermal conductivity model applicable to subchannel and porous media methods. Apply new closure to the models developed in Task II and quantify the improvement in accuracy.
@@ -578,4 +586,4 @@ For the SMR modeling, Task I encompasses model setup and preliminary testing for
 the Zonal LES CFD simulations. Our group has extensive experience with modeling of mixing vanes \cite{busco2019invariant}; milestone I.A will develop guidelines for converged meshes for all subsequent simulations and deliver the first full core mesh with an assembly explicitly modeled, while milestone
 I.B will deliver the simulation results.  Through tasks II and III we then progress to the full core in later years.
 
-\input ../tex/readiness
+\input tex/readiness
