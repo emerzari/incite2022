@@ -179,6 +179,13 @@ scalable.)   Fortunately, for mesh construction, we can use many of the
 available FEM tools because the number of elements required for the SEM
 is two orders of magnitude smaller than that required for low-order FEM 
 simulations at the same resolution.
+For mesh partitioning, we have recently developed parallel domain partitioners,
+parRCB and parRSB, that couple with Nek5000/RS.  parRCB uses recursive
+coordinate bisection and parRSB uses recursive spectral bisection
+\cite{pothen90}.  We use parRCB as a precursor decomposition for parRSB in
+order to minimize the data volume during the communication-intensive Lanzcos
+iterations that are used to find the Fiedler vector required for RSB.
+
 
 
 \vspace{-.25in}
