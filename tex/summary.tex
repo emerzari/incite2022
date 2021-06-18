@@ -19,6 +19,7 @@
 
 
 \pagestyle{fancy} % allows you to use the header and footer commands
+\usepackage{ragged2e}
 
 \raggedright
 \begin{document}
@@ -35,7 +36,7 @@
 
 
 
-%\begin{flushleft}
+
 \bigskip
 
 \textbf{Title}: Harnessing Exascale: First of a Kind High Fidelity Full Core Simulations \smallskip
@@ -50,11 +51,56 @@
 \textbf{Amount of Storage Requested}: 714 TB (total) \smallskip
 
 \textbf{Executive Summary}: \\
+\justify
+Advanced nuclear energy holds promise as a reliable, carbon-free energy source capable of
+meeting our nation's commitments to addressing climate change. A wave of investment in nuclear
+power within the United States and around the world indicates an important maturation of
+academic research projects into the commercial space. The design, certification, and licensing
+of novel reactor concepts pose formidable hurdles to the successful deployment of new technologies.
+The high cost of integral-effect nuclear experiments necessitates
+the use of high-fidelity numerical simulations to ensure the viability of nuclear energy
+in a clean energy portfolio.\\
+\\
+The objective of this research is to provide the high-fidelity simulation capabilities essential
+to this mission by developing unprecedented insight into core-wide phenomena in rod
+bundle nuclear reactors. First of a kind, full-core Large Eddy Simulation (LES) of nuclear reactors will be
+conducted on Summit and Frontier.
+A high-resolution LES database will be used to inform low-resolution industry analysis
+methods for two challenge problems critical to the development of advanced nuclear --
+inter-assembly mixing in Light Water Small Modular Reactors (SMRs) and 
+inter-assembly heat transfer in Sodium Fast Reactors (SFRs).\\
+\\
+These physics phenomena
+both involve coupling at the full-core level and cannot be understood
+with the reduced-scale analyses that have dominated the nuclear space. 
+Knowledge gaps in these full-core thermal-fluid phenomena have limited
+our understanding and ability to predict component vibrations, fuel melting, and
+structural deformation -- and therefore the eventual success of advanced nuclear concepts.
+This research presents a compelling science and business impact case
+by providing unequalled insight into reactor physics and 
+high-resolution datasets to generate lower-resolution closure models
+for rapid integration with modeling tools in use by the private nuclear industry.\\
+\\
+This work will target simulations 1000\(\times\) larger than competing work in our field, and only
+with capability computing and petascale-level resources can these insights be gained.
+We propose to use NekRS, a GPU-oriented version of the Nek5000 code, which is
+a highly-scalable open-source spectral element code for 
+Computational Fluid Dynamics (CFD) simulation and a Gordon Bell and R\&D 100
+Prize winner. NekRS is uniquely qualified for the present research -- NekRS has
+demonstrated scaling on Summit to 27648 GPUs for large nuclear systems and
+has undergone extensive performance tuning
+ including covering communication with computation, use of mixed precision preconditioners,
+ and runtime-optimized communication strategies.\\
+ \\
+ This research is situated at the opportune moment for LCF to 
+ impact the trajectory of advanced nuclear. These first of a kind, full-core LES simulations
+ will usher in a new era where such simulations are possible
+ and firmly establish the nuclear field as a leader in petascale computing.
 
-\vspace{.15in}
 
-Abstract here ...
 
-%\end{flushleft}
+
+
+
 
 \end{document}
