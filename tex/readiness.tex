@@ -1,8 +1,6 @@
-\newpage
 \vspace{-.25in}
 \section{COMPUTATIONAL READINESS} % typically about 5 pages
 \vspace{-.2in}
-
 
 The proposed simulations will be performed using a GPU-oriented version of
 Nek5000, which is a highly scalable open-source code for fluid-thermal
@@ -11,10 +9,10 @@ code, NekRS, is based on high-performance kernels from the libParanumal library
 out of the Warburton group at Viginia Tech \cite{warb1,warb2} and is written in
 the open concurrent computed abstraction (OCCA) for platform portability
 \cite{occa}.  NekRS, libParanumal, and OCCA are being developed as part of
-DOE's Exascale Computing Project in the Center for Efficient Exascale
+DOE's ECP in the Center for Efficient Exascale
 Discretizations (CEED). 
 
-\noindent{\em State-of-the-Art.}
+\noindent{\em State-of-the-Art}
 The numerical discretization of the Navier-Stokes and thermal-transport equations
 in Nek5000/RS is based on the spectral element method (SEM) \cite{pat84}, which
 is a high-order weighted residual formulation similar to the finite-element method.   
@@ -23,13 +21,13 @@ evaluations that allow the matrix-vector products required for iterative
 solvers to be expressed as fast tensor contractions.  These contractions
 require only $O(n)$ storage and $O(nN)$ work for a discretization involving
 $n=EN^3$ gridpoints, where $E$ is the number of spectral elements and $N$ is
-the discretization order (typically, $N$=6--10) \cite{dfm02}.  This low
+the discretization order (typically, $N=$6--10) \cite{dfm02}.  This low
 complexity contrasts sharply with that of the $p$-type FEM, which has work and
 storage complexity of $O(nN^3)$ that effectively precludes using $N>3$.  
 
 Because of their ability to accurately transport small-scale flow features over
-large domains (for a given resolution, $n$) high-order discretizations have
-been the mainstay of DNS and LES turbulence simulations since the early 70s 
+large domains (for a given resolution, $n$), high-order discretizations have
+been the mainstay of DNS and LES turbulence simulations since the early 1970s 
 \cite{kreiss72,sao72}.   The SEM allows one to employ high-order methods in 
 complex domains relevant to reactor analysis  \cite{pat84,sao80}.   
 The central idea is to map
@@ -48,9 +46,9 @@ function values to the corresponding outputs are simple tensor contractions.
 For example, the derivative $w := u_{\xi}$ at each quadrature point would be
 expressed as $w^e_{ijk} = \sum_p \, \Dh_{ip} u_{pjk}^e$, with the derivative
 matrix, $\Dh_{ip} := \left. \dd{l_p}{\xi} \right|_{\xi_i}$.   
-In typical production runs, $N$=7, which means that each element comprises 512
+In typical production runs, $N=7$, meaning that each element comprises 512
 values, $u_{ijk}^e$, that are addressed lexicographically with no indirect
-addressing.\footnote{Indirect addressing---with communication---is used,
+addressing.\footnote{Indirect addressing (with communication) is used,
 however, to {\em assemble} the residuals at element interfaces \cite{dfm02}.},
 The derivative can be evaluated with $\approx n$ memory references and
 $\approx 2nN$ operations, which yields a favorable $O(N)$ flops-to-byte ratio 
@@ -79,7 +77,7 @@ that Nek5000 requires a smaller timestep for numerical stability, but they did
 not use the characteristics-based timestepper in Nek5000, which allows one to
 use an order-of-magnitude larger stepsize without compromising stability
 \cite{patel18}.  Rezaeiravesh {\em et al.} \cite{schlatter21} illustrate that,
-for the same number of gridpoints, Nek5000 outperforms OpenFOAM by an a factor
+for the same number of gridpoints, Nek5000 outperforms OpenFOAM by a factor
 of 12 to 15 at the strong-scale limit of $n/P \approx 6000$ ($P=960$ cores) on
 the Cray-XC40, Beskow.  At this limit, Nek5000 continues to exhibit linear
 scaling, which means that, for the same computational resources (node hours and
@@ -102,7 +100,7 @@ beyond a million MPI ranks (60\% efficiency at $\approx 2000$ points/rank) with
 fast AMG-based coarse-grid solvers \cite{fischer15}.
 
 
-\noindent{\em Parallel Performance.}
+\noindent{\em Parallel Performance}
 NekRS has been developed in close collaboration with the libParanumal project
 \cite{warburton2019,warburton2019b,ChalmersKarakusAustinSwirydowiczWarburton2020,streamParanumal2020},
 which provides high-performance kernels for high-order methods on GPUs.  The
@@ -130,7 +128,7 @@ computation, use of mixed precision in preconditioners to lower
 injection-bandwidth pressure, improved preconditioners, and run-time optimized
 communication strategies that select between GPU-direct, GPU-packed+host-based,
 or pure host-based communication, we have made signifcant strides in delivering
-performance for NekRS \cite{nekrs}.  On Summit, it is significantly faster at
+performance for NekRS \cite{nekrs}.  On Summit, NekRS is significantly faster at
 its strong-scale limit ($n/P \approx $2.5M, where $P$ is the number of V100s),
 than Nek5000 is on Mira at its strong-scale limit ($n/P \approx 4000$, where $P$
 is the number of ranks in -c32 mode).\footnote{In both cases, we identify the
@@ -140,15 +138,14 @@ target performance design point.}  Production runs at the strong-scale
 limit realize about 0.5--1.0 seconds per step for Nek5000 on Mira, while NekRS
 typically requires about 0.1--0.4 seconds per step on Summit,  as illustrated
 in Table \ref{tab:spacer}.  Moreover, production Nek5000 runs on all or half of
-Mira were limited to about 15M elements ($n \approx 5$B), whereas 100M-element
-runs with $n \approx 50$--75B are readily accessible on Summit with NekRS
+Mira were limited to about 15 million elements ($n \approx 5$B), whereas 100-million-element
+runs with $n \approx 50$--75 billion are readily accessible on Summit with NekRS
 operating at its strong-scale (i.e., {\em fast}) limit.
 
 
 
 %% NEK: Mira vs Summit
 
-\newpage
 In Tables \ref{tab:weak} and \ref{tab:strong} we present weak- and strong-scaling
 results for NekRS for a 17$\times$17 rod-bundle configuration.
 

@@ -56,13 +56,12 @@ margins, which ultimately limit economic viability, but also have broader impact
 on design constraints that are harder to quantify directly.
 
 Recently, the advent of pre-exascale machines has made possible the simulation
-of full reactor cores at moderate Reynolds numbers cite \cite{Fang2021}.  An example
+of full reactor cores at moderate Reynolds numbers \cite{Fang2021}.  An example
 is illustrated in Figure~\ref{fig:350k} for a pebble bed core, emphasizing the difference
 in size enable by recent pre-exascale architectures versus the previous generation of supercomputers.
 This proposal seeks to build on these recent achievements to develop a deeper
 understanding of core-wide thermal-fluid phenomena.
 
-% I don't like how the footnote interrupts this point. Would like to reformat
 \begin{displayquote}
 {\it
 To accelerate the deployment of SMRs and advanced reactors, this project will
@@ -81,7 +80,7 @@ using 27684 V100s on Summit.\\
 \\
 Our prior work in this area has led to deployment of Nek5000/RS within the
 nuclear industry at vendors such as NuScale, Kairos, and Terrapower.
-Nek5000 has been adropted by the Nuclear Regulatory Commission (NRC), the
+Nek5000 has been adopted by the Nuclear Regulatory Commission (NRC), the
 organization tasked with licensing reactors for commercial use,
 for purposes in the licensing process for thermal-fluid analysis.
 }
@@ -98,13 +97,13 @@ and the economic viability of new operating paradigms, such as load following.
 The accuracy of such simulations has direct implications on design
 certification, licensing, and eventual market share.
 
-The range of scales involved in the simulation of light water SMRs and SFRs, and in general of rodded cores, is shown in Figure~\ref{fig:smr1}: it can easily span 6 to 8 orders of magnitude from the micrometers involved in turbulent dissipation to meters, posing a formidable challenge.
+The range of scales involved in the simulation of light water SMRs and SFRs, and in general of rodded cores, is shown in Figure~\ref{fig:smr1} -- the range can easily span 6 to 8 orders of magnitude, from the micrometers involved in turbulent dissipation to meters, posing a formidable challenge.
 Computational Fluid Dynamics (CFD) is used widely in reactor design and safety
 analysis, but the computational power required to resolve all relevant scales for a full-core simulation has typically limited
 such geometries to less than 1\% of the core -- usually, a single ``fuel
 bundle,'' or grouping of rods \cite{wang2020,fanning,wang2020b}.
 The power and flow distributions in a reactor can be highly nonuniform, and many physics
-phenomena cannot be accurately predicted with single-bundle models -- models that
+phenomena cannot be accurately predicted with single-bundle models. Models that
 account for inter-bundle coupling across the entire core are required.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,22 +134,20 @@ constrains the reactor design.
 
 Light Water SMRs and SFRs both exhibit significant full-core thermal-fluid
 physics for which the available low-resolution analysis methods cannot capture
-important local/global interactions.
-
-In Light Water SMRs, inter-bundle mixing
+important local/global interactions. In Light Water SMRs, inter-bundle mixing
 due to variations in mass flow rate between assemblies as well as three-dimensional non-axial components
-of the velocity (induced for example by "LOCA holes" \cite{jacques1997flow}) influence directly flow induced vibration (FIV) and related fuel failures.
-Furthermore the flow distribution plays an important role in the deposition of coolant contaminants on heat transfer
+of the velocity (induced for example by ``LOCA holes'' \cite{jacques1997flow}) influence directly flow induced vibration (FIV) and related fuel failures.
+Furthermore, the flow distribution plays an important role in the deposition of coolant contaminants on heat transfer
 surfaces \cite{petrov2016prediction}. Thanks to the rapid
 development of cutting-edge supercomputers, the pin-resolved CFD investigation
 for an entire SMR core has been recently achieved by our team \cite{Fang2021}.
 A set of momentum sources was developed to account for the effects of mixing
-
 spacer grids while the RANS approach was applied to model the turbulence.
-Further increase of the simulation fidelity including the explicit modeling of mixing vanes with Large Eddy Simulation will increase the accuracy
-in the prediction in the flow distribution and heat transfer and produce high-quality datasets.  These unprecedented datasets will provide the basis needed to better understand the impact of three-dimensional effects, non-homogenous flow distribution and inter-assembly mixing and improve the performance of lower fidelity models typically used in modeling the core at the design stage. This increase in accuracy will translate in a reduction in uncertainty and a consequent reduction in margins and better economics. We emphasize that a complete picture of three-dimensional core-wide flows is nearly impossible to obtain with experiments alone, due to the scales involved, or even through operational data, due to the lack of adequate instrumentation in actual reactors.
-% This is good, but I think it should be moved somewhere else
 
+The first challenge problem addressed here is to further increase the simulation
+fidelity of full-core SMR LES simulations by
+ explicitly modeling the mixing vanes\footnote{Mixing vanes are small structures that induce coolant mixing in the core.}.
+ The resulting datasets will provide the basis needed to better understand the impact of three-dimensional effects, non-homogenous flow distribution and inter-assembly mixing and improve the performance of lower fidelity models typically used in modeling the core at the design stage. This increased accuracy will translate to an uncertainty reduction and a consequent reduction in margins and better economics. We emphasize that a complete picture of three-dimensional core-wide flows is nearly impossible to obtain with experiments alone, due to the scales involved, or even through operational data, due to the lack of adequate instrumentation in actual reactors. 
 
 In SFRs, a critical reactor design consideration is the structural expansion of
 the solid fuel components in response to differential temperature and
@@ -171,12 +168,12 @@ between adjacent bundles that contain laminar sodium flow, a heat transfer
 mechanism referred to as ``inter-assembly'' heat transfer. Even though
 inter-assembly heat transfer is driven by these vastly different flow regimes
 (laminar, transitional, and turbulent),
-large cross-bundle thermal gradients, and gap sodium flow, industry models for
+cross-bundle thermal gradients, and gap sodium flow, industry models for
 core thermal-fluids are based on closures obtained from experiments and CFD
-models of symmetric, isolated fuel bundles without consideration of
+models of isolated fuel bundles without consideration of
 full-core effects and realistic boundary conditions \cite{touran}.
 
-Despite the fact that inter-assembly heat transfer is a major contributor
+Further, despite the fact that inter-assembly heat transfer is a major contributor
 to the structural behavior of SFR cores, most industry approaches to full-core
 analysis neglect the
 gap flow entirely \cite{touran}, homogenize the flow into other structural
@@ -238,12 +235,12 @@ takes decades to accomplish; much of the reactor design and analysis is
 prerequisite to construction. The two challenge problems selected in this
 proposal will have immediate technical and business impact to the nuclear
 industry by coinciding with large Light Water SMR and SFR development programs
-in private industry.
+in private industry and the DOE.
 
 % feel to add some statements that can further highlight the business impact
 Several strategically important projects have been identified and are being pursued by
 the Exascale Computing Project (ECP) for the upcoming exascale computing platforms.
-Among these, the ExaSMR project is specifically focused on the SMRs.
+Among these, the ExaSMR project is specifically focused on SMRs.
 SMRs offer the prospect of affordable baseload electricity production while
 avoiding some of the traditional limitations that encumber large reactor designs,
 such as high capital costs and long construction timelines.
@@ -255,13 +252,12 @@ to enable verification and validation of current analysis methods by
 generating detailed power distributions during startup conditions,
 full-cycle depletion analysis, and fast transient behavior characteristics of
 accident scenarios \cite{Merzari2018}.
-Significant progress has been made in both the coupling of Monte Carlo (MC) Neutronics
+Significant progress has been made in both the coupling of Monte Carlo (MC) neutronics
 and CFD \cite{Hamilton2018,Hamilton2019} and the development of CFD modeling
-capability \cite{Fang2021,Merzari2018}.
+capabilities \cite{Fang2021,Merzari2018}. Our emphasis on high-resolution
+LES modeling of SMRs will complement these efforts.
 
-% maybe emphasize a bit stronger that we're not doing any deformation in this
-% proposal here so it's clear?
-As part of the Department of Energy (DOE), the Advanced Reactor Demonstration
+As part of the DOE, the Advanced Reactor Demonstration
 Program (ARDP) awarded TerraPower, a private nuclear development company
 co-founded by Bill Gates, funds
 to develop and build an advanced SFR by 2027 \cite{ardp_tp}. The next two to
@@ -299,7 +295,7 @@ our group's previous works \cite{Fang2021}, helping ushering in a new era where 
 %change the notion
 %that rod-resolved, full-core CFD is still 5\(+\) years away.
 
-% Elia: I COMMENTED THIS OUT BECAUSE I DO NOT THINK IT IS A STRONG ARGUMENT. THE PROPOSAL HAS ITSELF A TIMELINE OF 3 years?
+% Elia: I COMMENTED THIS OUT BECAUSE I DO NOT THINK IT IS A STRONG ARGUMENT. THE PROPOSAL HAS ITSELF A TIMELINE OF 3 years? April: good point
 
 % anticipated impact on community paradigms, valuable insights into or solving
 % a long-standing challenge, etc.).
@@ -307,7 +303,6 @@ our group's previous works \cite{Fang2021}, helping ushering in a new era where 
 \vspace{-.25in}
 \subsection{Previous INCITE Awards}
 \vspace{-.2in}
-
 
 The PI has not received any INCITE award and no previous INCITE award is directly related to the outlined project.
 
@@ -347,7 +342,7 @@ Turbulence modeling remains a source of uncertainty in complex engineering
 flows, as RANS models are not general and are sensitive to even small geometric
 changes \cite{merzari2010numerical}. Moreover, RANS and URANS remain limited in
 predicting turbulent fluctuations and high order statistics which may be of
-interest in important applications such as flow induced vibrations (FIV) and
+interest in important applications such as FIV and
 FSI \cite{yuan2017flow}.
 
 In contrast to RANS, wall-resolved LES and Direct Numerical Simulation (DNS)
@@ -363,10 +358,9 @@ calculations started to emerge \cite{pointer2009simulations}.
 
 In fact, since the advent of petascale computing (i.e, computers
 capable of more than 1 petaflop), the simulation of portions of nuclear
-components has been demonstrated with LES \cite{merzari2017large}. For example, some landmark calculations conducted with Nek5000/RS are presented in
+components has been demonstrated with LES \cite{merzari2017large}.
+For example, some landmark calculations conducted with Nek5000/RS are presented in
 Figure~\ref{f:examples}. The advent of pre-exascale machines has enabled the simulation of larger systems including a full core SMR \cite{Fang2021}.
-
-
 
 \begin{figure}[!ht]
 \centering
@@ -449,11 +443,10 @@ problems.
 \vspace{-.2in}
 
 To address the SMR challenge problem of assessing three-dimensional core-wide flow and heat transfer behavior we examine an extension of the work of Fang et al. \cite{Fang2021}.
-In this previous work we have modeled with RANS and momentum sources an SMR core comprised of 37 17x17 assemblies, inspired by the Nuscale core. Each assembly has an active fuel length of $2 m$ for which the power distribution is obtained with a precursor Monte Carlo calculations. The Reynolds number defined based on the rod diameter and the bulk velocity is $Re=50,000$. The Prandtl number is $Pr=1$.
+In this previous work we have modeled with RANS and momentum sources an SMR core comprised of 37 17x17 assemblies, inspired by the Nuscale core. Each assembly has an active fuel length of $2$ m for which the the power distribution is obtained with a precursor Monte Carlo neutron transport calculation. The Reynolds number based on the rod diameter and the bulk velocity is $Re=50000$ and the Prandtl number is $Pr=1$.
 
-We now propose to gradually increase the resolution of the simulations modeling an increasing number of assemblies with higher resolution using a zonal LES approach \cite{menter2012global}. The mixing vanes in the higher resolution assemblies will be modeled explicitly, and turbulence will be resolved using large eddy simulation. Finally, on Frontier, we propose to model the entire core with LES. The gradual approach will allow to make maximum use of available resources (i.e., an LES with mixing vanes is currently impossible on Summit) and it will also allow to identify the number of explicit assemblies needed to accurately account for the flow within a target assembly within the context of a zonal LES simulation.
+We now propose to gradually increase the resolution of the simulations by modeling an increasing number of assemblies with higher resolution using a zonal LES approach on Summit \cite{menter2012global}. The mixing vanes in the higher resolution assemblies will be modeled explicitly, and turbulence will be resolved using LES. At later stages in the proposed research, we propose to model the entire core with LES on Frontier. This gradual approach will allow us to make maximum use of available resources (i.e. LES with mixing vanes is currently impossible on Summit) and will also allow identification of the number of explicit assemblies needed to accurately account for the flow within a target assembly within the context of a zonal LES simulation. The major tasks have been identified as follows:
 
-The following tasks have been identified:
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
 \item Develop full-core RANS mesh with one assembly explicitly modeled using
@@ -469,6 +462,8 @@ characterize flow distribution across the full core.
 \end{enumerate}
 \vspace{-.15in}
 
+{\bf Is it worth mentioning what system we're modeling? I call out ABR in the next section. Either let's do the same here or cut out the ABR specifics in the next section}
+
 \vspace{-.25in}
 \subsubsection{Sodium Fast Reactor (SFR) Challenge Problem}
 \vspace{-.2in}
@@ -480,17 +475,12 @@ SFR \cite{abr}. The objectives of these simulations are to 1)~answer
 outstanding questions about the nature of inter-assembly flow and heat transfer
 and 2)~utilize the produced LES database to generate bulk heat
 transfer correlations to improve the predictive capabilities of
-lower-resolution tools. The SFR simulations in this proposal will be directed
-in four tasks. Each task will be associated with several milestones,
-described in detail with associated time frames
-in Table~\ref{tab:milestones}. The major tasks and relationship
-between each task of the 36-month project for the
-SFR challenge problem are as follows.
+lower-resolution tools. The major tasks have been identified as follows:
 
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
 \item Develop full-core meshes and test at scale to ensure high quality. Mesh convergence studies will be conducted for small groups of bundles under a variety of power and flow gradients to establish applicability to full-core geometries. Develop full-core models based on the ABR specifications \cite{abr}.
-\item Develop reference low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be compared against the generated LES database to assess the effect if proper resolution of global/local physics interactions. Low-resolution models will be run with non-LCF computing resources, including the {\em Nek5000}
+\item Develop low-resolution full-core models using the NEAMS porous media application, Pronghorn \cite{novak2021b}. These models will be compared against the generated LES database to assess the effect if proper resolution of global/local physics interactions. Low-resolution models will be run with non-LCF computing resources, including the {\em Nek5000}
 cluster at ANL.
 \item Conduct full-core LES CFD simulations of the ABR at three power-to-flow ratios\footnote{The ``power-to-flow'' ratio is a measure of the relative balance between core power and core cooling. A power-to-flow ratio of unity indicates nominal operating conditions.} that may be observed during actual operation. These conditions correspond to full power (1000 MWth) and a)~nominal flow (\(Re=90000\)), b)~moderately reduced flow (\(Re=72000\)), and c)~significantly reduced flow (\(Re=60000\)). A fourth condition at decay heat removal conditions (\(Re=650\) and 7.5 MWth) will also be included to cover the very low range in power-to-flow ratio.
 \item Compare LES database with reference low-resolution models developed in Task II. Evaluate the physics consequence of industry modeling simplifications to inter-assembly heat transfer.
@@ -498,6 +488,8 @@ cluster at ANL.
 \end{enumerate}
 \vspace{-.15in}
 
+
+{\bf We can cut some of this if needed. Currently a lot more emphasis is placed on this secondn challenge problem, when they should be more equal}
 Additional details are now provided for each task. During Task I, full-core meshes will be generated for the prototypic design. Mesh convergence will be performed with \(h\)-type refinement\footnote{$h$-type refinement refers to mesh convergence evaluated by reducing element size.} to leverage past experience with optimal element counts per GPU on Summit. Initial RANS simulations will be performed on Summit.  Full-core models will be constructed for the four operating conditions (detailed in Task III) based on openly-available material properties, power, and mass flow distributions. During Task II, equivalent low-resolution models will be constructed and run on workstations available to our group at ANL.
 
 During Task III, full-core LES CFD simulations will be conducted for four different combinations of core power and flowrate. The first condition corresponds to the nominal reactor state. The second two conditions correspond to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are indicative of reactor trip points \cite{chaumont} and unmitigated equipment failure, respectively. The last simulation corresponds to decay heat removal after the fission reaction has been terminated.
@@ -525,9 +517,6 @@ q_i^{''}=-\kappa_{ij}\frac{\partial T}{\partial x_j}\ ,
 \end{equation}
 where \(q^{''}\) is the heat flux and \(\kappa_{ij}\) is a diagonal tensor. In other words, the mechanism by which the LES database will inform lower-resolution tools is by introducing a correction to the heat transfer in the inter-assembly space. Due to the small gap width of the inter-assembly space, Courant-Friedrichs-Lewy (CFL) limits, and ensuing time step limitations, are of paramount important to low-resolution methods. Therefore, low-resolution tools such as those used by Terrapower \cite{touran} approximate the fluid flow in the inter-assembly region as a conducting solid. By supplying a necessary closure, \(\kappa_{ij}\), for this model, the proposed research is {\it compatible with industry modeling tools} and can be rapidly integrated into the ARDP design process.
 
-%{\bf Does this research plan sound reasonable?}
-% Very reasonable to me.
-
 \vspace{-.25in}
 \subsection{Milestones}
 \vspace{-.2in}
@@ -544,9 +533,16 @@ to required computing resources.
 \begin{table}[h!]
 \centering
 \caption{Summary of the tasks and milestones associated with this proposal. ``Low-res.'' indicates ``low-resolution.''}
-\begin{tabular}{l l c l l}
+\begin{tabular}{c c c l l}
 \toprule
 Problem & Task & Milestone & Description & End Date \\
+\midrule
+\multirow{5}{*}{SMR} & \multirow{2}{*}{I} & A & Mesh and input setup (1 assembly explicit) & Jun 2022 \\
+&  & B & Zonal LES simulation (1 assembly explicit)  & Dec 2022 \\\cmidrule{2-5}
+& \multirow{2}{*}{II} & A & Mesh and input setup (9 assembly explicit)  & Jun 2023 \\
+&  & B & Zonal LES simulation (9 assembly explicit)  & Dec 2023 \\\cmidrule{2-5}
+& \multirow{2}{*}{III} & A & Mesh and input setup (LES simulation) & Jun 2024 \\
+&  & B & Full core LES simulation  & Dec 2024 \\
 \midrule
 \multirow{14}{*}{SFR} & \multirow{3}{*}{I} & A & Mesh convergence studies for clusters of bundles & May 2022 \\
 & & B & Complete full-core Nek5000/RS CFD mesh and models & July 2022\\
@@ -562,17 +558,14 @@ Problem & Task & Milestone & Description & End Date \\
 & & B & Apply conductivity closure to low-res. model & Oct 2024\\
 & & C & Repeat full-core low-res. simulations with new closure & Oct 2024\\
 & & D & Temperature comparisons between LES and low-res. models & Dec 2024\\
-\midrule
-\multirow{5}{*}{SMR} & \multirow{2}{*}{I} & A & Mesh and input setup (1 assembly explicit) & Jun 2022 \\
-&  & B & Zonal LES simulation (1 assembly explicit)  & Dec 2022 \\\cmidrule{2-5}
-& \multirow{2}{*}{II} & A & Mesh and input setup (9 assembly explicit)  & Jun 2023 \\
-&  & B & Zonal LES simulation (9 assembly explicit)  & Dec 2023 \\\cmidrule{2-5}
-& \multirow{2}{*}{III} & A & Mesh and input setup (LES simulation) & Jun 2024 \\
-&  & B & Full core LES simulation  & Dec 2024 \\
 \bottomrule
 \end{tabular}
 \label{tab:milestones}
 \end{table}
+
+For the SMR modeling, Task I encompasses model setup and preliminary testing for
+the Zonal LES CFD simulations. Our group has extensive experience with modeling of mixing vanes \cite{busco2019invariant}; milestone I.A will develop guidelines for converged meshes for all subsequent simulations and deliver the first full core mesh with an assembly explicitly modeled, while milestone
+I.B will deliver the simulation results.  Through tasks II and III we then progress to the full core in later years.
 
 For the SFR modeling, Task I encompasses model setup and preliminary testing for
 the LES CFD simulations. Our group is experienced at meshing such geometries \cite{merzari2020toward}; milestone
@@ -585,9 +578,5 @@ refinement studies will be performed directly on the full core model. In Task II
 follow with simulations at higher Reynolds number. This strategy will allow us to
 continue gaining insights into the parallelization strategies for the flow case with the
 lowest mesh resolution requirements. Task IV and V focus on the post-processing of the data and comparisons with results from Task II. They are conducted in parallel with Task III.
-
-For the SMR modeling, Task I encompasses model setup and preliminary testing for
-the Zonal LES CFD simulations. Our group has extensive experience with modeling of mixing vanes \cite{busco2019invariant}; milestone I.A will develop guidelines for converged meshes for all subsequent simulations and deliver the first full core mesh with an assembly explicitly modeled, while milestone
-I.B will deliver the simulation results.  Through tasks II and III we then progress to the full core in later years.
 
 \input tex/readiness
