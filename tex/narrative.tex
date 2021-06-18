@@ -450,10 +450,27 @@ detailed in terms of major tasks for each of the challenge problems.
 \subsubsection{Light Water Small Modular Reactor (SMR) Challenge Problem}
 \vspace{-.2in}
 
-To address the SMR challenge problem of assessing three-dimensional core-wide flow and heat transfer behavior we examine an extension of the work of Fang et al. \cite{Fang2021}.
-In this previous work we have modeled with RANS and momentum sources an SMR core comprised of 37 assemblies (each 17$\times 17$), inspired by the Nuscale core. Each assembly has an active fuel length of $2$ m for which the power distribution is obtained with a precursor Monte Carlo neutron transport calculation. The Reynolds number based on the rod diameter and the bulk velocity is $Re=50000$ and the Prandtl number is $Pr=1$.
+To address the SMR challenge problem of assessing three-dimensional core-wide
+flow and heat transfer behavior we examine an extension of the work of Fang et
+al. \cite{Fang2021}.  In this previous work we have modeled with RANS and
+momentum sources an SMR core comprised of 37 assemblies (each 17$\times 17$),
+inspired by the Nuscale core. Each assembly has an active fuel length of $2$ m
+for which the power distribution is obtained with a precursor Monte Carlo
+neutron transport calculation. The Reynolds number based on the rod diameter
+and the bulk velocity is $Re=50000$ and the Prandtl number is $Pr=1$.
 
-We now propose to gradually increase the resolution of the simulations by modeling an increasing number of assemblies with higher resolution using a zonal LES approach on Summit \cite{menter2012global}. The mixing vanes in the higher resolution assemblies will be modeled explicitly, and turbulence will be resolved using LES. At later stages in the proposed research, we propose to model the entire core with LES on Frontier. This gradual approach will allow us to make maximum use of available resources (i.e. LES with mixing vanes is currently impossible on Summit) and will also allow identification of the number of explicit assemblies needed to accurately account for the flow within a target assembly within the context of a zonal LES simulation. The major tasks have been identified as follows:
+We now propose to gradually increase the resolution of the simulations by
+modeling an increasing number of assemblies with higher resolution using a
+zonal LES approach on Summit \cite{menter2012global}. The mixing vanes in the
+higher resolution assemblies will be meshed in detail (explicitly modeled)
+and turbulence will be
+resolved using LES. At later stages in the proposed research, we propose to
+model the entire core with LES on Frontier. This gradual approach will allow us
+to make maximum use of available resources (i.e., LES with mixing vanes is
+currently impossible on Summit) and will also allow identification of the
+number of detailed assemblies needed to accurately account for the flow within
+a target assembly within the context of a zonal LES simulation. The major tasks
+have been identified as follows:
 
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
