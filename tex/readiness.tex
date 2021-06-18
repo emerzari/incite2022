@@ -150,6 +150,15 @@ proposed high-fidelity simulations.
 
 
 \noindent{\bf Parallel Performance.}
+\begin{wrapfigure}{R}{0.40\textwidth}
+\vspace{-0.8em}
+\centering
+\includegraphics[width=0.35\textwidth]{figs/libp_kernels.png}
+\caption{\label{fig:roof}\footnotesize{
+libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$) 
+vs.  polynomial order, $N$   \cite{ceed_pb_paper_2020}.}}
+\vspace{-0.8em}
+\end{wrapfigure}
 NekRS has been developed in close collaboration with the libParanumal project
 \cite{warburton2019,ChalmersKarakusAustinSwirydowiczWarburton2020,streamParanumal2020},
 which provides high-performance kernels for high-order methods on GPUs.  The
@@ -171,14 +180,7 @@ typically saturate the roofline on the NVIDIA GPUs, as illustrated
 in Fig. \ref{fig:roof}, where we see that the local Poisson kernel
 (without parallel communication) realizes 1.5 TFLOPS FP64 on a single V100
 of Summit \cite{ceed_bp_paper_2020}.
-%
-\begin{wrapfigure}{rt}{2.8in} \begin{center}
 {\setlength{\unitlength}{1.0in} \begin{picture}(2.900,0.600)(-.2,0)
-  \includegraphics[scale=0.30]{figs/libp_kernels.png}
-\end{picture}} \caption{\label{fig:roof} 
-libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$) vs.
-polynomial order, $N$   \cite{ceed_pb_paper_2020}.  \vspace*{-.2in} }
-\end{center} \end{wrapfigure}
 %
 
 
