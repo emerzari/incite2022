@@ -13,47 +13,77 @@ the open concurrent computed abstraction (OCCA) for platform portability
 DOE's ECP in the Center for Efficient Exascale
 Discretizations (CEED). 
 
+<<<<<<< HEAD
+\noindent{\em State-of-the-Art.}
+Numerical discretization of (1)--(3)
+=======
 \vspace{-.25in}
 \subsection{Usage of resources requested }
 \vspace{-.2in}
 
-A single SMR assembly with mixing vanes explicitly modeled is expected to involve
-approximately 170 million elements. This estimate is based on the work of
-Busco et. al. \cite{busco2019invariant} for a 5x5 bundle and extrapolating to 5 17x17 axial grids or roughly $60 x$ larger.
+A single SMR assembly with mixing vanes explicitly modeled is expected to
+involve approximately 170 million elements. This estimate is based on the work
+of Busco et. al. \cite{busco2019invariant} for a 5x5 bundle and extrapolating
+to 5 17x17 axial grids or roughly $60 x$ larger.
 
-Therefore the first simulation on Summit will aim for 270 million elements (1 assembly modeled explicitly) with the rest of the full core modeled with RANS (using the mesh of Fang which comprises 100  million elements \cite{Fang2021}). In the second year we follow with 1.6 billion elements (9 assemblies modeled explicitly).
-Finally in the third year, we perform a 37 assembly simulation comprising 6.3 billion elements.
+Therefore the first simulation on Summit will aim for 270 million elements (1
+assembly modeled explicitly) with the rest of the full core modeled with RANS
+(using the mesh of Fang which comprises 100  million elements \cite{Fang2021}).
+In the second year we follow with 1.6 billion elements (9 assemblies modeled
+explicitly).  Finally in the third year, we perform a 37 assembly simulation
+comprising 6.3 billion elements.
 
-Using testing performed on Summit with the case of Busco \cite{fischer2021nekrs} at $N=7$ we estimate that to advance the full-core mesh with 1 assembly modeled explicitly on 3420 nodes on Summit will require 0.275s per time step. We also estimate that 500,000 time steps will be required to reach statistical convergence based on past experience. This will translate in 130,000 node-hours for the first year on Summit. We note that this calculation will exceed 90 billion grid points.
+Using testing performed on Summit with the case of Busco
+\cite{fischer2021nekrs} at $N=7$ we estimate that to advance the full-core mesh
+with 1 assembly modeled explicitly on 3420 nodes on Summit will require 0.275s
+per time step. We also estimate that 500,000 time steps will be required to
+reach statistical convergence based on past experience. This will translate in
+130,000 node-hours for the first year on Summit. We note that this calculation
+will exceed 90 billion grid points.
 
-The cost of the second and third year simulations on Frontier can be estimated using a similar process. We estimate them to cost 1.17 million Summit equivalent node-hours (9 assemblies modeled explicitly) and 4.8 million Summit equivalent node-hours (full core LES).
+The cost of the second and third year simulations on Frontier can be estimated
+using a similar process. We estimate them to cost 1.17 million Summit
+equivalent node-hours (9 assemblies modeled explicitly) and 4.8 million Summit
+equivalent node-hours (full core LES).
 
-A 217-pin SFR assembly with 5 wire-wrapper spans, is estimated to require between 10 and 30 million elements depending on the Reynolds number for an LES, based on past models \cite{merzari2020toward}. The full core simulation (~200 assemblies) is then estimated to require between 2 and 6 billion elements with LES at $N=7$.  RANS modeling can be conducted with a coarser resolution and can be achieved with lower resolution and it is estimated to require 1 billion elements at $N=5$ (125 billion grid points).
+A 217-pin SFR assembly with 5 wire-wrapper spans, is estimated to require
+between 10 and 30 million elements depending on the Reynolds number for an LES,
+based on past models \cite{merzari2020toward}. The full core simulation (~200
+assemblies) is then estimated to require between 2 and 6 billion elements with
+LES at $N=7$.  RANS modeling can be conducted with a coarser resolution and can
+be achieved with lower resolution and it is estimated to require 1 billion
+elements at $N=5$ (125 billion grid points).
 
-On the first year we assume the RANS calculation will require a cost per time step of 0.4s per step on 4608 cores, based on past experience with wire-wrappers on Summit.  This will translate for 500,000 time steps in a computational cost of 256,000 node-hours.
+On the first year we assume the RANS calculation will require a cost per time
+step of 0.4s per step on 4608 cores, based on past experience with
+wire-wrappers on Summit.  This will translate for 500,000 time steps in a
+computational cost of 256,000 node-hours.
 
-The cost of the second and third year simulations on Frontier can be estimated using a similar process. We estimate them to cost between 1.4 and 4.2 million Summit equivalent node-hours depending on the Reynolds number.
+The cost of the second and third year simulations on Frontier can be estimated
+using a similar process. We estimate them to cost between 1.4 and 4.2 million
+Summit equivalent node-hours depending on the Reynolds number.
 
 \vspace{-.25in}
 \subsection{Computational Approach }
 \vspace{-.2in}
 
 \noindent{\em State-of-the-Art}
-The numerical discretization of the Navier-Stokes and thermal-transport equations
-in Nek5000/RS is based on the spectral element method (SEM) \cite{pat84}, which
-is a high-order weighted residual formulation similar to the finite-element method.   
-The SEM derives its computational efficiency from matrix-free operator
-evaluations that allow the matrix-vector products required for iterative
-solvers to be expressed as fast tensor contractions.  These contractions
-require only $O(n)$ storage and $O(nN)$ work for a discretization involving
-$n=EN^3$ gridpoints, where $E$ is the number of spectral elements and $N$ is
-the discretization order (typically, $N=$6--10) \cite{dfm02}.  This low
-complexity contrasts sharply with that of the $p$-type FEM, which has work and
-storage complexity of $O(nN^3)$ that effectively precludes using $N>3$.  
+The numerical discretization of the Navier-Stokes and thermal-transport
+equations in Nek5000/RS is based on the spectral element method (SEM)
+\cite{pat84}, which is a high-order weighted residual formulation similar to
+the finite element method (FEM).  The SEM derives its computational efficiency
+from matrix-free operator evaluations that allow the matrix-vector products
+required for iterative solvers to be expressed as fast
+tensor contractions.  These contractions require only $O(n)$ storage and
+$O(nN)$ work for a discretization involving $n=EN^3$ gridpoints, where $E$ is
+the number of spectral elements and $N$ is the discretization order (typically,
+$N=$6--10) \cite{dfm02}.  This low complexity contrasts sharply with that of
+the $p$-type FEM, which has work and storage complexity of $O(nN^3)$ that
+effectively precludes using $N>3$.  
 
 Because of their ability to accurately transport small-scale flow features over
 large domains (for a given resolution, $n$), high-order discretizations have
-been the mainstay of DNS and LES turbulence simulations since the early 1970s 
+been the mainstay of DNS and LES turbulence simulations since the early 1970s
 \cite{kreiss72,sao72}.   The SEM allows one to employ high-order methods in 
 complex domains relevant to reactor analysis  \cite{pat84,sao80}.   
 The central idea is to map
@@ -64,16 +94,17 @@ of the form
 \begin{eqnarray}
   u^e(\xi,\eta,\zeta) = \sum_{ijk} u_{ijk}^e l_i(\xi) \, l_j(\eta) \, l_k(\zeta),
 \end{eqnarray}
-where $l_i(\xi)$ is a Lagrange polynomial based on the Gauss-Lobatto-Legrendre
-(GLL) quadrature points, $\xi_j$, such that $l_i(\xi_j)=\delta_{ij}$, with the
-$i$-$j$-$k$ in the index range $\in [0:N]^3$.  Operations that map a set of input
-function values to the corresponding outputs are simple tensor contractions.
+where $l_i(\xi)$ is an $N$th-order Lagrange polynomial based on the
+Gauss-Lobatto-Legrendre (GLL) quadrature points, $\xi_j$, such that
+$l_i(\xi_j)=\delta_{ij}$, with the $i$-$j$-$k$ in the index range $\in
+[0:N]^3$.  Operations that map a set of input function values to the
+corresponding outputs are simple tensor contractions.
 %% that constitute $\approx 90$\% of the flops in Nek5000.
-For example, the derivative $w := u_{\xi}$ at each quadrature point would be
+For example, at each quadrature point the derivative $w := u_{\xi}$ would be
 expressed as $w^e_{ijk} = \sum_p \, \Dh_{ip} u_{pjk}^e$, with the derivative
-matrix, $\Dh_{ip} := \left. \dd{l_p}{\xi} \right|_{\xi_i}$.   
-In typical production runs, $N=7$, meaning that each element comprises 512
-values, $u_{ijk}^e$, that are addressed lexicographically with no indirect
+matrix, $\Dh_{ip} := \left. \dd{l_p}{\xi} \right|_{\xi_i}$.   In typical
+production runs, $N=7$, meaning that each element comprises 512 values,
+$u_{ijk}^e$, that are addressed lexicographically with no indirect
 addressing.\footnote{Indirect addressing (with communication) is used,
 however, to {\em assemble} the residuals at element interfaces \cite{dfm02}.},
 The derivative can be evaluated with $\approx n$ memory references and
@@ -100,12 +131,12 @@ the finite-volume code OpenFOAM for this class of flow problems.  Capuano {\em
 et al.} \cite{palumbo} report that OpenFOAM requires 7 times the number of
 gridpoints as Nek5000 to realize the same accuracy.  They also report, however,
 that Nek5000 requires a smaller timestep for numerical stability, but they did
-not use the characteristics-based timestepper in Nek5000, which allows one to
-use an order-of-magnitude larger stepsize without compromising stability
-\cite{patel18}.  Rezaeiravesh {\em et al.} \cite{schlatter21} illustrate that,
+not use the characteristics-based timestepper in Nek5000 \cite{patel18},  which
+allows one to use an order-of-magnitude larger stepsize without compromising
+stability.  Rezaeiravesh {\em et al.} \cite{schlatter21} illustrate that,
 for the same number of gridpoints, Nek5000 outperforms OpenFOAM by a factor
 of 12 to 15 at the strong-scale limit of $n/P \approx 6000$ ($P=960$ cores) on
-the Cray-XC40, Beskow.  At this limit, Nek5000 continues to exhibit linear
+the Cray-XC40, Beskow.  At this limit, Nek5000 continues to exhibit ideal linear
 scaling, which means that, for the same computational resources (node hours and
 joules), the solution time is reduced by an order of magnitude.  With a reduced
 number of gridpoints ($n$) and time-per-gridpoint (seconds per
@@ -129,6 +160,10 @@ fast AMG-based coarse-grid solvers \cite{fischer15}.
 \subsection{Parallel Performance }
 \vspace{-.2in}
 
+<<<<<<< HEAD
+\noindent{\em Parallel Performance.}
+=======
+>>>>>>> 65fc295c3fa13d9ef1c93700f65d53894faeba0e
 NekRS has been developed in close collaboration with the libParanumal project
 %\cite{warburton2019,warburton2019b,ChalmersKarakusAustinSwirydowiczWarburton2020,streamParanumal2020},
 \cite{warburton2019,ChalmersKarakusAustinSwirydowiczWarburton2020,streamParanumal2020},
@@ -153,8 +188,9 @@ in Fig. \ref{fig:roof}, where we see that the local Poisson kernel
 of Summit \cite{ceed_bp_paper_2020}.
 
 Through extensive performance tuning including covering communication with
-computation, use of mixed precision in preconditioners to lower
-injection-bandwidth pressure, improved preconditioners, and run-time optimized
+computation, use of mixed precision in preconditioners to reduce
+injection-bandwidth pressure, improved preconditioners, projection-based
+initial guesses \cite{fisc98}, and run-time optimized
 communication strategies that select between GPU-direct, GPU-packed+host-based,
 or pure host-based communication, we have made signifcant strides in delivering
 performance for NekRS \cite{nekrs}.  On Summit, NekRS is significantly faster at
@@ -163,9 +199,9 @@ than Nek5000 is on Mira at its strong-scale limit ($n/P \approx 4000$, where $P$
 is the number of ranks in -c32 mode).\footnote{In both cases, we identify the
 strong-scale limit as the value of $n/P$ where the code realizes $\approx$80\%
 efficiency, which is commensurate with production runs and therefore our
-target performance design point.}  Production runs at the strong-scale
+target performance-design-point.}  Production runs at the strong-scale
 limit realize about 0.5--1.0 seconds per step for Nek5000 on Mira, while NekRS
-typically requires about 0.1--0.4 seconds per step on Summit,  as illustrated
+typically requires only 0.1--0.4 seconds per step on Summit,  as illustrated
 in Table \ref{tab:spacer}.  Moreover, production Nek5000 runs on all or half of
 Mira were limited to about 15 million elements ($n \approx 5$B), whereas 100-million-element
 runs with $n \approx 50$--75 billion are readily accessible on Summit with NekRS
@@ -180,14 +216,17 @@ results for NekRS for a 17$\times$17 rod-bundle configuration.
 
 MORE TEXT TO COME THAT WILL LINK THE BELOW WITH THE ABOVE...
 
-Table~\ref{dns-strong} demonstrates performance for {\bf DNS $5\times5$} on Mira (Nek5000) vs. Summit CPU (Nek5000) and GPU (NekRS).
-Timings are in seconds for the averaged walltime per step for 400 timesteps over simulation time interval [59.71, 59.78]
- with $\dt$= 1.9e-04 (CFL=0.32) at $Re_D=19000$ and BDF2+EXT2 timerstepper.  
+Table~\ref{dns-strong} demonstrates performance for {\bf DNS $5\times5$} on
+Mira (Nek5000) vs. Summit CPU (Nek5000) and GPU (NekRS).  Timings are in
+seconds for the averaged walltime per step for 400 timesteps over simulation
+time interval [59.71, 59.78] with $\dt$= 1.9e-04 (CFL=0.32) at $Re_D=19000$ and
+BDF2+EXT2 timerstepper.  
 
 %% NEK: pebbles
 
-Table~\ref{peb352k-strong} is the full core for the pebble bed reactor, which has 352,625 spherical pebbles and a fluid mesh comprising 
-$E = 98782067$ elements of order $N=8$ ($n\approx 51B$). 
+Table~\ref{peb352k-strong} is the full core for the pebble bed reactor, which
+has 352,625 spherical pebbles and a fluid mesh comprising $E = 98782067$
+elements of order $N=8$ ($n\approx 51B$). 
 
 
 %% NEK: strong/weak rod1717
@@ -200,11 +239,12 @@ corresponding to CFL=0.54.
 
 %% NEK: single rod on advaned arch
 
-Table~\ref{singlerod} demonstrates NekRS performance on a single GPU for single rod simulations for 
-500 steps and the averaged timing per step, $t_{step}$, is measured in seconds for 101-500 steps. 
-R is the ratio of $t_{step}$ to Summit V100.  The timestep size is $\Delta t$=1.2e-03 (CFL=7.3).
-Characteristic-based BDF2 with 1 substeps is used for timestepping.
-Tolerances for pressure and velocity are  1e-4 and 1e-6, respectively.
+Table~\ref{singlerod} demonstrates NekRS performance on a single GPU for single
+rod simulations for 500 steps and the averaged timing per step, $t_{step}$, is
+measured in seconds for 101-500 steps.  R is the ratio of $t_{step}$ to Summit
+V100.  The timestep size is $\Delta t$=1.2e-03 (CFL=7.3).  Characteristic-based
+BDF2 with 1 substeps is used for timestepping.  Tolerances for pressure and
+velocity are  1e-4 and 1e-6, respectively.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
