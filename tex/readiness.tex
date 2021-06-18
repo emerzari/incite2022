@@ -45,13 +45,13 @@ A 217-pin SFR assembly with 5 wire-wrapper spans is estimated to require
 between 10 and 30 million elements depending on the Reynolds number for an LES,
 based on past models \cite{merzari2020toward}. The full core simulation (200
 assemblies) is estimated to require between 2 and 6 billion elements with
-LES at $N=7$.  RANS modeling can be conducted with a coarser resolution and can
-be achieved with lower resolution; it is estimated to require 1 billion
-elements at $N=5$ (125 billion grid points).
+LES at $N=7$.  RANS modeling can be conducted with a coarser resolution;
+it is estimated to require 1 billion elements at $N=5$ (125 billion grid
+points).
 %
 Based on past experience with wire-wrappers on Summit we estimate that the Year
 1 RANS calculation will require 0.4s per step on 4608 nodes, which corresponds
-a computational cost of 256,000 node-hours for the requisite 500,000 timesteps.
+a computational cost of 256,000 node-hours for the requisite 500,000 time steps.
 %
 The cost of the second and third year simulations on Frontier can be estimated
 using a similar process. We estimate them to cost between 1.4 and 4.2 million
