@@ -19,7 +19,7 @@ The lack of integral-effect test facilities for a wide range of scenarios and
 conditions considered in risk-informed analysis leads to a severe deficit of
 directly relevant data for these advanced designs.  Development of  appropriate
 models for full-system analysis will require {\em high-fidelity numerical
-simulations} (Figure~\ref{fig:350k}) coupled with advanced instrumented separate-effect experiments to
+simulations} coupled with advanced instrumented separate-effect experiments to
 lay the ground work for subsequent integral-effect tests, when the related
 facilities investment is justified.
 
@@ -29,12 +29,12 @@ facilities investment is justified.
 \includegraphics[width=0.93\textwidth]{../figs/pebble01.png}
  \caption{\label{fig:350k} High fidelity reactor simulations of turbulent flow performed on OLCF/Summit:
   up to a full pebble bed core with 352,625 pebbles using an all-hex mesh comprising
-  $E$=98,782,067 elements of order $N=8$. We emphasize the difference in size enabled by nekRS and Summit versus Mira.}
+  $E$=98,782,067 elements of order $N=8$. We emphasize the difference in size enabled by Summit versus Mira.}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Our objective is to provide the high-fidelity simulation capabilities that are
-essential to this mission.  In particular, we consider SFRs and Light Water SMRs.
+essential to this mission.  As part of this proposal, we consider SFRs and Light Water SMRs.
 Both of these designs have received considerable
 attention in recent years. The cores of such reactors comprise tens of
 thousands of fueled rods, grouped in bundles of hundreds of rods. Coolant flow,
@@ -94,13 +94,22 @@ and the economic viability of new operating paradigms, such as load following.
 The accuracy of such simulations has direct implications on design
 certification, licensing, and eventual market share.
 
+The range of scales involved in the simulation of SMRs, and in general of rodded cores, is shown in Figure~\ref{fig:smr1}: it can easily span 6 to 8 orders of magnitude from the micrometers involved in turbulent dissipation to meters, posing a formidable challenge.
 Computational Fluid Dynamics (CFD) is used widely in reactor design and safety
-analysis, but the scale required for full-core simulation has typically limited
+analysis, but the scale required ro resolve all relevant scales for a full-core simulation has typically limited
 such geometries to less than 1\% of the core -- usually, a single ``fuel
-bundle,'' or grouping of rods \cite{wang2020,fanning,wang2020b}. The power and
-flow distributions in a reactor can be highly nonuniform, and many physics
+bundle,'' or grouping of rods \cite{wang2020,fanning,wang2020b}.
+The power and flow distributions in a reactor can be highly nonuniform, and many physics
 phenomena cannot be accurately predicted with single-bundle models -- models that
 account for inter-bundle coupling across the entire core are required.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.93\textwidth]{../figs/smr01.png}
+ \caption{\label{fig:smr1} Scales involved in the simulation of an SMR ranging from meters to the micrometers involves in the turbulent dissipation generated in the wake of mixing vanes.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 However, the
 scale of full-core CFD has traditionally precluded its use as an analysis tool
