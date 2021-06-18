@@ -220,12 +220,12 @@ points, NekRS/Summit is about 4.5 times faster than Nek5000/Mira. \\
 \newcolumntype{?}[1]{!{\vrule width #1}}
   \footnotesize
 
-  \begin{center} \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+  \begin{center} \begin{tabular}{|c|c|c|r|r|r|r|r|r|r|}
   \hline
   \multicolumn{10}{|c|}{{\bf Spacer-Grid DNS Performance on Mira vs. Summit, $E=3235953$, $N=7$, $n=1.10B$}} \\ 
   \hline
   \hline
-  System & Code      & Device & Node & Rank & R/N & $E$/R & $n$/Rank &  $t_{step} (s) $ &  Eff  \\
+  System & Code      & Device & Node & Rank & R/N & $E$/Rank & $n$/Rank &  $t_{step} (s) $ &  Eff  \\
   \hline
   \hline
    Mira  &Nek5000&CPU &  8192 &262144 & 32 &  12   &  4116   &  6.90e-01 & 100  \\
@@ -248,9 +248,8 @@ points, NekRS/Summit is about 4.5 times faster than Nek5000/Mira. \\
   \end{center}
 \caption{\label{tab:mira}
 Spacer-Grid performance on Mira (Nek5000), Summit CPU (Nek5000), and Summit GPU
-(NekRS).  Timings are in seconds for the wall time per step, $t_{step}$
-averaged over 100 timesteps with $\dt$= 6.00e-05 (CFL=1.706) at $Re_D=14000$
-with pressure tol= 1.e-05 and velocity tol= 5.e-12.  }
+(NekRS).  $t_{step}$ is the average wall-time in seconds over 100 timesteps with $\dt$= 6.e-5 (CFL=1.706) at $Re_D=14000$
+with pressure tol= 1.e-05 and velocity tol= 5.e-12. R/N is the number of ranks per node. }
 \end{table*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
