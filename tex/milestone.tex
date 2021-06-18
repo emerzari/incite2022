@@ -55,13 +55,34 @@ SMR: Mesh and input setup (1 assembly explicit) & {\begin{tabular}[l]{@{}l@{}}
 \textbf{Archival storage (TB and dates):} 50 \\
 \textbf{Software Application:} Nek5000/NekRS \\
 \textbf{Tasks:} Task SMR-I\\
-\textbf{Dependencies:} None  \end{tabular}} & 6/30/2022 &  \\ \hline
+\textbf{Dependencies:} None \end{tabular}} & 6/30/2022 &  \\ \hline
 SMR: Zonal LES simulation (1 assembly explicit) & {\begin{tabular}[l]{@{}l@{}}
 \textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 143,000\\
 \textbf{Filesystem storage (TB and dates):} 265\\
 \textbf{Archival storage (TB and dates):} 300\\
 \textbf{Software Application:} Nek5000/NekRS \\
 \textbf{Tasks:} Task SMR-I\\
+\textbf{Dependencies:} Meshing  \end{tabular}} & 12/31/2022 &  \\ \hline
+SFR: Mesh convergence studies for clusters of bundles  & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 30,000\\
+\textbf{Filesystem storage (TB and dates):} 50 \\
+\textbf{Archival storage (TB and dates):} 50 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task SFR-I\\
+\textbf{Dependencies:} None  \end{tabular}} & 5/31/2022 &  \\ \hline
+SFR: Complete full-core mesh and models   & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 30,000\\
+\textbf{Filesystem storage (TB and dates):} 50 \\
+\textbf{Archival storage (TB and dates):} 100 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task SFR-I\\
+\textbf{Dependencies:} None  \end{tabular}} & 7/31/2022 &  \\ \hline
+SFR: Preliminary results of full-core CFD model (RANS)   & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Summit \hspace{.5cm}  \textbf{Node hours:} 280,000\\
+\textbf{Filesystem storage (TB and dates):} 350 \\
+\textbf{Archival storage (TB and dates):} 1000 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task SFR-I\\
 \textbf{Dependencies:} None  \end{tabular}} & 12/31/2022 &  \\ \hline
 \end{tabular}
 \label{tab:ms1}
@@ -92,6 +113,13 @@ SMR: Zonal LES simulation (9 assembly explicit) & {\begin{tabular}[l]{@{}l@{}}
 \textbf{Software Application:} Nek5000/NekRS \\
 \textbf{Tasks:} Task SMR-II\\
 \textbf{Dependencies:} None  \end{tabular}} & 12/31/2023 &  \\ \hline
+SFR: Preliminary LES simulations & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 1,500,000\\
+\textbf{Filesystem storage (TB and dates):} 480 \\
+\textbf{Archival storage (TB and dates):} 2000 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task SFR-III\\
+\textbf{Dependencies:} Task SFR-I  \end{tabular}} & 12/31/2023 &  \\ \hline
 \end{tabular}
 \label{tab:ms2}
 \end{table}
@@ -120,6 +148,13 @@ SMR: Full core LES simulation & {\begin{tabular}[l]{@{}l@{}}
 \textbf{Software Application:} Nek5000/NekRS \\
 \textbf{Tasks:} Task SMR-III\\
 \textbf{Dependencies:} None  \end{tabular}} & 12/31/2024 &  \\ \hline
+SFR: Final LES simulations & {\begin{tabular}[l]{@{}l@{}}
+\textbf {Resources:} Frontier \hspace{.5cm}  \textbf{Node hours:} 4,500,000\\
+\textbf{Filesystem storage (TB and dates):} 480 \\
+\textbf{Archival storage (TB and dates):} 5000 \\
+\textbf{Software Application:} Nek5000/NekRS \\
+\textbf{Tasks:} Task SFR-III\\
+\textbf{Dependencies:} Task SFR-I  \end{tabular}} & 12/31/2024 &  \\ \hline
 \end{tabular}
 \label{tab:ms3}
 \end{table}

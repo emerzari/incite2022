@@ -102,21 +102,28 @@ and the economic viability of new operating paradigms, such as load following.
 The accuracy of such simulations has direct implications on design
 certification, licensing, and eventual market share.
 
-The range of scales involved in the simulation of light water SMRs and SFRs, and in general of rodded cores, is shown in Figure~\ref{fig:smr1} -- the range can easily span 6 to 8 orders of magnitude, from the micrometers involved in turbulent dissipation to meters, posing a formidable challenge.
-Computational Fluid Dynamics (CFD) is used widely in reactor design and safety
-analysis, but the computational power required to resolve all relevant scales for a full-core simulation has typically limited
-such geometries to less than 1\% of the core -- usually, a single ``fuel
-bundle,'' or grouping of rods \cite{wang2020,fanning,wang2020b}.
-The power and flow distributions in a reactor can be highly nonuniform, and many physics
-phenomena cannot be accurately predicted with single-bundle models. Models that
-account for inter-bundle coupling across the entire core are required.
+The range of scales involved in the simulation of light water SMRs and SFRs,
+and in general of rodded cores, is shown in Figure~\ref{fig:smr1} -- the range
+can easily span 6 to 8 orders of magnitude, from the micrometers involved in
+turbulent dissipation to meters, posing a formidable challenge.  Computational
+Fluid Dynamics (CFD) is used widely in reactor design and safety analysis, but
+the computational power required to resolve all relevant scales for a full-core
+simulation has typically limited such geometries to less than 1\% of the core
+-- usually, a single ``fuel bundle,'' or grouping of rods
+\cite{wang2020,fanning,wang2020b}.  The power and flow distributions in a
+reactor can be highly nonuniform, and many physics phenomena cannot be
+accurately predicted with single-bundle models. Models that account for
+inter-bundle coupling across the entire core are required.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.9\textwidth]{figs/smr01.png}
- \caption{\label{fig:smr1} Scales involved in the simulation of an SMR ranging from meters to the micrometers involves in the turbulent dissipation generated in the wake of mixing vanes.}
-\end{figure}
+ \caption{\label{fig:smr1} 
+Range of scales in the simulation of an SMR spanning from the full reactor
+(meters, left) to turbulent dissipation (micrometers, right) generated in the
+wake of mixing vanes.
+} \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 However, the
@@ -609,44 +616,50 @@ The milestones in Table~\ref{tab:milestones} are directly correlated with the
 Milestones (Section 4 in the submitted material), where additional information
 is provided with respect to required computing resources.
 
-\begin{table}[h!]
-\footnotesize
-\centering
-\caption{Summary of the tasks and milestones associated with this proposal. 
-%``Low-res.'' indicates ``low-resolution.''
-}
-\begin{tabular}{c c c l l l l}
-\toprule
-Problem & Task & Milestone & Description & End Date & System & Node Hours\\
-\midrule
-\multirow{6}{*}{SMR} & \multirow{2}{*}{I} & A & Mesh and input setup (1 assembly explicit) & Jun 2022 \\
-&  & B & Zonal LES simulation (1 assembly explicit)  & Dec 2022 \\\cmidrule{2-5}
-& \multirow{2}{*}{II} & A & Mesh and input setup (9 assembly explicit)  & Jun 2023 \\
-&  & B & Zonal LES simulation (9 assembly explicit)  & Dec 2023 \\\cmidrule{2-5}
-& \multirow{2}{*}{III} & A & Mesh and input setup (LES simulation) & Jun 2024 \\
-&  & B & Full core LES simulation  & Dec 2024 \\
-\midrule
-\multirow{14}{*}{SFR} & \multirow{3}{*}{I} & A & Mesh convergence studies for clusters of bundles & May 2022 \\
-& & B & Complete full-core mesh and models & July 2022\\
-& & C & Preliminary results of full-core CFD model (RANS) & Dec 2022\\\cmidrule{2-5}
-& \multirow{3}{*}{II} & A & Complete full-core Pronghorn low-res. models & Nov 2022 \\
-& & B & Preliminary tests of full-core low-res. model & Nov 2022\\
-& & C & Full-core low-resolution simulations & Dec 2022\\\cmidrule{2-5}
-& \multirow{2}{*}{III} & A & Preliminary LES simulations  & Dec 2023\\
-& & B & Final LES simulations  & Dec 2024\\\cmidrule{2-5}
-& \multirow{2}{*}{IV} & A & Temperature measurements from LES database & Mar 2024\\
-& & B & Crossflow measurements from LES database & Jun 2024\\\cmidrule{2-5}
-& \multirow{3}{*}{V} & A & Correlate LES database with \(\kappa\) model & Sep 2024\\
-& & B & Repeat full-core low-res. simulations with new closure & Oct 2024\\
-& & C & Temperature measurements from LES database & Dec 2024\\
-\bottomrule
-\end{tabular}
-\label{tab:milestones}
-\end{table}
+\input tex/table1
 
-For the SMR modeling, Task I encompasses model setup and preliminary testing for
-the Zonal LES CFD simulations. Our group has extensive experience with modeling of mixing vanes \cite{busco2019invariant}; milestone I.A will develop guidelines for converged meshes for all subsequent simulations and deliver the first full core mesh with an assembly explicitly modeled, while milestone
-I.B will deliver the simulation results.  Through tasks II and III we then progress to the full core in later years.
+% \begin{table}[h!]
+% \footnotesize
+% \centering
+% \caption{Summary of the tasks and milestones associated with this proposal. 
+% %``Low-res.'' indicates ``low-resolution.''
+% }
+% \begin{tabular}{c c c l l l l}
+% \toprule
+% Problem & Task & Milestone & Description & End Date & System & Node Hours\\
+% \midrule
+% \multirow{6}{*}{SMR} & \multirow{2}{*}{I} & A & Mesh and input setup (1 assembly explicit) & Jun 2022 \\
+% &  & B & Zonal LES simulation (1 assembly explicit)  & Dec 2022 \\\cmidrule{2-5}
+% & \multirow{2}{*}{II} & A & Mesh and input setup (9 assembly explicit)  & Jun 2023 \\
+% &  & B & Zonal LES simulation (9 assembly explicit)  & Dec 2023 \\\cmidrule{2-5}
+% & \multirow{2}{*}{III} & A & Mesh and input setup (LES simulation) & Jun 2024 \\
+% &  & B & Full core LES simulation  & Dec 2024 \\
+% \midrule
+% \multirow{14}{*}{SFR} & \multirow{3}{*}{I} & A & Mesh convergence studies for clusters of bundles & May 2022 \\
+% & & B & Complete full-core mesh and models & July 2022\\
+% & & C & Preliminary results of full-core CFD model (RANS) & Dec 2022\\\cmidrule{2-5}
+% & \multirow{3}{*}{II} & A & Complete full-core Pronghorn low-res. models & Nov 2022 \\
+% & & B & Preliminary tests of full-core low-res. model & Nov 2022\\
+% & & C & Full-core low-resolution simulations & Dec 2022\\\cmidrule{2-5}
+% & \multirow{2}{*}{III} & A & Preliminary LES simulations  & Dec 2023\\
+% & & B & Final LES simulations  & Dec 2024\\\cmidrule{2-5}
+% & \multirow{2}{*}{IV} & A & Temperature measurements from LES database & Mar 2024\\
+% & & B & Crossflow measurements from LES database & Jun 2024\\\cmidrule{2-5}
+% & \multirow{3}{*}{V} & A & Correlate LES database with \(\kappa\) model & Sep 2024\\
+% & & B & Repeat full-core low-res. simulations with new closure & Oct 2024\\
+% & & C & Temperature measurements from LES database & Dec 2024\\
+% \bottomrule
+% \end{tabular}
+% \label{tab:milestones}
+% \end{table}
+ 
+For the SMR modeling, Task I encompasses model setup and preliminary testing
+for the Zonal LES CFD simulations. Our group has extensive experience with
+modeling of mixing vanes \cite{busco2019invariant}; milestone I.A will develop
+guidelines for converged meshes for all subsequent simulations and deliver the
+first full core mesh with an assembly explicitly modeled, while milestone
+I.B will deliver the simulation results.  Through tasks II and III we then
+progress to the full core in later years.
 
 For the SFR modeling, Task I encompasses model setup and preliminary testing for
 the LES CFD simulations. Our group is experienced at meshing such geometries \cite{merzari2020toward}; milestone
