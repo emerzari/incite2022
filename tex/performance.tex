@@ -3,8 +3,6 @@
 \subsection{Parallel performance}
 \vspace{-.2in}
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
  \begin{table}[!b]
@@ -12,7 +10,8 @@
  \begin{center} \begin{tabular}{|c|c|c|c|c|c|c|}
   \hline
 % \multicolumn{7}{|c|}{{\bf Rod Bundle Strong Scale: $v_i=3$, $p_i=2$, $E= 175618000$, $N=7$, $n=60B$}}\\
-  \multicolumn{7}{|c|}{{\bf NekRS Strong Scale:  Rod-Bundle,  200 Steps}}\\
+% \multicolumn{7}{|c|}{{\bf NekRS Strong Scale:  Rod-Bundle,  200 Steps}}\\
+  \multicolumn{7}{|c|}{{\bf NekRS Strong Scale:  Rod-Bundle}}\\
   \hline
  Node & GPU   & $E$ & $n$ & $n/P$ & $t_{\rm step} [s] $ & Eff  \\
  \hline
@@ -23,7 +22,8 @@
  4608 &27648 &  175M & 60B &2.1M &1.03e-01 &  70  \\
   \hline
  \hline
-  \multicolumn{7}{|c|}{{\bf NekRS Weak Scale: Rod-Bundle, 200 Steps}}\\
+% \multicolumn{7}{|c|}{{\bf NekRS Weak Scale: Rod-Bundle, 200 Steps}}\\
+  \multicolumn{7}{|c|}{{\bf NekRS Weak Scale: Rod-Bundle}}\\
   \hline
  Node & GPU &  $E$ & $n$      &  $n/P$& $t_{\rm step}[s]$ & Eff \\
  \hline
@@ -48,17 +48,6 @@
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.93\textwidth]{figures/350K_peb.png}
- \caption{\label{fig:350k} Reactor simulations of turbulent flow performed 
-  on OLCF/Summit:
-  full core with 352,625 pebbles using an all-hex mesh comprising
-  $E$=98,782,067 elements of order $N=8$.}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
