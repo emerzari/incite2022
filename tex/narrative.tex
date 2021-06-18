@@ -445,7 +445,7 @@ problems.
 \vspace{-.2in}
 
 To address the SMR challenge problem of assessing three-dimensional core-wide flow and heat transfer behavior we examine an extension of the work of Fang et al. \cite{Fang2021}.
-In this previous work we have modeled with RANS and momentum sources an SMR core comprised of 37 17x17 assemblies, inspired by the Nuscale core. Each assembly has an active fuel length of $2 m$ for which the the power distribution is obtained with a precursor Monte Carlo calculations.
+In this previous work we have modeled with RANS and momentum sources an SMR core comprised of 37 17x17 assemblies, inspired by the Nuscale core. Each assembly has an active fuel length of $2 m$ for which the the power distribution is obtained with a precursor Monte Carlo calculations. The Reynolds number defined based on the rod diameter and the bulk velocity is $Re=50,000$. The Prandtl number is $Pr=1$.
 
 We now propose to gradually increase the resolution of the simulations modeling an increasing number of assemblies with higher resolution using a zonal LES approach \cite{menter2012global}. The mixing vanes in the higher resolution assemblies will be modeled explicitly, and turbulence will be resolved using large eddy simulation. Finally, on Frontier, we propose to model the entire core with LES. The gradual approach will allow to make maximum use of available resources (i.e., an LES with mixing vanes is currently impossible on Summit) and it will also allow to identify the number of explicit assemblies needed to accurately account for the flow within a target assembly within the context of a zonal LES simulation.
 
@@ -575,7 +575,7 @@ continue gaining insights into the parallelization strategies for the flow case 
 lowest mesh resolution requirements. Task IV and V focus on the post-processing of the data and comparisons with results from Task II. They are conducted in parallel with Task III.
 
 For the SMR modeling, Task I encompasses model setup and preliminary testing for
-the Zonal LES CFD simulations. Our group has extensive experience with modeling of mixing vanes \cite{Busco}; milestone I.A will develop guidelines for converged meshes for all subsequent simulations and deliver the first full core mesh with an assembly explicitly modeled, while milestone
+the Zonal LES CFD simulations. Our group has extensive experience with modeling of mixing vanes \cite{busco2019invariant}; milestone I.A will develop guidelines for converged meshes for all subsequent simulations and deliver the first full core mesh with an assembly explicitly modeled, while milestone
 I.B will deliver the simulation results.  Through tasks II and III we then progress to the full core in later years.
 
 \input ../tex/readiness
