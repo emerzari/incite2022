@@ -1,0 +1,285 @@
+
+
+Project Executive Summary (1-page limit): The executive summary should
+accurately describe the proposed research and the high-impact scientific or
+technical advances you will realize with the proposed INCITE allocation.
+Industry organizations should also summarize the potential economic or
+strategic business impact of the proposed research.  
+
+Project Narrative: The narrative should not exceed 15 pages. Visual
+materials—such as charts, graphs, pictures, etc.—are included in the 15-page
+limit. References do not count toward the 15-page limit and should be included
+at the end of the Project Narrative. URLs that provide information related to
+the proposal should not be included. The 15-page limit will be strictly
+enforced. The Project Narrative should address the following points: 
+
+
+Significance of Research: Explain what advances you expect to be enabled by an
+INCITE award that justifies an allocation of petascale resources (e.g.,
+anticipated impact on community paradigms, valuable insights into or solving a
+long-standing challenge, etc.).  Place the proposed research in the context of
+competing work in your discipline or business. List any previous INCITE
+award(s) received and discuss the relationship to the work proposed. The
+information should be sufficient for peer review in your area of research and
+also appropriate for general scientific review, comparing your proposal with
+proposals in other disciplines.  Data analytics and artificial intelligence
+(AI) proposals may find the DOE AI for Science report valuable as a guide when
+writing the Significance of Research.  Potential scientific or business impact
+is the predominant determinant for awards. This factor will be assessed by a
+peer review panel.  This section is typically about 4 pages.  
+
+
+Research Objectives and Milestones: Describe the proposed research, including
+its goals and milestones and the theoretical and computational methods it
+employs. Goals and milestones should articulate simulation and developmental
+objectives and be sufficiently detailed to assess the progress of the project
+for each year of any allocation granted.  Milestones should correlate with
+those in Section 4, “Milestone Table.” It is especially important that you
+provide clear connections between the project’s overarching milestones, the
+planned production simulations, and the compute time expected to be required
+for these simulations (e.g., should correlate with Section 2.3.i, “Use of
+Resources Requested”) in the research proposal. You should also make clear any
+dependencies of milestones on other milestones. This section is typically about
+6 pages.  
+
+
+Computational Readiness: Proposals will be assessed on the need for, readiness
+to use, and reasonableness of the request for resources. Proposals should
+summarize the requirement(s) that best exemplifies the proposed computational
+work. Leadership targets in the INCITE program typically include one or both of
+the following categories: 
+
+
+Simulation, data analytics and/or AI projects should use a significant fraction
+(of the order of 20% or more) of one or more of the LCF leadership class
+resources; compute, memory, network or disk, for example. Parameter sweeps,
+ensembles, design of experiments, and other statistical methods that require
+large numbers of discrete or loosely coupled simulations may be considered
+capability-class campaigns. See the FAQs for details and qualifiers.  
+
+
+Specific architectural needs that can only be met by the LCF.  
+
+
+This section, including the following subsections, is typically about 5 pages.
+
+Use of Resources Requested: Describe your proposed production simulations and
+state how the runs are tied to each of your project’s goals and milestones
+(Section 4, “Milestone Table”). Also describe the data requirements of your
+production simulations. If at any point during your project the sum of your
+data storage needs in the scratch file systems exceed 1 petabyte, specific
+justification is required. See the Project Narrative Template for a detailed
+listing of information required in this section.C NOTE: The LCF data management
+plans can be found at ALCF: http://www.alcf.anl.gov/user-guides/data-policy
+OLCF: https://docs.olcf.ornl.gov/data/index.html
+
+Computational Approach: Provide a detailed description of your computational
+approach, including a discussion of the state of the art in the field. The
+description should also mention: 
+
+Particular libraries required by the production and analysis software,
+algorithms and numerical techniques employed (e.g., finite element, iterative
+solver), programming languages, and other software used.  
+
+Parallel programming model(s) used (e.g., MPI, OpenMP/Pthreads and vector
+intrinsics [AVX-512] for Xeon Phi; MPI, OpenMP/Pthreads, CUDA, OpenACC, HIP,
+ROCm or AVX intrinsics for AC922).  
+
+Project workflow, including the role of analysis and visualization. Identify
+where the analysis will be done and any potential bottlenecks in the analysis
+process. Describe any analysis and/or data reduction tools used.  
+
+Software workflow solution (e.g., pre- and postprocessing scripts that automate
+run management and analysis) to facilitate this volume of work.  
+
+I/O requirements (e.g., amount, size, bandwidth) for restart, analysis, and
+workflow. Highlight any exceptional I/O needs.  
+
+Optimizations for the resources requested (in terms of efficiency, scalability,
+throughput, data input/output, workflow tools for ensemble runs, checkpointing
+etc.) which may be relevant for data analytics and AI proposals.
+
+
+Parallel Performance: Provide direct evidence, including supporting
+quantitative data, for your production application’s parallel performance for
+the intended research simulations. Ideally, the proposing team will have
+generated the data and this data will be representative of the entire workflow
+of the project proposed. If you cite work by others, explain why it is
+applicable here. You should use the application code you intend for the
+production work, not a related code. Data for sample systems not related to the
+intended research is undesirable. Performance benchmarking should reflect all
+I/O and workflow requirements. Scaling and  performance data in either strong
+or weak scaling mode should be provided.  Explain how the strong or weak
+scaling applies to the proposed work.  For data analytics and AI proposals, a
+description of the compute, memory, networking, and storage needs in the
+context of the LCF resources will help reviewers understand the strong or weak
+scaling characteristics.  See the examples at the end of this page.  NOTE: You
+may apply for a startup account at one of the centers to conduct performance
+studies. Director’s Discretion applications are available at ALCF:
+http://www.alcf.anl.gov/getting-started/apply-for-dd OLCF:
+http://www.olcf.ornl.gov/support/getting-started/olcf-director-discretion-project-application
+
+Developmental Work: For the computational approach above, describe what, if
+any, development work has been carried out to-date, especially on the
+architecture of the requested resource. Describe what development work will be
+executed during the proposed INCITE campaign and when it will be executed.
+Provide an estimate of the computational resources required for this work. If
+applicable, identify the milestones and production activities in Section 2.3.i
+that are dependent on the developmental work and provide a plan for validating
+this developmental work.  
+
+Personnel Justification and Management Plan: A personnel justification and
+management plan must be included in the proposal.  This section is typically 1
+to 2 pages, but may be longer for community proposals. (Does not count toward
+the 15-page Project Narrative limit).  Personnel Justification: What personnel
+are already in place and what are their roles on the project? If applicable,
+describe (i) personnel that will be hired for the project in the future and
+their responsibilities and (ii) potential personnel turnover that may occur
+during the project and a strategy for replacing them. The INCITE program
+welcomes proposals from individual PIs or teams of collaborators.  
+
+Management: Describe the project’s leadership team and how decisions are made
+to allocate time to individuals or, for proposals with multiple collaborating
+teams, subgroups within the project. Describe the focus of each individual or
+subgroup. Successful proposals will include a management plan that conveys to
+reviewers the interrelationship between subgroups and how the sum of the parts
+will lead to scientific discovery or engineering solutions that are the
+overarching goal of the project. Also identify points of contact who will
+provide updates on the status of the work, including publications, awards, and
+highlights of accomplishments.  
+
+Milestone Table: Proposals must be accompanied by a summary table of planned
+milestones for each year of the proposed work. Milestones should be clearly
+articulated and appropriate for the size and length of the requested award
+(e.g., large requests should have sufficient milestones to allow reviewers to
+assess the planned project workflow). Future modification to the project scope
+and milestones will be tracked in part through the milestone table. Use the
+template provided. Below is a description of what should be provided for each
+column in the table. (Does not count toward the 15-page Project Narrative
+limit).  
+
+Milestones: Clearly state the scientific and technical (e.g., development)
+milestones for each year of the proposed work.
+
+
+
+Details: Include the following details as appropriate for each milestone.
+
+Resource: List the primary computing resource.  
+
+Node-hours: List the number of node-hours associated with this milestone.  
+
+File system storage: Provide an estimate in terabytes (TB) of the required
+temporary storage needed on the file system while the data is analyzed and
+reduced or before it is moved to archival storage. Also provide the estimated
+time period when this storage is needed.
+
+
+Archival storage: Provide an estimate in TB of the required archival storage
+associated with this milestone for the duration of the project. Also provide
+the estimated time period when this storage is needed.  
+
+Application: List the software application or code needed for this milestone.  
+
+Tasks: Briefly summarize the work that will be done by listing the subtasks,
+computational runs, and data analysis and reduction tasks associated with each
+milestone.
+
+
+Dependencies: Note dependencies between the scientific milestones and on
+proposed development work.  
+
+Date: List the projected start and completion date for each milestone.
+
+Status: For renewal proposals only.
+
+Publications Resulting from INCITE Awards: (Only required for projects with
+prior INCITE awards). Provide a list of publications resulting from previous
+INCITE awards to this project team for work related to the proposal under
+consideration. Only those publications that include an acknowledgement to
+INCITE and/or the LCF may be included. This list may not be used in lieu of
+references in Section 2, “Project Narrative.” If applicable, list the citations
+in both Sections 2 and 5. (Does not count toward the 15-page Project Narrative
+limit).  
+
+PI/Co-I Biographical Sketch: Provide a biographical sketch for each PI and Co-I
+listed on the proposal. The biographical sketch appendix will not count in the
+project narrative page limitation and, for each PI or Co-I, must not exceed two
+(2) pages.  As part of the sketch, provide information that can be used by the
+reviewers to evaluate the team’s ability to perform the proposed work and
+utilize the resources effectively. The biographical sketch must include: 
+
+Education and Training: Undergraduate, graduate and postdoctoral training,
+provide institution, major/area, degree and year.  
+
+Research and Professional Experience: Beginning with the current position list,
+in chronological order, professional/academic positions with a brief
+description.
+
+
+Publications: Provide a list of the 5 publications most closely related to the
+proposed project. For each publication, identify the names of all authors (in
+the same sequence in which they appear in the publication), the article title,
+book or journal title, volume number, page numbers, year of publication, and
+website address if available electronically.  
+
+Research Interests and Expertise: Provide a paragraph describing the research
+interests and expertise related to the proposed project.  
+
+Synergistic Activities: List no more than 5 professional and scholarly
+activities related to the effort proposed.  
+
+Collaborators: List in alphabetical order all persons, including their current
+organizational affiliation, who are, or who have been, collaborators or
+co-authors with you on a research project, book or book article, report,
+abstract, or paper during the 5 years preceding the submission of this
+proposal. For publications or collaborations with more than 10 authors or
+participants, only list those individuals in the core group with whom the PI
+interacted on a regular basis while the research was being done.  
+
+Personally Identifiable Information (PII): Do not include sensitive and
+protected PII including social security numbers, birthdates, citizenship,
+marital status, or home addresses. Do not include information that a merit
+reviewer should not make use of.  
+
+Appendix 
+
+Examples of Performance Required Materials Quantitative data for production
+application performance should be provided in either tabular or graphical form
+or both.  This data should reflect the performance of the application for the
+production simulations proposed, and should include all I/O requirements of the
+production simulations.
+
+Where appropriate, characterize the production application’s single-node
+performance (e.g., percent of peak). For example, describe the most
+computationally expensive portion of your algorithm and describe the on-node
+parallelization scheme employed. Any optimization strategy to improve
+single-node performance—including code restructuring, GPU strategy, and
+exploiting OpenMP/Pthreads and vectorized instructions—should be described. For
+Summit, provide any evidence of speedup using GPUs compared to using all CPU
+cores. For Theta, demonstrate the efficient use of many CPU cores per node, and
+if not all cores can be used effectively, explain why. For all architectures,
+indicate the degree of utilization of any architecture-specific features.  Data
+analytics and AI proposals may provide performance data which demonstrates
+scalability, efficiency, node or GPU utilization, network bandwidth estimation,
+or power profiling for node, CPU, GPU and/or memory.
+
+Weak-scaling behaviors are probed by holding per-node computational work
+constant (e.g., the size of the mesh on a processor is held constant) as the
+total problem size grows with processor count. Strong-scaling behaviors are
+probed by holding the total problem size constant as the processor count grows,
+thereby decreasing the per-processor computational work. Note that in the
+examples provided, a logarithmic scale is preferred.
+
+For data analytics and AI applications that may weak scale for improved
+convergence, present a justification for the scientific impact of the expected
+improvements when running at large scale. Address, if necessary, overcoming
+difficulties of training with respect to the relevant hyperparameter list for
+deep learning applications.
+
+In addition, where appropriate the proposal should describe the entire
+computational workflow of the proposed project. In particular, the project
+should demonstrate that the entire workflow is tenable on the proposed
+architecture or supporting analysis resources at the LCFs or discuss where any
+pre- and postprocessing or data analysis will be conducted and how relevant
+files will be transferred.
