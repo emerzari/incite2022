@@ -171,10 +171,13 @@ Nek5000 that are compatible with NekRS.
 Another concern is construction and use of very large meshes.  The record
 for Nek5000 on Mira was 15M elements.  We have recently extended Nek5000/RS
 to support over 1B elements ($n$=216B).   This extension required promoting
-several arrays to support integer*8 indexing during problem-setup.  These
+several arrays to support int8 indexing during problem-setup.  (These
 are arrays that are used to identify face-face and edge-edge connections
 between elements---the array sizes scale as $E/P$ and are thus fully
-scalable.  
+scalable.)   Fortunately, for mesh construction, we can use many of the 
+available FEM tools because the number of elements required for the SEM
+is two orders of magnitude smaller than that required for low-order FEM 
+simulations at the same resolution.
 
 
 \vspace{-.25in}
