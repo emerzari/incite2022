@@ -149,15 +149,6 @@ degree-of-freedom) we can conclude that Nek5000/RS is well suited for the
 proposed high-fidelity simulations.
 
 
-\begin{wrapfigure}{rt}{3.0in} \begin{center}
-{\setlength{\unitlength}{1.0in} \begin{picture}(3.000,0.600)(-.2,0)
-  \includegraphics[scale=0.40]{figs/libp_kernels.png}
-\end{picture}} \caption{\label{fig:roof} 
-libParanumal
-Poisson-operator kernel development (iterations $K=1,\dots,10$) vs.
-polynomial order, $N$   \cite{ceed_pb_paper_2020}.
-\vspace*{-.2in} }
-\end{center} \end{wrapfigure}
 \noindent{\bf Parallel Performance.}
 NekRS has been developed in close collaboration with the libParanumal project
 \cite{warburton2019,ChalmersKarakusAustinSwirydowiczWarburton2020,streamParanumal2020},
@@ -175,6 +166,15 @@ nested parallel {\em for} loops in the kernel are annotated with
 grid of work-item and work-groups in OpenCL or threads and thread-blocks in
 CUDA and HIP. All iterations that are annotated with \texttt{@outer} or
 \texttt{@inner} are assumed to be free of loop carried dependencies. 
+%
+\begin{wrapfigure}{rt}{3.0in} \begin{center}
+{\setlength{\unitlength}{1.0in} \begin{picture}(3.000,0.600)(-.2,0)
+  \includegraphics[scale=0.30]{figs/libp_kernels.png}
+\end{picture}} \caption{\label{fig:roof} 
+libParanumal Poisson-operator kernel development (iterations $K=1,\dots,10$) vs.
+polynomial order, $N$   \cite{ceed_pb_paper_2020}.  \vspace*{-.2in} }
+\end{center} \end{wrapfigure}
+%
 The OCCA-based libParanumal kernels
 typically saturate the roofline on the NVIDIA GPUs, as illustrated
 in Fig. \ref{fig:roof}, where we see that the local Poisson kernel
