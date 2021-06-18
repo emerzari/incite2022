@@ -140,7 +140,7 @@ momentum source models \cite{hu2013}.
 
 By nature of the scale decoupling between the CFD domain and the full core, a
 key outstanding issue with this analysis approach is an inability to reliably
-account for {\it interaction between global and local scales}. This recognized
+account for {\it interaction between global and local scales}. This
 limitation increases reliance on approximate methods, which in turn further
 constrains the reactor design.
 
@@ -190,7 +190,7 @@ to the structural behavior of SFR cores, most industry approaches to full-core
 analysis neglect the
 gap flow entirely \cite{touran}, homogenize the flow into other structural
 materials \cite{fiorina_of}, or neglect certain azimuthal heat transfer
-paths between neighboring bundles \cite{touran} -- without correction terms to account for the
+paths \cite{touran} -- without correction terms to account for the
 un-resolved physics \cite{touran,fiorina_of}. Some researchers substitute Reynolds
 Averaged Navier-Stokes (RANS) CFD for small regions in a full-core low-resolution
 model \cite{wang2020,gerschenfeld,Kim2020}, an approach that is still subject to
@@ -237,9 +237,9 @@ of rod-type nuclear reactors by developing an LES database to support the
 development of lower fidelity models.  The first is directed at SMRs, the
 second at SFRs.
 Both grand challenges share the same
-motivating gap analysis -- reduced-geometry CFD models cannot properly account
+motivating gap analysis -- reduced-geometry CFD models cannot account
 for the interaction between core-wide physics and local thermal-fluids. By
-developing more accurate lower fidelity models informed by turbulence-resolved
+developing more accurate lower fidelity models from turbulence-resolved
 CFD, this proposal seeks to reduce risk to the technical design, economic
 viability, and licensing of advanced reactor concepts.
 
@@ -348,8 +348,8 @@ is of particular importance for advanced reactors, where simulation can be used
 in conjunction with separate effect experiments, in the absence of extensive
 integral test data (at least in the initial phases of development).
 
-RANS \cite{conner2010cfd} and occasionally Unsteady Reynolds Averaged
-Navier-Stokes (URANS) remain the workhorses for analysis conducted in industry,
+RANS \cite{conner2010cfd} and occasionally Unsteady RANS
+ (URANS) remain the workhorses for analysis conducted in industry,
 research centers, and academia.  However, despite significant advancements in
 turbulence modeling in recent years, RANS is limited in terms of accuracy.
 Turbulence modeling remains a source of uncertainty in complex engineering
@@ -388,7 +388,7 @@ a-b) Cross sections of the flow in helical coil steam generator
 \end{figure}
 
 % add more of a description of the proposed research and its goals
-
+\vspace*{-.1in}
 \begin{displayquote}
 \textit{
 Building upon the extensive experience of our group and recent achievements, this proposal seeks the development of a set of full-core LES
@@ -515,12 +515,10 @@ The above questions will be addressed by comparing temperature, pressure, and ma
 
 To address the SFR challenge problem of inter-assembly heat transfer, full-core
 LES CFD simulations will be conducted for the Advanced Burner Reactor (ABR), an
-open-source reactor design that is considered a prototype of a large commercial
-SFR \cite{abr}. The objectives of these simulations are to 1)~answer
+open-source prototypic reactor design \cite{abr}. The objectives of these simulations are to 1)~answer
 outstanding questions about the nature of inter-assembly flow and heat transfer
-and 2)~utilize the produced LES database to generate bulk heat
-transfer correlations to improve the predictive capabilities of
-lower-resolution tools. The major tasks have been identified as follows:
+and 2)~utilize the produced LES database to generate more accurate heat
+transfer correlations. The major tasks have been identified as follows:
 
 \vspace{-.15in}
 \begin{enumerate}[label=\textbf{\Roman*}]
@@ -554,45 +552,38 @@ lower-resolution tools. The major tasks have been identified as follows:
 \end{enumerate}
 \vspace{-.15in}
 
+%During Task I, full-core
+%meshes will be generated for the prototypic design. Mesh convergence will be
+%performed with \(h\)-type refinement\footnote{$h$-type refinement refers to
+%mesh convergence realized by reducing element size.} to leverage past
+%experience with optimal element counts per GPU on Summit. Initial RANS
+%simulations will be performed on Summit.  Full-core models will be constructed
+%for the four operating conditions (detailed in Task III) based on
+%openly-available material properties, power, and mass flow distributions.
+%During Task II, equivalent low-resolution models will be constructed and run on
+%workstations available to our group at ANL.
 
-%% {\bf We can cut some of this if needed. Currently a lot more emphasis is placed
-%% on this secondn challenge problem, when they should be more equal}
-Additional details are now provided for each task. During Task I, full-core
-meshes will be generated for the prototypic design. Mesh convergence will be
-performed with \(h\)-type refinement\footnote{$h$-type refinement refers to
-mesh convergence realized by reducing element size.} to leverage past
-experience with optimal element counts per GPU on Summit. Initial RANS
-simulations will be performed on Summit.  Full-core models will be constructed
-for the four operating conditions (detailed in Task III) based on
-openly-available material properties, power, and mass flow distributions.
-During Task II, equivalent low-resolution models will be constructed and run on
-workstations available to our group at ANL.
+%During Task III, full-core LES CFD simulations will be conducted for four
+%different combinations of core power and flowrate. The first condition
+%corresponds to the nominal reactor state. The second two conditions correspond
+%to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are
+%indicative of reactor trip points \cite{chaumont} and unmitigated equipment
+%failure, respectively. The last simulation corresponds to decay heat removal
+%after the fission reaction has been terminated.
 
-
-During Task III, full-core LES CFD simulations will be conducted for four
-different combinations of core power and flowrate. The first condition
-corresponds to the nominal reactor state. The second two conditions correspond
-to power-to-flow ratios 25\% and 50\% higher than nominal conditions, which are
-indicative of reactor trip points \cite{chaumont} and unmitigated equipment
-failure, respectively. The last simulation corresponds to decay heat removal
-after the fission reaction has been terminated.
-
-In Task IV, the LES database will be compared against the reference low-resolution models to answer several outstanding questions: \\[-5ex]
+In Task IV, the LES database will be compared against the reference low-resolution models to answer several outstanding questions: 
 
 \vspace{-.15in}
 \begin{itemize}
 \item How does inter-assembly heat transfer affect core temperatures? The core
       outlet temperature distribution has a direct impact on thermal stresses and
       lifetimes of downstream components.  
-\\[-4.5ex]
 \item How is inter-assembly heat transfer affected by the power-to-flow ratio?
       The wide variation in flow regime across the core may result in global heat
       redistributions with flowrate changes.  
-\\[-4.5ex]
 \item Are significant cross-flows generated across the core? In submerged
     ``pool-type'' reactor concepts, such flows could draw fluid from
     bypass regions, changing fuel temperature distributions.  
-\\[-4.5ex]
 \end{itemize}
 \vspace{-.15in}
 
