@@ -150,6 +150,32 @@ results for NekRS for a 17$\times$17 rod-bundle configuration.
 
 \input tex/performance
 
+\noindent{\em Project Workflow and I/O}
+The scale of the proposed problems on Summit and Frontier is signifcantly
+larger than that of prior production runs on Mira.  For example, full-core
+simulations of the pebble bed reactor  ($n$=50B) on all of Summit generate
+single snapshot files of 1.4 TB, each, with 32 bit words.  Using MPI I/O, these
+files are written in 40 seconds (32 GB/sec) for simulations that take about 0.4
+seconds per step, which is tolerable.   Visualization and file movement,
+however, are quite painful and we have had to develop specialized subsampling
+techniques that collect only the ``visible'' elements to make image rendering
+feasible.  We envision that compression techniques based on spectral (Legendre)
+data representations will be useful for reducing file sizes; compression ratios
+of up to 40:1 have been reported for this class of problems when applied to
+Nek5000 \cite{otero18}.  Additionally, we are able to use Nek5000/RS to perform
+all of the data analysis, at scale.  Both codes collect statistics (e.g., mean,
+RMS, and cross-correlations) for velocity and temperature at runtime and
+extensive turbulent-statistics post-processing utilities are available for
+Nek5000 that are compatible with NekRS. 
+
+Another concern is construction and use of very large meshes.  The record
+for Nek5000 on Mira was 15M elements.  We have recently extended Nek5000/RS
+to support over 1B elements ($n$=216B).   This extension required promoting
+several arrays to support integer*8 indexing during problem-setup.  These
+are arrays that are used to identify face-face and edge-edge connections
+between elements---the array sizes scale as $E/P$ and are thus fully
+scalable.  
+
 
 \vspace{-.25in}
 \subsection{Developmental Work}
