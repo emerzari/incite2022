@@ -420,14 +420,14 @@ in this analysis.}
 
 We restrict our discussion to turbulence-resolving simulations such as DNS and
 wall-resolved LES. In advection-dominated problems such as the one described by
-Eqs. \ref{eq:UEqn}--\ref{eq:EEqn} at moderate to high Reynolds numbers, the
+Eqs. (\ref{eq:UEqn})--(\ref{eq:EEqn}) at moderate to high Reynolds numbers, the
 high-wavenumber component of transported quantities does not decay
 exponentially, as observed in diffusion-dominated problems. Therefore, both
 meaningful signals and numerical errors can persist in time, and appropriate
 numerical schemes must be selected in order to avoid excessive dispersion.
-Nek5000/NekRS, based on the spectral element method, are therefore ideally
+The spectral element method, which is the basis for Nek5000/RS, is ideally
 suited for this type of analysis. We note that LES is usually performed within
-Nek5000/NekRS using an explicit filter \cite{schlatter21}.
+Nek5000/RS using an explicit filter \cite{schlatter21}.
 
 \vspace{-.25in}
 \subsection{Description of Tasks}
